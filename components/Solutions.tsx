@@ -1,98 +1,166 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 import {
   ShoppingCart,
   Receipt,
   CalendarCheck,
   Robot,
-  ArrowRight,
   Star,
-  ChartBar,
+  Desktop,
 } from "@phosphor-icons/react";
 import { useT } from "@/lib/i18n";
 
-const icons = [Star, ChartBar, Receipt, Robot, CalendarCheck, ShoppingCart];
-const colors = ["#f59e0b", "#0891b2", "#d4145a", "#7c3aed", "#10b981", "#2563eb"];
+const icons = [Receipt, Desktop, Robot, CalendarCheck, ShoppingCart, Star];
 const gradients: [string, string][] = [
-  ["#f59e0b", "#fbbf24"],
-  ["#0891b2", "#22d3ee"],
   ["#d4145a", "#ff6b9d"],
+  ["#0891b2", "#22d3ee"],
   ["#7c3aed", "#a855f7"],
   ["#10b981", "#34d399"],
   ["#2563eb", "#60a5fa"],
+  ["#f59e0b", "#fbbf24"],
+];
+const images = [
+  "/facturas.png",
+  "/imac-screen-mockup.png",
+  "/iapropia.png",
+  "/movilbot.png",
+  "/pedidos.png",
+  "/relojreseñas.png",
 ];
 
+type Phase = "above" | "stuck" | "below";
+
 export default function Solutions() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+  const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useT();
   const s = t.solutions;
+  const n = s.items.length;
+
+  const [phase, setPhase] = useState<Phase>("above");
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = containerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+
+      if (rect.top > 0) {
+        setPhase("above");
+        setActiveIndex(0);
+      } else if (rect.bottom <= window.innerHeight) {
+        setPhase("below");
+        setActiveIndex(n - 1);
+      } else {
+        setPhase("stuck");
+        const scrolled = -rect.top;
+        const total = rect.height - window.innerHeight;
+        if (total > 0) {
+          const progress = Math.max(0, Math.min(1, scrolled / total));
+          setActiveIndex(Math.min(Math.floor(progress * n), n - 1));
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [n]);
+
+  const item = s.items[activeIndex];
+  const Icon = icons[activeIndex];
+  const [gradFrom, gradTo] = gradients[activeIndex];
+  const img = images[activeIndex];
+
+  const panelClass =
+    phase === "stuck"
+      ? "fixed top-0 left-0 right-0 h-screen z-40"
+      : phase === "below"
+      ? "absolute bottom-0 left-0 right-0 h-screen"
+      : "absolute top-0 left-0 right-0 h-screen";
 
   return (
-    <section id="soluciones" className="relative py-14 md:py-24 lg:py-32 bg-[#f8f9fc] dot-grid-light overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div ref={headerRef} className="max-w-2xl mb-10 md:mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4 }}
-            className="text-xs font-bold text-[#d4145a] uppercase tracking-widest mb-4"
-          >
-            {s.label}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={headerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.05 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] leading-[1.15] tracking-tight"
-          >
-            {s.heading[0]}{" "}
-            <span className="text-gradient-fuchsia">{s.heading[1]}</span>{" "}
-            {s.heading[2]}
-          </motion.h2>
-        </div>
+    <section id="soluciones" className="bg-[#0a1628]">
 
-        {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {s.items.map((item, i) => {
-            const Icon = icons[i];
-            const color = colors[i];
-            const [gradFrom, gradTo] = gradients[i];
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8 }}
-                className="group relative flex flex-col rounded-3xl overflow-hidden transition-all duration-300"
-                style={{ boxShadow: `0 4px 24px ${color}18` }}
-              >
-                {/* Gradient header block */}
-                <div
-                  className="relative px-5 pt-6 pb-8 sm:px-7 sm:pt-8 sm:pb-10"
-                  style={{ background: `linear-gradient(135deg, ${gradFrom}, ${gradTo})` }}
+      {/* Cabecera */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="text-xs font-bold text-[#d4145a] uppercase tracking-widest mb-4"
+        >
+          {s.label}
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] tracking-tight"
+        >
+          {s.heading[0]}{" "}
+          <span className="text-gradient-fuchsia">{s.heading[1]}</span>{" "}
+          {s.heading[2]}
+        </motion.h2>
+      </div>
+
+      {/* Contenedor que crea el espacio de scroll */}
+      <div ref={containerRef} style={{ height: `${n * 100}vh` }} className="relative">
+
+        {/* Panel visual — fixed cuando está en zona, absolute arriba/abajo en los extremos */}
+        <div className={`${panelClass} bg-[#0a1628] flex items-center`}>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-[5fr_7fr] gap-12 items-start">
+
+            {/* Izquierda — texto */}
+            <div>
+              {/* Indicador de progreso */}
+              <div className="flex gap-2 mb-10">
+                {s.items.map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-[3px] rounded-full transition-all duration-500"
+                    style={{
+                      width: activeIndex === i ? "28px" : "8px",
+                      background:
+                        activeIndex === i
+                          ? `linear-gradient(90deg, ${gradients[i][0]}, ${gradients[i][1]})`
+                          : "rgba(255,255,255,0.2)",
+                    }}
+                  />
+                ))}
+              </div>
+
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-20" style={{ background: "white" }} />
-                  <div className="absolute bottom-0 left-1/2 w-20 h-20 rounded-full opacity-10 blur-xl" style={{ background: "white" }} />
-                  <div className="relative z-10 flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <Icon size={28} weight="duotone" className="text-white" />
-                    </div>
-                    <h3 className="text-lg font-black text-white leading-snug tracking-tight uppercase">{item.title}</h3>
-                  </div>
-                </div>
+                  <span
+                    className="inline-block text-xs font-bold uppercase tracking-widest mb-5 px-3 py-1 rounded-full"
+                    style={{ color: gradFrom, background: `${gradFrom}28` }}
+                  >
+                    {item.badge}
+                  </span>
 
-                {/* White body */}
-                <div className="flex flex-col flex-1 bg-white px-5 pt-5 pb-5 sm:px-7 sm:pt-6 sm:pb-7">
-                  <p className="text-sm text-[#64748b] leading-relaxed mb-5">{item.desc}</p>
-                  <ul className="flex flex-col gap-2.5 flex-1 mb-6">
+                  <h3 className="text-3xl lg:text-4xl font-extrabold text-white leading-snug mb-4 tracking-tight">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                    {item.desc}
+                  </p>
+
+                  <ul className="flex flex-col gap-3">
                     {item.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2.5 text-xs text-[#475569]">
+                      <li key={f} className="flex items-center gap-3 text-sm text-white/80">
                         <span
                           className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-[9px] font-black"
                           style={{ background: `linear-gradient(135deg, ${gradFrom}, ${gradTo})` }}
@@ -103,22 +171,41 @@ export default function Solutions() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-center justify-between pt-5 border-t border-[#f1f5f9]">
-                    <span className="text-sm font-extrabold" style={{ color }}>{item.price}</span>
-                    <motion.a
-                      href="#precios"
-                      whileHover={{ x: 3 }}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-full transition-all"
-                      style={{ background: `${color}12`, color }}
-                    >
-                      {s.viewSolution}
-                      <ArrowRight size={13} weight="bold" />
-                    </motion.a>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Derecha — imagen con marco blanco */}
+            <div className="flex items-center justify-center mt-16">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full rounded-2xl border-[6px] border-white shadow-[0_32px_80px_rgba(0,0,0,0.5)] overflow-hidden bg-[#0f1f40]"
+                  style={{ aspectRatio: "16/9" }}
+                >
+                  {img ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${img}`}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Icon size={56} weight="duotone" className="text-white/20" />
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>

@@ -1,164 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle,
-  WhatsappLogo,
-  Phone,
-  Question,
-  Warning,
-} from "@phosphor-icons/react";
-import { useRef, useState, useEffect } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { ArrowRight, CheckCircle } from "@phosphor-icons/react";
+import { useRef } from "react";
 import { useT } from "@/lib/i18n";
-
-const chipIcons = [WhatsappLogo, Phone, Question, Warning];
-
-const MSG_DELAY_MS = 900;
-const CYCLE_PAUSE_MS = 2800;
-
-function TypingDots() {
-  return (
-    <div className="flex items-center gap-1 px-4 py-3">
-      {[0, 1, 2].map((i) => (
-        <motion.span
-          key={i}
-          className="w-1.5 h-1.5 rounded-full bg-[#94a3b8] block"
-          animate={{ y: [0, -5, 0] }}
-          transition={{ repeat: Infinity, delay: i * 0.18, duration: 0.65 }}
-        />
-      ))}
-    </div>
-  );
-}
-
-const EXIT_MS = 350;
-
-function AIChatMockup() {
-  const { t } = useT();
-  const h = t.hero;
-  const sequences = h.sequences as unknown as { type: string; text: string }[][];
-
-  const [seqIdx, setSeqIdx] = useState(0);
-  const [shownCount, setShownCount] = useState(0);
-
-  useEffect(() => {
-    setShownCount(0);
-    const msgs = sequences[seqIdx];
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    msgs.forEach((_, i) => {
-      timers.push(
-        setTimeout(() => setShownCount(i + 1), EXIT_MS + (i + 1) * MSG_DELAY_MS)
-      );
-    });
-
-    const totalMs = EXIT_MS + msgs.length * MSG_DELAY_MS + CYCLE_PAUSE_MS;
-    timers.push(
-      setTimeout(() => setSeqIdx((prev) => (prev + 1) % sequences.length), totalMs)
-    );
-
-    return () => timers.forEach(clearTimeout);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seqIdx, sequences.length]);
-
-  const msgs = sequences[seqIdx];
-  const showTyping =
-    shownCount > 0 && shownCount < msgs.length && msgs[shownCount]?.type === "bot";
-
-  return (
-    <div className="w-full max-w-[460px] mx-auto md:ml-auto md:mr-0">
-      <motion.div
-        initial={{ opacity: 0, y: 30, rotateY: -6 }}
-        animate={{ opacity: 1, y: 0, rotateY: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="bg-white rounded-2xl border border-[#e8edf5] shadow-2xl shadow-[#1a2b5f]/10 overflow-hidden flex flex-col min-h-[300px] md:min-h-[400px] lg:min-h-[500px]"
-      >
-        {/* Header */}
-        <div className="flex items-center gap-3 px-5 py-4 border-b border-[#f1f5f9] bg-[#f8f9fc]">
-          <div className="bg-white rounded-xl px-3 py-1.5 shadow-sm border border-[#e8edf5] shrink-0">
-            <Image src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo3.png`} alt="fluentIA" width={110} height={28} className="h-7 w-auto" />
-          </div>
-          <div className="flex flex-col min-w-0">
-            <span className="font-light text-[#64748b] tracking-widest text-[11px]">{h.chatLabel}</span>
-            <div className="flex items-center gap-1.5 mt-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span className="text-[10px] text-[#94a3b8] font-medium tracking-wide">{h.chatOnline}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Chat area */}
-        <div className="px-5 py-4 flex flex-col gap-2.5 flex-1 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={seqIdx}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: EXIT_MS / 1000 }}
-              className="flex flex-col gap-2.5"
-            >
-              {msgs.slice(0, shownCount).map((msg, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 8, x: msg.type === "user" ? 12 : -12 }}
-                  animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <span
-                    className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-[12px] font-medium leading-snug ${
-                      msg.type === "user"
-                        ? "bg-[#1a2b5f] text-white rounded-tr-sm"
-                        : "bg-[#f8f9fc] text-[#334155] border border-[#e8edf5] rounded-tl-sm"
-                    }`}
-                  >
-                    {msg.text}
-                  </span>
-                </motion.div>
-              ))}
-
-              {showTyping && (
-                <motion.div
-                  key={`typing-${shownCount}`}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex justify-start"
-                >
-                  <div className="bg-[#f8f9fc] border border-[#e8edf5] rounded-2xl rounded-tl-sm">
-                    <TypingDots />
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Automation chips */}
-        <div className="px-5 pb-5 flex flex-wrap gap-2">
-          {h.chips.map((label, i) => {
-            const Icon = chipIcons[i];
-            return (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, scale: 0.88 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#f8f9fc] border border-[#e8edf5] rounded-full"
-              >
-                <Icon size={12} weight="duotone" className="text-[#d4145a]" />
-                <span className="text-[10px] font-semibold text-[#475569]">{label}</span>
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.div>
-    </div>
-  );
-}
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -198,8 +44,27 @@ export default function Hero() {
       />
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[#d4145a] opacity-[0.03] blur-3xl pointer-events-none" />
 
+      {/* Right half — inicio.png, full height, edge-to-edge */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="absolute right-0 top-0 w-1/2 h-full hidden md:block"
+      >
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/inicio.png`}
+          alt="fluentIA"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Left gradient — blends image with white background */}
+        <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
+      </motion.div>
+
+      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 pb-10 md:pt-8 md:pb-20 lg:pt-12 lg:pb-28">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-center">
+        <div className="grid md:grid-cols-2 items-center">
 
           {/* Left — text */}
           <div className="w-full">
@@ -268,10 +133,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — AI chat (hidden on mobile, shown md+) */}
-          <div className="hidden md:block">
-            <AIChatMockup />
-          </div>
+          {/* Right — placeholder for absolutely-positioned image */}
+          <div className="hidden md:block" />
         </div>
       </div>
     </section>

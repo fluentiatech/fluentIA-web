@@ -50,6 +50,9 @@ export default function Navbar() {
 
   const navLinkClass =
     "relative px-3 py-2 text-sm font-medium text-[#334155] hover:text-[#1a2b5f] transition-colors group whitespace-nowrap";
+  const navLinkClassRight = `relative px-3 py-2 text-sm font-medium transition-colors group whitespace-nowrap ${
+    scrolled ? "text-[#334155] hover:text-[#1a2b5f]" : "text-white hover:text-white/80"
+  }`;
   const underlineClass =
     "absolute bottom-0 left-3 right-3 h-[2px] bg-[#d4145a] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full";
 
@@ -107,7 +110,7 @@ export default function Navbar() {
         <div className="flex-1 flex items-center">
           <nav className="flex items-center pl-20 xl:pl-24">
             {links.slice(3).map((link) => (
-              <a key={link.href} href={link.href} className={navLinkClass}>
+              <a key={link.href} href={link.href} className={navLinkClassRight}>
                 {link.label}
                 <span className={underlineClass} />
               </a>
