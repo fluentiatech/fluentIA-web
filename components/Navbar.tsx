@@ -127,20 +127,22 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ─── Mobile/tablet bar (below lg): logo left + hamburger right ─── */}
-      <div className="lg:hidden flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-24 w-full">
-        <a href="#inicio" className="flex items-center shrink-0">
+      {/* ─── Mobile/tablet bar (below lg): logo centrado + hamburger derecha ─── */}
+      <div className="lg:hidden relative flex items-center h-20 sm:h-24 w-full px-4 sm:px-6">
+        {/* Logo centrado */}
+        <a href="#inicio" className="absolute left-1/2 -translate-x-1/2">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo.png`}
             alt="fluentIA"
-            width={180}
-            height={54}
+            width={240}
+            height={72}
             priority
-            className="h-12 sm:h-16 w-auto"
+            className="h-16 sm:h-20 w-auto"
           />
         </a>
+        {/* Hamburger a la derecha */}
         <button
-          className="shrink-0 p-2.5 rounded-xl text-[#334155] hover:bg-[#f1f5f9] active:bg-[#e8edf5] transition-colors"
+          className="ml-auto shrink-0 p-2.5 rounded-xl text-[#334155] hover:bg-[#f1f5f9] active:bg-[#e8edf5] transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >

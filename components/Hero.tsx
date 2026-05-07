@@ -19,7 +19,7 @@ export default function Hero() {
     <section
       id="inicio"
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-center pt-20 sm:pt-24 overflow-hidden bg-white"
+      className="relative flex flex-col md:block md:min-h-[100dvh] md:flex md:items-center overflow-hidden bg-white pt-20 sm:pt-24"
       onMouseMove={(e) => {
         const rect = containerRef.current?.getBoundingClientRect();
         if (!rect) return;
@@ -42,9 +42,8 @@ export default function Hero() {
         style={{ x: springX, y: springY }}
         className="absolute -bottom-20 left-0 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-[#fdf2f8] via-[#ffe4ee] to-[#e0ecff] opacity-55 blur-3xl pointer-events-none floating"
       />
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[#d4145a] opacity-[0.03] blur-3xl pointer-events-none" />
 
-      {/* Right half — inicio.png, full height, edge-to-edge */}
+      {/* Desktop — imagen derecha full-height */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -58,15 +57,12 @@ export default function Hero() {
           className="object-cover object-center"
           priority
         />
-        {/* Left gradient — blends image with white background */}
         <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-4 pb-10 md:pt-8 md:pb-20 lg:pt-12 lg:pb-28">
+      {/* Texto */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 pb-8 md:pt-8 md:pb-20 lg:pt-12 lg:pb-28">
         <div className="grid md:grid-cols-2 items-center">
-
-          {/* Left — text */}
           <div className="w-full">
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -88,7 +84,6 @@ export default function Hero() {
               {h.sub}
             </motion.p>
 
-            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,7 +109,6 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Trust pills */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -133,10 +127,28 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right — placeholder for absolutely-positioned image */}
           <div className="hidden md:block" />
         </div>
       </div>
+
+      {/* Móvil — imagen debajo del texto */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="relative z-10 md:hidden w-full"
+        style={{ height: "52vw", minHeight: 220, maxHeight: 360 }}
+      >
+        <Image
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/inicio.png`}
+          alt="fluentIA"
+          fill
+          className="object-cover object-top"
+          priority
+        />
+        {/* Degradado superior para fusionar con el texto */}
+        <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white to-transparent pointer-events-none" />
+      </motion.div>
     </section>
   );
 }
