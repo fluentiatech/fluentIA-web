@@ -13,23 +13,26 @@ import {
 } from "@phosphor-icons/react";
 import { useT } from "@/lib/i18n";
 
-const icons = [Receipt, Desktop, Robot, CalendarCheck, ShoppingCart, Star];
+const icons = [Desktop, Receipt, Robot, CalendarCheck, ShoppingCart, Star];
 const gradients: [string, string][] = [
-  ["#d4145a", "#ff6b9d"],
   ["#0891b2", "#22d3ee"],
+  ["#d4145a", "#ff6b9d"],
   ["#7c3aed", "#a855f7"],
   ["#10b981", "#34d399"],
   ["#2563eb", "#60a5fa"],
   ["#f59e0b", "#fbbf24"],
 ];
 const images = [
-  "/facturas.png",
   "/imac-screen-mockup.png",
+  "/facturas.png",
   "/iapropia.png",
   "/movilbot.png",
   "/pedidos.png",
   "/relojreseñas.png",
 ];
+
+// Índice a partir del cual comienzan los servicios para empresas
+const BUSINESS_START = 1;
 
 type Phase = "above" | "stuck" | "below";
 
@@ -134,6 +137,9 @@ export default function Solutions() {
                   />
                 ))}
               </div>
+              {activeIndex >= BUSINESS_START && (
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/35 mb-3">— También para empresas —</p>
+              )}
               <AnimatePresence mode="popLayout">
                 <motion.div
                   key={activeIndex}
@@ -205,6 +211,9 @@ export default function Solutions() {
                     />
                   ))}
                 </div>
+                {activeIndex >= BUSINESS_START && (
+                  <p className="text-xs font-bold uppercase tracking-widest text-white/35 mb-4">— También para empresas —</p>
+                )}
                 <AnimatePresence mode="popLayout">
                   <motion.div
                     key={activeIndex}

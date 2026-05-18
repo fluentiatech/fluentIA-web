@@ -10,10 +10,10 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "fluentIA — Tecnología inteligente al alcance de todas las empresas",
+  title: "fluentIA — Identidad digital premium para figuras públicas",
   description:
-    "fluentIA crea soluciones de automatización, simplificadas y a la medida de cada empresa. Facturación automática, agenda inteligente, IA empresarial y más.",
-  keywords: ["inteligencia artificial", "automatización", "facturación", "IA empresarial", "chatbot"],
+    "fluentIA crea landing pages personales de alto impacto para futbolistas, actores, cantantes e influencers. Diseño premium, automatización con IA y gestión inteligente de tu presencia online.",
+  keywords: ["landing page futbolistas", "web personal artistas", "identidad digital deportistas", "IA para figuras públicas", "web personal cantantes"],
 };
 
 export default function RootLayout({

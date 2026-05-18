@@ -3,19 +3,22 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Clock,
-  CurrencyEur,
-  ChartLine,
-  Smiley,
-  ShieldCheck,
-  Rocket,
+  Trophy,
+  FilmSlate,
+  MusicNote,
+  DeviceMobile,
   Users,
 } from "@phosphor-icons/react";
 import { useT } from "@/lib/i18n";
 
-const icons = [Clock, CurrencyEur, ChartLine, Smiley, ShieldCheck, Rocket];
-const colors = ["#d4145a", "#2563eb", "#10b981", "#f59e0b", "#6366f1", "#d4145a"];
-const bgs    = ["bg-pink-50", "bg-blue-50", "bg-emerald-50", "bg-amber-50", "bg-indigo-50", "bg-pink-50"];
+const icons = [Trophy, FilmSlate, MusicNote, DeviceMobile];
+const gradients: [string, string][] = [
+  ["#2563eb", "#60a5fa"],
+  ["#d4145a", "#ff6b9d"],
+  ["#7c3aed", "#a855f7"],
+  ["#f59e0b", "#fbbf24"],
+];
+const emojis = ["⚽", "🎬", "🎵", "📱"];
 
 export default function Benefits() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -25,11 +28,12 @@ export default function Benefits() {
 
   return (
     <section id="beneficios" className="relative py-14 md:py-24 lg:py-32 bg-white overflow-hidden">
-      {/* Decorative background blobs */}
+      {/* Decorative blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-[#fce7f3] to-transparent opacity-40 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#e0ecff] to-transparent opacity-30 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+
         {/* Header */}
         <div ref={headerRef} className="max-w-2xl mb-10 md:mb-16">
           <motion.p
@@ -60,30 +64,46 @@ export default function Benefits() {
           </motion.p>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Audience cards — 2×2 grid */}
+        <div className="grid sm:grid-cols-2 gap-5 mb-10 md:mb-16">
           {b.items.map((item, i) => {
             const Icon = icons[i];
-            const color = colors[i];
-            const bg = bgs[i];
+            const [gradFrom, gradTo] = gradients[i];
             return (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8, boxShadow: `0 20px 48px ${color}18`, borderColor: color + "40" }}
-                className="card-shine group relative bg-white rounded-2xl border border-[#e8edf5] p-7 cursor-default transition-all duration-300"
+                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
+                className="group relative bg-white rounded-2xl border border-[#e8edf5] p-7 md:p-8 overflow-hidden transition-all duration-300 hover:shadow-xl"
+                style={{ boxShadow: `0 2px 20px ${gradFrom}10` }}
               >
-                <div className={`${bg} w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={24} weight="duotone" style={{ color }} />
+                {/* Gradient top accent */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
+                  style={{ background: `linear-gradient(90deg, ${gradFrom}, ${gradTo})` }}
+                />
+
+                {/* Emoji + icon */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
+                    style={{ background: `linear-gradient(135deg, ${gradFrom}, ${gradTo})` }}
+                  >
+                    <Icon size={24} weight="duotone" className="text-white" />
+                  </div>
+                  <span className="text-3xl">{emojis[i]}</span>
                 </div>
-                <h3 className="text-base font-bold text-[#0f172a] mb-2 leading-snug">{item.title}</h3>
+
+                <h3 className="text-xl font-extrabold text-[#0f172a] mb-3 leading-snug">{item.title}</h3>
                 <p className="text-sm text-[#64748b] leading-relaxed">{item.desc}</p>
+
+                {/* Hover underline */}
                 <motion.div
-                  className="absolute bottom-0 left-6 right-6 h-[2px] rounded-full"
-                  style={{ background: color }}
+                  className="absolute bottom-0 left-7 right-7 h-[2px] rounded-full"
+                  style={{ background: `linear-gradient(90deg, ${gradFrom}, ${gradTo})` }}
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.35 }}
@@ -93,13 +113,35 @@ export default function Benefits() {
           })}
         </div>
 
-        {/* Mission banner */}
+        {/* Sección secundaria — empresas y autónomos */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 md:mb-16 border border-[#e8edf5] rounded-2xl px-6 py-5 bg-[#f8f9fc]"
+        >
+          <p className="text-xs font-bold text-[#94a3b8] uppercase tracking-widest mb-4">{b.businessLabel}</p>
+          <div className="flex flex-wrap gap-2">
+            {b.businessItems.map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#475569] px-3 py-1.5 rounded-full bg-white border border-[#e8edf5] shadow-sm"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4145a] shrink-0" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Benefits / Mission banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="noise-bg relative mt-10 md:mt-16 bg-[#0e1a3d] rounded-3xl p-5 sm:p-8 lg:p-14 overflow-hidden"
+          className="noise-bg relative bg-[#0e1a3d] rounded-3xl p-5 sm:p-8 lg:p-14 overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#d4145a] opacity-10 blur-3xl rounded-full pointer-events-none" />
           <div className="absolute -bottom-10 left-10 w-60 h-60 bg-[#2563eb] opacity-10 blur-3xl rounded-full pointer-events-none" />
