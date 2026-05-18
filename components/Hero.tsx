@@ -70,9 +70,9 @@ export default function Hero() {
               transition={{ duration: 0.65, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="text-fluid-hero font-extrabold text-[#0f172a] leading-[1.04] tracking-tight mb-4 md:mb-6"
             >
-              {h.headline[0]}{" "}
-              <span className="text-gradient-fuchsia">{h.headline[1]}</span>{" "}
-              {h.headline[2]}
+              <span className="block">{h.headline[0]}</span>
+              <span className="block text-gradient-fuchsia">{h.headline[1]}</span>
+              <span className="block">{h.headline[2]}</span>
             </motion.h1>
 
             <motion.p

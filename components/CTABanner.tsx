@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, EnvelopeSimple, WhatsappLogo, ArrowRight, CheckCircle } from "@phosphor-icons/react";
+import { MapPin, WhatsappLogo, ArrowRight, CheckCircle } from "@phosphor-icons/react";
 import { useT } from "@/lib/i18n";
 
 const MAX_LENGTHS = { nombre: 100, email: 254, empresa: 200, mensaje: 1000 };
@@ -19,8 +19,12 @@ export default function CTABanner() {
   const c = t.contact;
 
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [form, setForm] = useState({ nombre: "", email: "", empresa: "", mensaje: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "";
 
   function validateForm(form: Record<string, string>): Record<string, string> {
     const errs: Record<string, string> = {};
@@ -48,20 +52,38 @@ export default function CTABanner() {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errs = validateForm(form);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
-    setSent(true);
+    setLoading(true);
+    setSendError(false);
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          nombre: sanitize(form.nombre),
+          email: sanitize(form.email),
+          empresa: sanitize(form.empresa),
+          mensaje: sanitize(form.mensaje),
+        }),
+      });
+      if (res.ok) setSent(true);
+      else setSendError(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const infoCards = [
-    { icon: MapPin,        color: "#d4145a", bg: "bg-pink-50",    label: c.locationLabel, value: "Albacete, España" },
-    { icon: EnvelopeSimple,color: "#2563eb", bg: "bg-blue-50",    label: c.emailLabel,    value: "hola@fluentia.es" },
-    { icon: WhatsappLogo,  color: "#10b981", bg: "bg-emerald-50", label: c.whatsappLabel, value: "+34 600 000 000" },
+    { icon: WhatsappLogo, color: "#10b981", bg: "bg-emerald-50", label: c.whatsappLabel, value: "+34 697 947 595" },
+    { icon: MapPin,       color: "#d4145a", bg: "bg-pink-50",    label: c.locationLabel, value: "España" },
   ];
 
   return (
@@ -207,13 +229,17 @@ export default function CTABanner() {
                 </div>
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, y: -1 }}
+                  disabled={loading}
+                  whileHover={{ scale: loading ? 1 : 1.02, y: loading ? 0 : -1 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#d4145a] text-white font-semibold text-sm shadow-lg shadow-[#d4145a]/25 hover:bg-[#b01049] transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#d4145a] text-white font-semibold text-sm shadow-lg shadow-[#d4145a]/25 hover:bg-[#b01049] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {c.submit}
-                  <ArrowRight size={15} weight="bold" />
+                  {loading ? "Enviando…" : c.submit}
+                  {!loading && <ArrowRight size={15} weight="bold" />}
                 </motion.button>
+                {sendError && (
+                  <p className="text-[11px] text-red-500 text-center">{c.sendError ?? "Error al enviar. Inténtalo de nuevo."}</p>
+                )}
                 <p className="text-[11px] text-[#94a3b8] text-center">{c.responseTime}</p>
               </form>
             )}
