@@ -362,10 +362,10 @@ h2{
 /* ===================================================
    HERO
 =================================================== */
-#inicio{padding-top:clamp(100px,13vw,144px);}
+#inicio{padding-top:clamp(76px,min(9vw,11vh),108px);}
 .hero-content{width:min(900px,100%);text-align:center;}
 #inicio h1{
-  font-size:clamp(2rem,6.5vw,6rem);
+  font-size:clamp(2rem,min(5.5vw,7vh),4.2rem);
   margin-bottom:0;
   text-align:center;
 }
@@ -375,10 +375,10 @@ h2{
   font-size:clamp(.9rem,1.35vw,1.1rem);
   font-weight:300;color:var(--muted);
   line-height:1.72;max-width:520px;
-  margin:22px auto 32px;
+  margin:16px auto 24px;
 }
 .hero-ctas{
-  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;
+  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;
   align-items:center;justify-content:center;
 }
 .hero-badge{
@@ -857,6 +857,14 @@ footer{
 /* ===================================================
    RESPONSIVE — TABLET
 =================================================== */
+@media(max-height:860px) and (min-width:769px){
+  #inicio{padding-top:88px;}
+  #inicio h1{font-size:clamp(2rem,4vw,3.4rem);}
+  .hero-sub{margin:10px auto 14px;font-size:.88rem;}
+  .hero-ctas{margin-bottom:12px;}
+  .hero-badge{padding:5px 12px;}
+  section{padding-top:clamp(32px,3.5vw,48px);padding-bottom:clamp(18px,2.5vw,32px);}
+}
 @media(max-width:1024px){
   .footer-top{grid-template-columns:1fr 1fr 1fr;gap:24px;}
   .footer-brand{grid-column:1/-1;}
