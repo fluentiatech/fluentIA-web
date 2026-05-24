@@ -75,11 +75,12 @@
    RESET & BASE
 =================================================== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%;}
 body{
   background:var(--bg);color:var(--text);
   font-family:'Inter',sans-serif;font-weight:400;
-  overflow-x:hidden;
+  overflow-x:clip;
+  max-width:100%;
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;height:auto;display:block;}
@@ -172,6 +173,7 @@ a{text-decoration:none;}
 =================================================== */
 nav#navbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
+  width:100%;
   height:68px;
   display:flex;align-items:center;
   justify-content:space-between;
@@ -180,6 +182,7 @@ nav#navbar{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:.5px solid var(--border);
   transition:background .3s;
+  will-change:transform;
 }
 .nav-logo img{
   height:34px;
