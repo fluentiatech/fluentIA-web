@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
 <style>
-  .bg { fill: #060c1a }
-  @media (prefers-color-scheme: light) {
-    .bg { fill: #1a2b5f }
+  .bg { fill: #ffffff }
+  @media (prefers-color-scheme: dark) {
+    .bg { fill: #0d1628 }
   }
 </style>
-<rect width="32" height="32" rx="7" class="bg"/>
-<image href="public/logo-icon.png" x="2" y="2" width="28" height="28"/>
+<rect width="32" height="32" rx="6" class="bg"/>
+<image href="public/favicon-icon.png" x="2" y="2" width="28" height="28"/>
 </svg>
