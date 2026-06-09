@@ -558,8 +558,19 @@ h2{
   border:.5px solid rgba(212,20,90,.1);
   border-radius:10px;padding:20px;
   transition:border-color .28s,background .28s;
+  position:relative;
 }
 .nova-pillar:hover{border-color:rgba(212,20,90,.26);background:rgba(212,20,90,.025);}
+.soon-badge{
+  position:absolute;top:12px;right:14px;
+  font-family:'Inter',sans-serif;font-size:9px;
+  font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  background:rgba(255,255,255,.055);
+  border:.5px solid rgba(255,255,255,.1);
+  border-radius:3px;padding:2px 8px;
+  pointer-events:none;
+}
 .nova-pillar-head{display:flex;align-items:center;gap:11px;margin-bottom:10px;}
 .nova-pillar-icon{
   width:34px;height:34px;flex-shrink:0;border-radius:7px;
@@ -590,101 +601,6 @@ h2{
 .nova-cta{margin-top:28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
 @media(max-width:768px){
   .nova-pillars{grid-template-columns:1fr;}
-}
-
-/* ===================================================
-   EJEMPLOS
-=================================================== */
-#ejemplos{}
-.ejemplos-featured{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:1.3fr 1fr;
-  gap:0;align-items:stretch;
-  background:rgba(255,255,255,.02);
-  border:.5px solid var(--border);
-  border-radius:8px;overflow:hidden;
-  min-height:220px;
-}
-.ejemplos-featured-img{
-  position:relative;overflow:hidden;
-}
-.ejemplos-featured-img img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;object-position:center;
-}
-.ejemplos-featured-content{
-  padding:20px 22px 20px 16px;
-}
-.ejemplos-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:10px;font-weight:500;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--pink);
-  border:.5px solid var(--pink-dim);
-  padding:3px 10px;border-radius:3px;margin-bottom:16px;
-}
-.ejemplos-featured-content h3{
-  font-size:clamp(1.4rem,2.5vw,2.2rem);
-  color:#fff;margin-bottom:10px;
-}
-.ejemplos-featured-content p{
-  font-size:.9rem;font-weight:300;
-  color:var(--muted);line-height:1.7;
-  margin-bottom:20px;
-}
-.ejemplos-meta{
-  display:flex;flex-wrap:wrap;gap:8px;
-}
-.ejemplos-meta span{
-  font-size:11px;font-weight:300;
-  color:rgba(255,255,255,.38);
-  padding:3px 10px;
-  border:.5px solid rgba(255,255,255,.07);
-  border-radius:100px;
-}
-.ejemplos-auto-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:10px;margin-top:10px;
-}
-.ej-card{
-  background:rgba(255,255,255,.025);
-  border:.5px solid var(--border);
-  border-radius:6px;overflow:hidden;
-  transition:box-shadow .3s,border-color .3s,transform .25s;
-}
-.ej-card:hover{
-  box-shadow:0 8px 32px rgba(212,20,90,.08);
-  border-color:rgba(212,20,90,.28);
-  transform:translateY(-3px);
-}
-.ej-card-img{
-  height:140px;overflow:hidden;
-  background:rgba(6,12,26,.7);
-  display:flex;align-items:center;justify-content:center;
-}
-.ej-card-img img{
-  width:100%;height:100%;
-  object-fit:contain;object-position:center;
-  transition:transform .4s;
-}
-.ej-card:hover .ej-card-img img{transform:scale(1.04);}
-.ej-card-body{padding:12px 14px 12px;}
-.ej-card-tag{
-  display:inline-block;
-  font-size:10px;font-weight:500;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--pink);
-  margin-bottom:8px;
-}
-.ej-card-body h4{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:.97rem;letter-spacing:-.02em;
-  color:#fff;margin-bottom:6px;
-}
-.ej-card-body p{
-  font-size:.82rem;font-weight:300;
-  color:var(--muted);line-height:1.6;
 }
 
 /* ===================================================
@@ -858,10 +774,6 @@ footer{
   .footer-top{grid-template-columns:1fr 1fr 1fr;gap:24px;}
   .footer-brand{grid-column:1/-1;}
   .service-main{grid-template-columns:1fr;gap:16px;}
-  .ejemplos-featured{grid-template-columns:1fr;}
-  .ejemplos-featured{grid-template-columns:1fr;min-height:auto;}
-  .ejemplos-featured-img{height:200px;position:relative;}
-  .ejemplos-featured-content{padding:18px 16px;}
   .benefits-grid{grid-template-columns:1fr 1fr;}
   .benefit-item{
     border-left:none;
@@ -895,7 +807,6 @@ footer{
   .benefits-grid{grid-template-columns:1fr;}
   .hero-ctas{flex-direction:column;align-items:center;}
   .footer-top{grid-template-columns:1fr;}
-  .ejemplos-auto-grid{grid-template-columns:1fr;}
   .cards-grid{grid-template-columns:1fr;}
   .values-grid{grid-template-columns:1fr;}
 }
@@ -955,7 +866,6 @@ footer{
   <a href="#paraquien" onclick="closeMenu()" data-i18n="nav.paraquien">Para quién</a>
   <a href="#soluciones" onclick="closeMenu()" data-i18n="nav.servicios">Servicios</a>
   <a href="#nova-ia" onclick="closeMenu()" data-i18n="nav.nova">Nova IA</a>
-  <a href="#ejemplos" onclick="closeMenu()" data-i18n="nav.ejemplos">Ejemplos</a>
   <a href="#nosotros" onclick="closeMenu()" data-i18n="nav.nosotros">Nosotros</a>
   <a href="#contacto" onclick="closeMenu()" data-i18n="nav.contacto">Contacto</a>
   <a href="#contacto" onclick="closeMenu()" class="mob-cta" data-i18n="nav.cta">Solicitar demo</a>
@@ -971,7 +881,6 @@ footer{
     <li><a href="#paraquien" data-i18n="nav.paraquien">Para quién</a></li>
     <li><a href="#soluciones" data-i18n="nav.servicios">Servicios</a></li>
     <li><a href="#nova-ia" data-i18n="nav.nova">Nova IA</a></li>
-    <li><a href="#ejemplos" data-i18n="nav.ejemplos">Ejemplos</a></li>
     <li><a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
     <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
     <li><a href="#contacto" class="nav-cta" data-i18n="nav.cta">Solicitar demo</a></li>
@@ -1008,7 +917,6 @@ footer{
     </p>
     <div class="hero-ctas">
       <a href="#contacto" class="btn-primary" data-i18n="hero.cta1">Solicitar demo gratis</a>
-      <a href="#ejemplos" class="btn-secondary" data-i18n="hero.cta2">Ver ejemplos</a>
     </div>
     <div class="hero-badge" aria-label="Características principales">
       <span class="badge-dot"></span>
@@ -1073,45 +981,47 @@ footer{
     </div>
 
     <div class="track-sep" aria-hidden="true">
-      <span class="track-sep-label" data-i18n="pq.sep2">Tu empresa</span>
+      <span class="track-sep-label" data-i18n="pq.sep2">Nova IA — Tu suite de automatización</span>
       <span class="track-sep-line"></span>
     </div>
     <div class="cards-grid" role="list">
       <article class="card" role="listitem">
         <svg class="card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-          <rect x="4" y="8" width="28" height="22" rx="2"/>
-          <path d="M12 8V6a2 2 0 012-2h8a2 2 0 012 2v2" stroke-linecap="round"/>
-          <path d="M18 17v4M16 19h4" stroke-linecap="round"/>
+          <circle cx="18" cy="18" r="11"/>
+          <path d="M18 7v4M18 25v4M7 18h4M25 18h4" stroke-linecap="round"/>
+          <circle cx="18" cy="18" r="4"/>
         </svg>
-        <h3 data-i18n="pq.c5.h3">Asesorías y gestorías</h3>
-        <p data-i18n="pq.c5.p">Triaje de emails, procesado de facturas con OCR y due diligence de clientes automático. Tu equipo dedica tiempo a lo que genera valor.</p>
+        <h3 data-i18n="pq.c5.h3">Radar de Licitaciones</h3>
+        <p data-i18n="pq.c5.p">Escaneo diario de PLACE, BOE y autonómicas. Detecta contratos públicos a medida y analiza pliegos antes que tu competencia.</p>
       </article>
       <article class="card" role="listitem">
         <svg class="card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-          <path d="M10 12h16M10 18h10M10 24h6" stroke-linecap="round"/>
-          <rect x="4" y="6" width="28" height="24" rx="2"/>
+          <rect x="5" y="6" width="26" height="24" rx="2"/>
+          <path d="M5 13h26" stroke-linecap="round"/>
+          <path d="M12 19h4M12 23h8" stroke-linecap="round"/>
+          <circle cx="26" cy="27" r="5" fill="var(--pink-dim)" stroke="var(--pink)"/>
+          <path d="M24 27h4M26 25v4" stroke="var(--pink)" stroke-linecap="round"/>
         </svg>
-        <h3 data-i18n="pq.c6.h3">Empresas que licitan</h3>
-        <p data-i18n="pq.c6.p">Radar de licitaciones diario en PLACE, BOE y autonómicas. Análisis de pliegos y redacción de ofertas técnicas. Ahorra semanas de trabajo.</p>
+        <h3 data-i18n="pq.c6.h3">Agenda Inteligente con Chatbot</h3>
+        <p data-i18n="pq.c6.p">Tu negocio gestiona citas y reservas 24/7 mediante chatbot IA. Sin llamadas perdidas, sin intervención manual.</p>
       </article>
       <article class="card" role="listitem">
         <svg class="card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-          <path d="M18 6C11.373 6 6 11.373 6 18s5.373 12 12 12 12-5.373 12-12S24.627 6 18 6z"/>
-          <path d="M18 10v8l4 4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="7" y="4" width="22" height="28" rx="2"/>
+          <path d="M12 11h12M12 16h12M12 21h8" stroke-linecap="round"/>
+          <path d="M21 26l3 3 5-5" stroke="var(--pink)" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <h3 data-i18n="pq.c7.h3">Restaurantes y hostelería</h3>
-        <p data-i18n="pq.c7.p">Monitor de reseñas con IA, agenda inteligente de reservas y contestador automático de WhatsApp. Más reservas, menos tiempo al teléfono.</p>
+        <h3 data-i18n="pq.c7.h3">Procesador de Facturas OCR</h3>
+        <p data-i18n="pq.c7.p">Escanea tickets y facturas, extrae los datos y los registra automáticamente. Cero Excel, cero errores, cero tiempo perdido.</p>
       </article>
       <article class="card" role="listitem">
         <svg class="card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-          <path d="M9 12l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="4" y="6" width="28" height="24" rx="2"/>
-          <path d="M4 14h28" stroke-linecap="round"/>
-          <circle cx="10" cy="10" r="1" fill="currentColor" stroke="none"/>
-          <circle cx="14" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <path d="M18 6l3 6 6.5 1-4.7 4.6 1.1 6.5L18 21l-5.9 3.1 1.1-6.5L8.5 13l6.5-1z"/>
+          <path d="M8 28h20" stroke-linecap="round"/>
+          <path d="M12 32h12" stroke-linecap="round"/>
         </svg>
-        <h3 data-i18n="pq.c8.h3">Clínicas y centros de salud</h3>
-        <p data-i18n="pq.c8.p">Gestión automática de citas, análisis de riesgo de proveedores y monitor de competencia local. Más tiempo para tus pacientes.</p>
+        <h3 data-i18n="pq.c8.h3">Contestador de Reseñas Google</h3>
+        <p data-i18n="pq.c8.p">Responde reviews en segundos con IA. Mantén tu reputación impecable sin dedicar horas a Google Maps.</p>
       </article>
     </div>
   </div>
@@ -1225,7 +1135,7 @@ footer{
   <div class="section-inner sc">
     <span class="section-label" data-i18n="nova.label">Automatización interna · Para PYMEs</span>
     <div class="nova-header">
-      <h2 id="nova-ia-title" data-i18n="nova.h2">La inteligencia<br>que tu empresa necesita.</h2>
+      <h2 id="nova-ia-title" data-i18n="nova.h2">Los copilotos que<br>te ayudan en tus tareas diarias.</h2>
       <p class="section-sub" data-i18n="nova.sub">Cuatro módulos de IA interna que monitorizan, analizan y automatizan — para que tu equipo dedique el tiempo a lo que realmente importa.</p>
     </div>
 
@@ -1233,6 +1143,7 @@ footer{
 
       <!-- 1. Licitaciones -->
       <div class="nova-pillar">
+        <span class="soon-badge">Soon</span>
         <div class="nova-pillar-head">
           <div class="nova-pillar-icon" aria-hidden="true">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1267,6 +1178,7 @@ footer{
 
       <!-- 2. Empresarial -->
       <div class="nova-pillar">
+        <span class="soon-badge">Soon</span>
         <div class="nova-pillar-head">
           <div class="nova-pillar-icon" aria-hidden="true">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1301,6 +1213,7 @@ footer{
 
       <!-- 3. Mercado -->
       <div class="nova-pillar">
+        <span class="soon-badge">Soon</span>
         <div class="nova-pillar-head">
           <div class="nova-pillar-icon" aria-hidden="true">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1331,6 +1244,7 @@ footer{
 
       <!-- 4. Operaciones -->
       <div class="nova-pillar">
+        <span class="soon-badge">Soon</span>
         <div class="nova-pillar-head">
           <div class="nova-pillar-icon" aria-hidden="true">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1363,103 +1277,6 @@ footer{
 
     <div class="nova-cta">
       <a href="#contacto" class="btn-primary" data-i18n="nova.cta">Solicitar demo Nova IA</a>
-      <span style="font-size:11px;color:rgba(255,255,255,.26);" data-i18n="nova.cta.sub">Implementación a medida para tu empresa</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===============================
-     EJEMPLOS
-================================ -->
-<section id="ejemplos" aria-labelledby="ejemplos-title">
-  <div class="section-inner sc">
-    <span class="section-label" data-i18n="ej.label">Trabajos recientes</span>
-    <h2 id="ejemplos-title" data-i18n="ej.h2">Proyectos que hablan<br>por sí solos.</h2>
-    <p class="section-sub" data-i18n="ej.sub">Diseño web de alto impacto y automatizaciones reales implementadas para nuestros clientes.</p>
-
-    <!-- Featured web project -->
-    <div class="ejemplos-featured">
-      <div class="ejemplos-featured-img">
-        <img src="public/imac-screen-mockup.png"
-             alt="Landing page premium para futbolista profesional, diseñada por fluentIA"
-             width="900" height="600"
-             loading="lazy"
-             decoding="async">
-      </div>
-      <div class="ejemplos-featured-content">
-        <span class="ejemplos-tag">
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor" aria-hidden="true"><circle cx="4.5" cy="4.5" r="4.5"/></svg>
-          <span data-i18n="ej.feat.tag">Diseño Web</span>
-        </span>
-        <h3 data-i18n="ej.feat.h3">Landing personal — Futbolista</h3>
-        <p data-i18n="ej.feat.p">Landing page personal con estadísticas de carrera, galería fotográfica, historial de clubs y contacto directo para sponsors y medios de comunicación.</p>
-        <div class="ejemplos-meta">
-          <span data-i18n="ej.feat.m1">Landing personal</span>
-          <span data-i18n="ej.feat.m2">Galería + stats</span>
-          <span data-i18n="ej.feat.m3">Contacto sponsors</span>
-          <span data-i18n="ej.feat.m4">Multiidioma</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Automation examples grid -->
-    <div class="ejemplos-auto-grid" role="list">
-      <article class="ej-card" role="listitem">
-        <div class="ej-card-img">
-          <img src="public/movilbot.png"
-               alt="Bot de WhatsApp inteligente — fluentIA"
-               width="400" height="280"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div class="ej-card-body">
-          <span class="ej-card-tag" data-i18n="ej.c1.tag">Automatización</span>
-          <h4 data-i18n="ej.c1.h4">Bot de WhatsApp Inteligente</h4>
-          <p data-i18n="ej.c1.p">Atención al cliente y gestión de citas 24/7 directamente desde WhatsApp, sin intervención humana.</p>
-        </div>
-      </article>
-      <article class="ej-card" role="listitem">
-        <div class="ej-card-img">
-          <img src="public/relojreseñas.png"
-               alt="Gestión de reseñas con IA — fluentIA"
-               width="400" height="280"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div class="ej-card-body">
-          <span class="ej-card-tag" data-i18n="ej.c2.tag">Automatización</span>
-          <h4 data-i18n="ej.c2.h4">Gestión de Reseñas con IA</h4>
-          <p data-i18n="ej.c2.p">Respuestas automáticas personalizadas a reseñas de Google, TripAdvisor y más, en segundos.</p>
-        </div>
-      </article>
-      <article class="ej-card" role="listitem">
-        <div class="ej-card-img">
-          <img src="public/iapropia.png"
-               alt="Nova IA — Inteligencia artificial propia para tu empresa"
-               width="400" height="280"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div class="ej-card-body">
-          <span class="ej-card-tag" data-i18n="ej.c3.tag">Automatización</span>
-          <h4 data-i18n="ej.c3.h4">Nova IA — Tu IA Propia</h4>
-          <p data-i18n="ej.c3.p">Asistente de inteligencia artificial entrenado con los datos de tu empresa para gestión interna.</p>
-        </div>
-      </article>
-      <article class="ej-card" role="listitem">
-        <div class="ej-card-img">
-          <img src="public/facturas.png"
-               alt="Control automático de gastos y facturas — fluentIA"
-               width="400" height="280"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div class="ej-card-body">
-          <span class="ej-card-tag" data-i18n="ej.c4.tag">Automatización</span>
-          <h4 data-i18n="ej.c4.h4">Control de Gastos con IA</h4>
-          <p data-i18n="ej.c4.p">Escanea tickets y facturas automáticamente. Registro contable sin esfuerzo ni hojas de Excel.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -1629,7 +1446,6 @@ footer{
       <h5 data-i18n="ft.col3.h">Empresa</h5>
       <ul role="list">
         <li><a href="#nosotros" data-i18n="ft.col3.l1">Nosotros</a></li>
-        <li><a href="#ejemplos" data-i18n="ft.col3.l2">Ejemplos</a></li>
         <li><a href="#contacto" data-i18n="ft.col3.l3">Precios</a></li>
         <li><a href="#paraquien" data-i18n="ft.col3.l4">Para quién</a></li>
       </ul>
@@ -1719,7 +1535,7 @@ var TRANSLATIONS = {
     'sol.p4.h4':'Radar de licitaciones','sol.p4.p':'PLACE + BOE + autonómicas diario',
     'sol.s2.cta':'Ver Nova IA','sol.s2.price':'Precio a consultar',
     'nova.label':'Automatización interna · Para PYMEs',
-    'nova.h2':'La inteligencia<br>que tu empresa necesita.',
+    'nova.h2':'Los copilotos que<br>te ayudan en tus tareas diarias.',
     'nova.sub':'Cuatro módulos de IA interna que monitorizan, analizan y automatizan — para que tu equipo dedique el tiempo a lo que realmente importa.',
     'nova.p1.title':'Copiloto Laboral',
     'nova.p1.t1.name':'Generador de contratos','nova.p1.t1.caps':'Sube tu convenio · Datos del trabajador · Contrato listo en segundos',
@@ -1837,7 +1653,7 @@ var TRANSLATIONS = {
     'sol.p4.h4':'Tender radar','sol.p4.p':'Public procurement platforms · daily',
     'sol.s2.cta':'See Nova AI','sol.s2.price':'Price on request',
     'nova.label':'Internal automation · For SMEs',
-    'nova.h2':'The intelligence<br>your business needs.',
+    'nova.h2':'The copilots that<br>help you with your daily tasks.',
     'nova.sub':'Four internal AI modules that monitor, analyse and automate — so your team spends time on what really matters.',
     'nova.p1.title':'Tender Intelligence',
     'nova.p1.t1.name':'Tender radar','nova.p1.t1.caps':'Daily platform scraping · Auto brief per contract · Alert if it fits your profile',
@@ -1954,7 +1770,7 @@ var TRANSLATIONS = {
     'sol.p4.h4':'Radar d\'appels d\'offres','sol.p4.p':'Plateformes publiques · quotidien',
     'sol.s2.cta':'Voir Nova IA','sol.s2.price':'Prix sur devis',
     'nova.label':'Automatisation interne · Pour PME',
-    'nova.h2':'L\'intelligence<br>dont votre entreprise a besoin.',
+    'nova.h2':'Les copilotos qui<br>vous aident dans vos tâches quotidiennes.',
     'nova.sub':'Quatre modules d\'IA interne qui surveillent, analysent et automatisent — pour que votre équipe consacre son temps à ce qui compte vraiment.',
     'nova.p1.title':'Intelligence des Appels d\'Offres',
     'nova.p1.t1.name':'Radar d\'appels d\'offres','nova.p1.t1.caps':'Scraping quotidien · Fiche auto par contrat · Alerte si adapté à votre profil',
@@ -2326,7 +2142,7 @@ window.addEventListener('scroll',function(){
   var camTarget={x:0,y:0,z:16},camCur={x:0,y:0,z:16};
   var brainTargetScale=1,brainCurScale=1,brainTargetGlow=.28;
 
-  var sectionIds=['#inicio','#paraquien','#beneficios','#soluciones','#ejemplos','#nosotros','#contacto'];
+  var sectionIds=['#inicio','#paraquien','#beneficios','#soluciones','#nosotros','#contacto'];
   sectionIds.forEach(function(id,i){
     if(i===0)return;
     var prev=camKeyframes[i-1],curr=camKeyframes[i];
@@ -2351,7 +2167,6 @@ window.addEventListener('scroll',function(){
   gsap.from('.benefit-item',{opacity:0,x:-18,stagger:.09,duration:.65,ease:'power2.out',scrollTrigger:{trigger:'#beneficios',start:'top 64%'}});
   gsap.from('.value-item',{opacity:0,y:22,stagger:.08,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'#nosotros',start:'top 64%'}});
   gsap.from('.service-pill',{opacity:0,x:14,stagger:.09,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'#soluciones',start:'top 64%'}});
-  gsap.from('.ej-card',{opacity:0,y:24,stagger:.1,duration:.65,ease:'power2.out',scrollTrigger:{trigger:'#ejemplos',start:'top 60%'}});
 
   /* ---- RENDER LOOP ---- */
   var t=0,pulseT=0;
