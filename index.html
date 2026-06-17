@@ -1054,6 +1054,25 @@ footer{
   cursor:pointer;line-height:1;}
 .privacy-close:hover{background:rgba(212,20,90,.18);border-color:rgba(212,20,90,.5);}
 @media(max-width:640px){.privacy-card{padding:30px 22px;}}
+
+/* ---- Bloque · Fundador ---- */
+.founder{margin-top:42px;display:flex;gap:26px;align-items:flex-start;
+  background:rgba(255,255,255,.025);border:.5px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 34px;}
+.founder-photo{flex-shrink:0;width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:center top;
+  border:2px solid rgba(212,20,90,.55);box-shadow:0 0 0 5px rgba(212,20,90,.12);background:#0a1120;}
+.founder-body{flex:1;}
+.founder-body h3{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em;margin-bottom:3px;}
+.founder-role{font-size:13px;color:#d4145a;font-weight:600;letter-spacing:.04em;margin-bottom:14px;}
+.founder-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+.founder-tags span{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);
+  background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.13);border-radius:100px;padding:6px 13px;}
+.founder-body p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.62);margin-bottom:12px;text-align:justify;}
+.btn-linkedin{display:inline-flex;align-items:center;gap:9px;background:rgba(212,20,90,.12);
+  border:.5px solid rgba(212,20,90,.4);color:#fff;font-weight:600;font-size:14px;padding:10px 20px;
+  border-radius:100px;text-decoration:none;transition:background .15s;margin-top:4px;}
+.btn-linkedin:hover{background:rgba(212,20,90,.22);}
+.btn-linkedin svg{width:17px;height:17px;flex-shrink:0;}
+@media(max-width:640px){.founder{flex-direction:column;gap:18px;padding:26px 22px;}}
 </style>
 </head>
 <body>
@@ -1522,7 +1541,7 @@ footer{
     <p class="section-sub">fluentIA nació en 2026 con una idea: que la inteligencia artificial no sea cosa solo de las grandes consultoras de Madrid. Que una empresa de aquí, una gestoría o una fábrica de la región pueda tenerla a su lado.</p>
     <div class="stats-row" aria-label="fluentIA en cifras">
       <div>
-        <div class="stat-num">3</div>
+        <div class="stat-num">4</div>
         <div class="stat-label">Líneas de trabajo</div>
       </div>
       <div>
@@ -1550,6 +1569,21 @@ footer{
       <div class="value-item" role="listitem">
         <h4>Cerca y sin intermediarios</h4>
         <p>Trato directo, plazos cortos y una persona al otro lado que coge el teléfono. La cercanía es parte del producto.</p>
+      </div>
+    </div>
+
+    <div class="founder">
+      <img class="founder-photo" src="fotodiego.jpg" alt="Diego Morales Parra, fundador de fluentIA" width="104" height="104">
+      <div class="founder-body">
+        <h3>Diego Morales Parra</h3>
+        <div class="founder-role">Fundador de fluentIA</div>
+        <p>Físico de formación y máster en Dirección de Procesos Estratégicos. Mi carrera ha girado siempre en torno a la misma idea: hacer que los procesos funcionen mejor.</p>
+        <p>En <strong>Capgemini</strong> trabajé en <strong>hiperautomatización</strong> dentro de grandes proyectos de banca, automatizando flujos críticos de principio a fin. Esa experiencia, unida a lo que sé de <strong>gestión por procesos</strong>, es la base sobre la que construyo fluentIA.</p>
+        <p>Ahí vi el problema: esa potencia solo estaba al alcance de las grandes corporaciones. fluentIA nace para cambiarlo — que cualquier empresa, <strong>del tamaño que sea</strong>, pueda acceder a la IA y a la automatización para impulsar su negocio.</p>
+        <a class="btn-linkedin" href="https://www.linkedin.com/in/diego-morales-parra-27a666276/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          Conóceme en LinkedIn
+        </a>
       </div>
     </div>
   </div>
