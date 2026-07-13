@@ -1,0 +1,14 @@
+{
+  "name": "fluentIA",
+  "short_name": "fluentIA",
+  "description": "Inteligencia artificial sobre tus datos, hecha en Albacete.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060c1a",
+  "theme_color": "#0b1226",
+  "icons": [
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}
