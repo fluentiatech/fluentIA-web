@@ -1,14 +1,38 @@
-# Next.js
+# ─────────────────────────────────────────────────────────────
+# OJO: el workflow de Pages publica la carpeta entera (path: .),
+# así que todo lo que NO esté ignorado aquí acaba en internet.
+# ─────────────────────────────────────────────────────────────
+
+# Material interno: facturas, presupuestos y propuestas de clientes
+_comercial/
+_docs/
+_marketing/
+_proyectos/
+_assets-trabajo/
+
+# Proyectos de software propios (no forman parte de la web)
+fluentia-os/
+fluentia/
+
+# Dependencias y configuración local
+node_modules/
+package.json
+package-lock.json
+.mcp.json
+.claude/
+
+# Next.js (legado)
 fluentia/.next/
 fluentia/node_modules/
 fluentia/out/
 
-# Archivos de trabajo
+# Capturas y archivos de trabajo sueltos
 fluentia_web_copy.md
 v11QAm5yI.png
 "Página de inicio atractiva y moderna.png"
 "Página de inicio de FluentIA.png"
 "Página de precios clara y moderna.png"
+public/Captura*.png
 pagina1.png
 pagina2.png
 pagina3.png

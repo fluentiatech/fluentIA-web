@@ -1,9 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://fluentiatech.es/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/servicios.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/servicios/software.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/servicios/ia-soberana.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/servicios/webs.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/servicios/chatbots.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/soberania.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/nosotros.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/contacto.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/que-es-el-cloud-act.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/que-es-el-cloud-act.jpg</image:loc>
+      <image:title>Qué es el CLOUD Act y por qué debería importarte</image:title>
+      <image:caption>La ley de Estados Unidos que puede reclamar tus datos estén donde estén sus servidores. Te explicamos qué es, a quién afecta y cómo protegerte.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/software-a-medida-5-motivos.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/software-a-medida-5-motivos.jpg</image:loc>
+      <image:title>5 motivos para desarrollar software a medida (y cuándo no)</image:title>
+      <image:caption>El software enlatado te obliga a cambiar tu forma de trabajar, y esa forma suele ser lo que te diferencia. Cinco razones para desarrollar a medida, con honestidad.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/rag-sharepoint-sql.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/rag-sharepoint-sql.jpg</image:loc>
+      <image:title>IA sobre tu SharePoint y tu SQL: cómo funciona el RAG</image:title>
+      <image:caption>Cómo una IA puede leer tus documentos y bases de datos para responder con tu información real, sin que nada salga de tu empresa. Te lo explicamos sin tecnicismos.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/web-a-medida-vs-plantilla.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/web-a-medida-vs-plantilla.jpg</image:loc>
+      <image:title>Web a medida vs. plantilla: qué diferencia hay de verdad</image:title>
+      <image:caption>Una plantilla es barata y rápida, pero se nota. Te contamos cuándo compensa una web a medida y en qué se traduce esa diferencia para tu marca.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/caso-cd-teruel.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/caso-cd-teruel.jpg</image:loc>
+      <image:title>La web del CD Teruel: una casa digital a la altura del escudo</image:title>
+      <image:caption>Así diseñamos la web oficial del Club Deportivo Teruel, con la arquitectura de un club profesional: primer equipo, femenino, cantera, transparencia y la afición turolense en el centro.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fluentiatech.es/blog/chatbot-whatsapp-cuando-tiene-sentido.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://fluentiatech.es/public/blog/chatbot-whatsapp-cuando-tiene-sentido.jpg</image:loc>
+      <image:title>Chatbot de WhatsApp: cuándo tiene sentido para tu negocio</image:title>
+      <image:caption>WhatsApp es donde ya te escriben tus clientes. Te contamos cuándo un chatbot compensa, qué puede hacer de verdad y la diferencia entre el nativo de Meta y uno a medida.</image:caption>
+    </image:image>
   </url>
 </urlset>

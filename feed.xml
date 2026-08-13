@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel>
+  <title>Blog de fluentIA</title>
+  <link>https://fluentiatech.es/blog.html</link>
+  <description>Ideas claras sobre IA, software y datos, sin humo y sin tecnicismos.</description>
+  <language>es-ES</language>
+  <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0200</lastBuildDate>
+  <atom:link href="https://fluentiatech.es/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Qué es el CLOUD Act y por qué debería importarte</title>
+    <link>https://fluentiatech.es/blog/que-es-el-cloud-act.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/que-es-el-cloud-act.html</guid>
+    <description>La ley de Estados Unidos que puede reclamar tus datos estén donde estén sus servidores. Te explicamos qué es, a quién afecta y cómo protegerte.</description>
+    <category>Soberanía</category>
+    <pubDate>Wed, 12 Aug 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/que-es-el-cloud-act.jpg" type="image/jpeg" length="200374"/>
+  </item>
+  <item>
+    <title>5 motivos para desarrollar software a medida (y cuándo no)</title>
+    <link>https://fluentiatech.es/blog/software-a-medida-5-motivos.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/software-a-medida-5-motivos.html</guid>
+    <description>El software enlatado te obliga a cambiar tu forma de trabajar, y esa forma suele ser lo que te diferencia. Cinco razones para desarrollar a medida, con honestidad.</description>
+    <category>Negocio</category>
+    <pubDate>Mon, 10 Aug 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/software-a-medida-5-motivos.jpg" type="image/jpeg" length="234776"/>
+  </item>
+  <item>
+    <title>IA sobre tu SharePoint y tu SQL: cómo funciona el RAG</title>
+    <link>https://fluentiatech.es/blog/rag-sharepoint-sql.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/rag-sharepoint-sql.html</guid>
+    <description>Cómo una IA puede leer tus documentos y bases de datos para responder con tu información real, sin que nada salga de tu empresa. Te lo explicamos sin tecnicismos.</description>
+    <category>IA</category>
+    <pubDate>Fri, 07 Aug 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/rag-sharepoint-sql.jpg" type="image/jpeg" length="217251"/>
+  </item>
+  <item>
+    <title>Web a medida vs. plantilla: qué diferencia hay de verdad</title>
+    <link>https://fluentiatech.es/blog/web-a-medida-vs-plantilla.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/web-a-medida-vs-plantilla.html</guid>
+    <description>Una plantilla es barata y rápida, pero se nota. Te contamos cuándo compensa una web a medida y en qué se traduce esa diferencia para tu marca.</description>
+    <category>Webs</category>
+    <pubDate>Tue, 04 Aug 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/web-a-medida-vs-plantilla.jpg" type="image/jpeg" length="179843"/>
+  </item>
+  <item>
+    <title>La web del CD Teruel: una casa digital a la altura del escudo</title>
+    <link>https://fluentiatech.es/blog/caso-cd-teruel.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/caso-cd-teruel.html</guid>
+    <description>Así diseñamos la web oficial del Club Deportivo Teruel, con la arquitectura de un club profesional: primer equipo, femenino, cantera, transparencia y la afición turolense en el centro.</description>
+    <category>Casos</category>
+    <pubDate>Sat, 01 Aug 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/caso-cd-teruel.jpg" type="image/jpeg" length="265778"/>
+  </item>
+  <item>
+    <title>Chatbot de WhatsApp: cuándo tiene sentido para tu negocio</title>
+    <link>https://fluentiatech.es/blog/chatbot-whatsapp-cuando-tiene-sentido.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/chatbot-whatsapp-cuando-tiene-sentido.html</guid>
+    <description>WhatsApp es donde ya te escriben tus clientes. Te contamos cuándo un chatbot compensa, qué puede hacer de verdad y la diferencia entre el nativo de Meta y uno a medida.</description>
+    <category>Negocio</category>
+    <pubDate>Wed, 29 Jul 2026 09:00:00 +0200</pubDate>
+    <enclosure url="https://fluentiatech.es/public/blog/chatbot-whatsapp-cuando-tiene-sentido.jpg" type="image/jpeg" length="115830"/>
+  </item>
+</channel>
+</rss>
