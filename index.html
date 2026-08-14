@@ -203,21 +203,23 @@ nav#navbar{
   border-bottom:.5px solid var(--border);
   transition:background .3s,transform .45s cubic-bezier(.16,1,.3,1),opacity .35s ease;
 }
-/* Al cargar el index, el navbar está oculto: el protagonista es el logo grande
-   centrado del hero. Aparece deslizándose cuando el usuario empieza a bajar. */
+/* Al cargar el index la barra está presente pero en modo "mínimo": sin fondo ni
+   logo, para que el protagonista sea el logo grande del hero. Los enlaces siguen
+   visibles y clicables desde el primer píxel, así que nadie se queda sin saber a
+   dónde ir (antes la barra se ocultaba entera y en móvil no había navegación). */
 body.nav-hidden nav#navbar{
-  transform:translateY(-100%);
-  opacity:0;
-  pointer-events:none;
+  background:transparent;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-bottom-color:transparent;
 }
 .nav-logo img{
   height:34px;
   width:auto;
   display:block;
 }
-/* el logo del navbar entra con un pequeño fundido cuando aparece la barra */
-.nav-logo{opacity:1;transition:opacity .4s ease .1s;}
-body.nav-hidden .nav-logo{opacity:0;}
+/* el logo del navbar entra con un pequeño fundido cuando la barra se vuelve sólida */
+.nav-logo{opacity:1;transition:opacity .4s ease .1s,transform .5s cubic-bezier(.16,1,.3,1);}
+body.nav-hidden .nav-logo{opacity:0;transform:translateY(-6px);pointer-events:none;}
 
 /* ---- Logo grande centrado de bienvenida (solo en el hero del index) ---- */
 .hero-logo{
@@ -1344,7 +1346,7 @@ footer{
 @media(max-width:640px){
   #inicio{padding-top:74px;}
   .hero-logo{margin-bottom:16px;}
-  .hero-logo img{height:50px;}
+  .hero-logo img{height:76px;}
   #inicio h1{font-size:clamp(1.75rem,7.4vw,2.3rem);line-height:1.06;}
   .h1-line{display:inline;}          /* las tres frases fluyen y ocupan menos alto */
   .hero-sub{font-size:.95rem;line-height:1.55;margin-top:14px;}
