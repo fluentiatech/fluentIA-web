@@ -8,6 +8,15 @@
   <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0200</lastBuildDate>
   <atom:link href="https://fluentiatech.es/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>Cómo trabajamos: sprints cortos y revisión con el cliente</title>
+    <link>https://fluentiatech.es/blog/sprints-revision-con-el-cliente.html</link>
+    <guid isPermaLink="true">https://fluentiatech.es/blog/sprints-revision-con-el-cliente.html</guid>
+    <description>Trabajamos por sprints y al final de cada uno el cliente ve funcionando lo que se ha hecho. Así se corrige el rumbo cuando corregirlo todavía es barato.</description>
+    <category>Proceso</category>
+    <pubDate>Sat, 29 Aug 2026 09:00:00 +0200</pubDate>
+      <enclosure url="https://fluentiatech.es/public/blog/sprints-revision-con-el-cliente.jpg" type="image/jpeg" length="189517"/>
+</item>
+  <item>
     <title>Qué es el CLOUD Act y por qué debería importarte</title>
     <link>https://fluentiatech.es/blog/que-es-el-cloud-act.html</link>
     <guid isPermaLink="true">https://fluentiatech.es/blog/que-es-el-cloud-act.html</guid>
