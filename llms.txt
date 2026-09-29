@@ -1,0 +1,22 @@
+# Expedienta by fluentIA
+
+> Expedienta es un software de inteligencia artificial para asesorías y gestorías en España. Responde en lenguaje normal con los expedientes del despacho, la legislación del BOE (con cada versión por fecha), los convenios colectivos y las convocatorias de subvenciones, y cita siempre el documento de origen de cada dato. Es IA soberana: los datos y las consultas se procesan en la Unión Europea (Scaleway, París), con modelos de peso abierto y sin enviar datos a servicios de IA de Estados Unidos.
+
+Lo desarrolla FLUENTIA DIGITAL, S.L. (Albacete, España). Contacto: diego.morales@fluentiatech.es · +34 697 947 595.
+
+## Producto
+
+- [Portada de Expedienta](https://www.fluentiatech.es/): qué es, cómo funciona, precio, IA soberana e implantación.
+- [Precio](https://www.fluentiatech.es/#precio): planes Esencial (29 €), Profesional (49 €) e Ilimitado (79 €) por usuario y mes, sin IVA. Cuota de despacho de 59 €/mes desde 5 usuarios. Sin pago de entrada, sin permanencia y sin mínimo de usuarios.
+- [Preguntas frecuentes](https://www.fluentiatech.es/#faq)
+
+## Guías
+
+- [IA para asesorías: qué puede hacer hoy y qué no](https://www.fluentiatech.es/guias/ia-para-asesorias)
+- [Qué es la IA soberana y por qué importa a un despacho](https://www.fluentiatech.es/guias/ia-soberana)
+- [Software para asesorías: dónde encaja la IA junto a A3 o Sage](https://www.fluentiatech.es/guias/software-para-asesorias)
+- [Cómo usar IA en una asesoría cumpliendo el RGPD](https://www.fluentiatech.es/guias/ia-rgpd-asesorias)
+
+## Qué no hace
+
+Expedienta no presenta impuestos ni confecciona nóminas, no se conecta con la Agencia Tributaria ni con la Seguridad Social, no tramita nada ante la administración y no sustituye a una base de datos jurídica para doctrina y jurisprudencia. La decisión sigue siendo del profesional.

@@ -2,54 +2,39 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Página no encontrada · fluentIA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060c1a">
+<title>Página no encontrada | Expedienta</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="public/fonts/syne-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="public/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/public/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/guias/guia.css">
 <style>
-@font-face{font-family:'Syne';font-style:normal;font-weight:400 800;font-display:swap;
-  src:url('public/fonts/syne-var.woff2') format('woff2-variations');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
-  src:url('public/fonts/inter-var.woff2') format('woff2-variations');}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  min-height:100vh;min-height:100dvh;background:#060c1a;color:#fff;
-  font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:32px 22px;position:relative;overflow:hidden;
-  background:
-    radial-gradient(60% 55% at 78% 18%,rgba(212,20,90,.16),transparent 60%),
-    radial-gradient(55% 55% at 12% 88%,rgba(26,43,140,.22),transparent 62%),
-    #060c1a;
-}
-.logo{width:150px;height:auto;margin-bottom:40px;opacity:.95;}
-.code{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(72px,16vw,150px);
-  line-height:.9;letter-spacing:-.04em;
-  background:linear-gradient(120deg,#fff 30%,#ff5d8a);-webkit-background-clip:text;
-  background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,30px);
-  letter-spacing:-.02em;margin-bottom:14px;}
-p{font-size:16px;font-weight:300;color:rgba(255,255,255,.62);line-height:1.6;
-  max-width:440px;margin-bottom:32px;}
-.btn{display:inline-flex;align-items:center;gap:9px;background:#d4145a;color:#fff;
-  font-weight:600;font-size:15px;padding:14px 30px;border-radius:100px;
-  text-decoration:none;transition:background .2s,transform .12s;}
-.btn:hover{background:#e02565;}
-.btn:active{transform:translateY(1px);}
-.foot{position:absolute;bottom:26px;font-size:13px;color:rgba(255,255,255,.4);}
-.foot b{font-family:'Syne',sans-serif;font-weight:800;color:rgba(255,255,255,.7);}
-.foot em{font-style:normal;color:#ff5d8a;}
+.nf{min-height:calc(100dvh - 68px - 90px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 0}
+.nf strong{font-size:clamp(80px,16vw,150px);font-weight:800;line-height:.9;letter-spacing:-.05em;color:#fff}
+.nf h1{margin-top:14px;font-size:clamp(24px,3.4vw,32px);font-weight:800;letter-spacing:-.02em}
+.nf p{margin:12px 0 28px;max-width:44ch;color:var(--text-2)}
+.nf nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;margin-top:28px;font-size:15px}
+.nf nav a{color:var(--text-2);text-decoration:none}
+.nf nav a:hover{color:#fff}
 </style>
-  <link rel="alternate" type="application/rss+xml" title="Blog de fluentIA" href="https://www.fluentiatech.es/feed.xml">
 </head>
 <body>
-  <img class="logo" src="public/logo2.png" alt="fluentIA" width="150" height="45">
-  <div class="code">404</div>
-  <h1>Esta página se nos ha escapado.</h1>
-  <p>El enlace que buscas no existe o ha cambiado de sitio. Volvamos a un lugar conocido y seguimos desde ahí.</p>
-  <a class="btn" href="/">Volver al inicio &rarr;</a>
-  <div class="foot"><b>fluentia<em>tech.es</em></b> · Inteligencia artificial hecha en Albacete</div>
+<nav class="nav" aria-label="Navegación principal"><div class="wrap">
+  <a href="/" class="brand" aria-label="Expedienta, inicio"><img src="/public/logo-icon.png" alt="fluentIA" width="86" height="26"><i></i><b>Expedienta</b></a>
+  <ul class="nav-links"><li><a href="/#contacto" class="btn btn-primary">Pedir demostración</a></li></ul>
+</div></nav>
+<main class="wrap nf">
+  <strong>404</strong>
+  <h1>Esta página no existe</h1>
+  <p>Puede que el enlace haya cambiado. Esto es lo que suele buscarse:</p>
+  <a href="/" class="btn btn-primary">Ir a la portada</a>
+  <nav aria-label="Enlaces útiles">
+    <a href="/#precio">Precio</a>
+    <a href="/guias/">Guías de IA para asesorías</a>
+    <a href="/#contacto">Contacto</a>
+  </nav>
+</main>
+<footer><div class="wrap"><span>© 2026 fluentIA® · FLUENTIA DIGITAL, S.L.</span></div></footer>
 </body>
 </html>
