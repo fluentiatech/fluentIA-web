@@ -7,7 +7,7 @@ Lo desarrolla FLUENTIA DIGITAL, S.L. (Albacete, España). Contacto: diego.morale
 ## Producto
 
 - [Portada de Expedienta](https://www.fluentiatech.es/): qué es, cómo funciona, precio, IA soberana e implantación.
-- [Precio](https://www.fluentiatech.es/#precio): planes Esencial (29 €), Profesional (49 €) e Ilimitado (79 €) por usuario y mes, sin IVA. Cuota de despacho de 59 €/mes desde 5 usuarios. Sin pago de entrada, sin permanencia y sin mínimo de usuarios.
+- [Precio](https://www.fluentiatech.es/#precio): planes Esencial (29 €), Profesional (49 €) e Ilimitado (79 €) por usuario y mes, sin IVA. Cuota de despacho de 59 €/mes, solo para despachos de 5 o más usuarios. Sin pago de entrada, sin permanencia y sin mínimo de usuarios.
 - [Preguntas frecuentes](https://www.fluentiatech.es/#faq)
 
 ## Guías
