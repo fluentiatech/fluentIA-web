@@ -1,0 +1,14 @@
+/* Franja de publicidad FSE+ (Decreto 25/2025 JCCM, art. 8.4) */
+.fse-pie{background:#fff}
+.fse-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 40px;padding:20px 16px}
+.fse-logos img{height:52px;width:auto;display:block}
+.fse-logos .fse-logo-clm{height:64px}
+.fse-franja{display:flex;height:10px}
+.fse-franja span:first-child{flex:1;background:#7e7678}
+.fse-franja span:last-child{flex:1;background:#182955}
+@media (max-width:600px){
+  /* margen derecho para que el boton flotante de WhatsApp no tape los logos */
+  .fse-logos{gap:16px 24px;padding:20px 84px 20px 16px}
+  .fse-logos img{height:34px}
+  .fse-logos .fse-logo-clm{height:46px}
+}
