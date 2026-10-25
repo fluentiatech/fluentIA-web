@@ -69,8 +69,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 <link rel="preload" as="image" href="public/logo2.png" fetchpriority="high">
 <!-- JS auto-alojado -->
-<script src="public/js/three.min.js" defer></script>
-<script src="public/js/brain-data.js" defer></script>
 <script src="public/js/gsap.min.js" defer></script>
 <script src="public/js/ScrollTrigger.min.js" defer></script>
 <style>
@@ -107,30 +105,9 @@ img{max-width:100%;height:auto;display:block;}
 a{text-decoration:none;}
 
 /* ===================================================
-   CANVAS — FIXED BACKGROUND
-=================================================== */
-#bg-canvas{
-  position:fixed;top:0;left:0;
-  width:100%;height:100%;
-  z-index:0;pointer-events:none;
-  opacity:.5;   /* el cerebro queda como textura; manda la tipografía */
-}
-
-/* ===================================================
    SCROLL CONTAINER
 =================================================== */
 #scroll-container{position:relative;z-index:2;}
-
-/* ===================================================
-   CANVAS OVERLAY — top transparente (navbar libre), oscurece contenido
-=================================================== */
-#canvas-dim{position:fixed;inset:0;z-index:1;pointer-events:none;background:#050608;opacity:0;}
-#canvas-overlay{
-  position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:
-    linear-gradient(180deg,transparent 0%,rgba(5,6,8,.3) 12%,rgba(5,6,8,.6) 100%),
-    radial-gradient(ellipse 105% 80% at 50% 72%,transparent 18%,rgba(5,6,8,.7) 100%);
-}
 
 /* ===================================================
    SCROLL PROGRESS BAR
@@ -140,53 +117,6 @@ a{text-decoration:none;}
   background:var(--pink);
   z-index:1000;width:0%;
   transition:width .1s linear;pointer-events:none;
-}
-
-/* ===================================================
-   LOADING SCREEN
-=================================================== */
-#loading{
-  position:fixed;inset:0;background:var(--bg);z-index:9999;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:40px;
-}
-#load-logo-wrap{
-  display:flex;flex-direction:column;align-items:center;gap:18px;
-  opacity:0;transform:translateY(24px);
-}
-.load-logo{
-  height:90px;width:auto;
-  filter:brightness(0) invert(1);
-  filter:drop-shadow(0 0 28px rgba(212,20,90,.5)) brightness(0) invert(1);
-}
-.load-brand{
-  font-family:var(--font-head);font-weight:600;
-  font-size:2.2rem;letter-spacing:-.05em;color:#fff;
-  line-height:1;
-}
-.load-brand em{color:var(--pink);font-style:normal;}
-.load-tagline{
-  font-family:'Inter',sans-serif;font-size:10px;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:rgba(255,255,255,.28);margin-top:-6px;
-}
-#load-bar-wrap{
-  display:flex;flex-direction:column;align-items:center;gap:14px;
-  opacity:0;
-}
-.load-bar-track{
-  width:180px;height:1px;
-  background:rgba(212,20,90,.18);position:relative;
-}
-.load-bar-fill{
-  height:100%;background:var(--pink);width:0%;
-  box-shadow:0 0 12px var(--pink-glow);
-  transition:width .12s;
-}
-.load-sub{
-  font-family:'Inter',sans-serif;font-size:10px;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.2);
 }
 
 /* ===================================================
@@ -202,42 +132,6 @@ nav#navbar{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:.5px solid var(--border);
   transition:background .3s,transform .45s cubic-bezier(.16,1,.3,1),opacity .35s ease;
-}
-/* Al cargar el index la barra está presente pero en modo "mínimo": sin fondo ni
-   logo, para que el protagonista sea el logo grande del hero. Los enlaces siguen
-   visibles y clicables desde el primer píxel, así que nadie se queda sin saber a
-   dónde ir (antes la barra se ocultaba entera y en móvil no había navegación). */
-body.nav-hidden nav#navbar{
-  background:transparent;
-  backdrop-filter:none;-webkit-backdrop-filter:none;
-  border-bottom-color:transparent;
-}
-.nav-logo img{
-  height:34px;
-  width:auto;
-  display:block;
-}
-/* el logo del navbar entra con un pequeño fundido cuando la barra se vuelve sólida */
-.nav-logo{opacity:1;transition:opacity .4s ease .1s,transform .5s cubic-bezier(.16,1,.3,1);}
-body.nav-hidden .nav-logo{opacity:0;transform:translateY(-6px);pointer-events:none;}
-
-/* ---- Logo grande centrado de bienvenida (solo en el hero del index) ---- */
-.hero-logo{
-  display:flex;justify-content:center;align-items:center;
-  margin:0 auto clamp(26px,4vw,44px);
-  transition:opacity .5s ease,transform .6s cubic-bezier(.16,1,.3,1);
-}
-.hero-logo img{
-  height:clamp(64px,9vw,104px);width:auto;display:block;
-  filter:drop-shadow(0 0 40px rgba(212,20,90,.35));
-}
-/* al hacer scroll, el logo grande se desvanece y sube ligeramente:
-   la sensación es que "se va" a su sitio en la barra */
-body:not(.nav-hidden) .hero-logo{
-  opacity:0;transform:translateY(-14px) scale(.92);
-}
-@media(prefers-reduced-motion:reduce){
-  nav#navbar,.hero-logo,.nav-logo{transition:none;}
 }
 .nav-links{
   display:flex;align-items:center;gap:2px;list-style:none;
@@ -356,30 +250,6 @@ body:not(.nav-hidden) .hero-logo{
   border:.5px solid var(--pink-dim);
   padding:12px 32px;border-radius:4px;
   margin-top:12px;
-}
-
-/* ===================================================
-   SCROLL HINT
-=================================================== */
-#scroll-hint{
-  position:fixed;bottom:28px;left:50%;
-  transform:translateX(-50%);z-index:50;
-  display:flex;flex-direction:column;
-  align-items:center;gap:8px;
-  transition:opacity .5s;pointer-events:none;
-}
-#scroll-hint p{
-  font-size:9px;letter-spacing:.22em;
-  text-transform:uppercase;color:rgba(255,255,255,.18);
-}
-.scroll-arrow{
-  width:1px;height:34px;
-  background:linear-gradient(to bottom,var(--pink-glow),transparent);
-  animation:scrollPulse 1.6s ease-in-out infinite;
-}
-@keyframes scrollPulse{
-  0%,100%{opacity:.2;transform:scaleY(1);}
-  50%{opacity:1;transform:scaleY(.6);}
 }
 
 /* ===================================================
@@ -1236,19 +1106,6 @@ footer{
 .prob-punch em{font-style:normal;color:#ff5d8a;}
 
 /* ---- Expedienta: anuncio en el hero y producto destacado ---- */
-.hero-exp{
-  display:inline-flex;align-items:center;gap:12px;max-width:100%;
-  margin:0 auto clamp(20px,2.6vw,30px);padding:0 16px 0 0;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(5,6,8,.55);
-  font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#fff;
-  text-align:left;transition:border-color .2s;
-}
-.hero-exp:hover{border-color:#fff;}
-.hero-exp-tag{flex-shrink:0;padding:9px 12px;background:var(--pink);
-  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
-.hero-exp-arrow{transition:transform .25s;}
-.hero-exp:hover .hero-exp-arrow{transform:translateX(3px);}
 .exp-card{
   display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,56px);align-items:center;
   padding:clamp(26px,4vw,48px);border:1px solid var(--border);
@@ -1335,7 +1192,6 @@ footer{
   .exp-demo{transform:none;}
 }
 @media(max-width:540px){
-  .hero-exp{font-size:12px;gap:8px;}
   .exp-ctas{flex-direction:column;}
   .exp-ctas a{justify-content:center;}
 }
@@ -1451,9 +1307,7 @@ footer{
 /* hero móvil compacto: que el titular y los CTAs quepan sin scroll */
 @media(max-width:640px){
   #inicio{padding-top:74px;}
-  .hero-logo{margin-bottom:16px;}
-  .hero-logo img{height:76px;}
-  #inicio h1{font-size:clamp(2rem,9.4vw,2.6rem);line-height:1;}
+    #inicio h1{font-size:clamp(2rem,9.4vw,2.6rem);line-height:1;}
   .hero-sub{font-size:.95rem;line-height:1.55;margin-top:14px;}
   .hero-ctas{margin-bottom:22px;gap:10px;}
 }
@@ -1542,40 +1396,18 @@ footer{
 <link rel="stylesheet" href="public/fse/fse.css">
 <link rel="stylesheet" href="/public/expedienta-nav.css">
 <link rel="stylesheet" href="/public/piel.css">
+<script src="/public/piel.js" defer></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBNJPDB2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
-<!-- ===== LOADING ===== -->
-<div id="loading" role="status" aria-label="Cargando fluentIA">
-  <div id="load-logo-wrap">
-    <img class="load-logo" src="public/logo2.png" alt="fluentIA logo" width="200" height="60" fetchpriority="high">
-    <div class="load-tagline" data-i18n="load.tagline">Identidad digital premium</div>
-  </div>
-  <div id="load-bar-wrap">
-    <div class="load-bar-track"><div class="load-bar-fill" id="load-fill"></div></div>
-    <div class="load-sub" id="load-sub-txt">Inicializando</div>
-  </div>
-</div>
+<a class="skip" href="#inicio">Saltar al contenido</a>
+<a class="skip" href="#pie">Saltar al pie</a>
 
 <!-- ===== PROGRESS BAR ===== -->
 <div id="progress-bar" role="progressbar" aria-hidden="true"></div>
-
-<!-- ===== CANVAS ===== -->
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-
-<!-- ===== CANVAS OVERLAY ===== -->
-<div id="canvas-overlay" aria-hidden="true"></div>
-<div id="canvas-dim" aria-hidden="true"></div>
-
-<!-- ===== SCROLL HINT ===== -->
-<div id="scroll-hint" aria-hidden="true">
-  <p>scroll</p>
-  <div class="scroll-arrow"></div>
-</div>
 
 <!-- ===== MOBILE MENU ===== -->
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
@@ -1659,16 +1491,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ================================ -->
 <section id="inicio" aria-label="Inicio">
   <div class="hero-content sc" id="hero-sc">
-    <!-- Logo de bienvenida: grande y centrado al cargar. Al hacer scroll se
-         desvanece y su sitio lo ocupa el logo del navbar, que aparece fijo. -->
-    <div class="hero-logo" id="hero-logo" aria-hidden="true">
-      <img src="public/logo2.png" alt="" width="300" height="90" fetchpriority="high">
-    </div>
-    <a href="/expedienta" class="hero-exp">
-      <span class="hero-exp-tag" data-i18n="exp.tag">Nuevo</span>
-      <span data-i18n="exp.pill">Expedienta, la IA para asesorías que cita la fuente</span>
-      <span class="hero-exp-arrow" aria-hidden="true">&rarr;</span>
-    </a>
     <h1>
       <span class="h1-line" data-i18n="hero.h1.0">Software, webs e IA.</span>
       <span class="h1-line h1-pink" data-i18n="hero.h1.1">A la medida de tu empresa.</span>
@@ -2232,7 +2054,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ===============================
      FOOTER
 ================================ -->
-<footer role="contentinfo">
+<footer id="pie" role="contentinfo">
   <div class="footer-top">
     <div class="footer-brand">
       <img class="footer-brand-logo" src="public/logo2.png" alt="fluentIA" width="140" height="42" loading="lazy">
@@ -2901,8 +2723,6 @@ var TRANSLATIONS = {
 };
 
 var currentLang=(function(){try{return localStorage.getItem('fluentia_lang')||'es';}catch(e){return 'es';}})();
-var loadLabels=TRANSLATIONS[currentLang]['load.labels']||TRANSLATIONS.es['load.labels'];
-var loadDoneText=TRANSLATIONS[currentLang]['load.done']||'Listo';
 
 /* ---- TITULAR PALABRA A PALABRA ----
    Cada palabra del h1 se envuelve en un span recortado y entra desde abajo.
@@ -3030,22 +2850,6 @@ function closePrivacy(e){
 }
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePrivacy();});
 
-/* ---- NAVBAR AL HACER SCROLL ----
-   Al cargar, el navbar está oculto (body.nav-hidden) y manda el logo grande
-   centrado del hero. En cuanto el usuario baja un poco, el logo grande se
-   desvanece y aparece la barra fija con el logo a la izquierda. */
-(function(){
-  var UMBRAL = 90;                    // px de scroll para mostrar la barra
-  var body = document.body;
-  function syncNav(){
-    if(window.scrollY > UMBRAL){ body.classList.remove('nav-hidden'); }
-    else { body.classList.add('nav-hidden'); }
-  }
-  body.classList.add('nav-hidden');   // estado inicial: sin barra
-  syncNav();                          // por si se recarga a media página
-  window.addEventListener('scroll', syncNav, {passive:true});
-})();
-
 /* ---- DESTACADOS EN MÓVIL: barra de progreso del carrusel horizontal ---- */
 (function(){
   var t=document.getElementById('feat-track'),b=document.getElementById('feat-progress-bar');
@@ -3089,187 +2893,14 @@ window.addEventListener('scroll',function(){
   var total=document.documentElement.scrollHeight-window.innerHeight;
   var pct=total>0?(window.scrollY/total)*100:0;
   document.getElementById('progress-bar').style.width=pct+'%';
-  if(pct>4){
-    var sh=document.getElementById('scroll-hint');
-    sh.style.opacity='0';
-    sh.style.pointerEvents='none';
-  }
 },{passive:true});
 
 /* ================================================
-   THREE.JS BRAIN SCENE — ENHANCED
+   ANIMACIONES DE CONTENIDO (GSAP + ScrollTrigger)
+   Sin pantalla de carga ni escena 3D: la portada entra directa.
 ================================================ */
 window.addEventListener('DOMContentLoaded',function(){
-  var canvas=document.getElementById('bg-canvas');
-  var W=window.innerWidth,H=window.innerHeight;
-  var IS_MOBILE=W<820;
-  var REDUCE=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:false});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,IS_MOBILE?1.5:2));
-  renderer.setSize(W,H);
-  renderer.setClearColor(0x040810,1);
-
-  var scene=new THREE.Scene();
-  scene.fog=new THREE.FogExp2(0x040810,0.009);
-
-  var camera=new THREE.PerspectiveCamera(60,W/H,0.1,200);
-  camera.position.set(0,0,13);
-
-  /* ---- LIGHTS ---- */
-  scene.add(new THREE.AmbientLight(0x060c1e,3.5));
-
-  var pinkPt=new THREE.PointLight(0xd4145a,5,50);
-  pinkPt.position.set(0,2,8);
-  scene.add(pinkPt);
-
-  var navyPt=new THREE.PointLight(0x3355cc,3,40);
-  navyPt.position.set(-6,4,-3);
-  scene.add(navyPt);
-
-  var topPt=new THREE.PointLight(0xff3377,2,25);
-  topPt.position.set(2,8,2);
-  scene.add(topPt);
-
-  /* Orbiting accent light */
-  var orbitLight=new THREE.PointLight(0xff1166,3,22);
-  scene.add(orbitLight);
-
-  /* ---- CEREBRO (geometría generada con Python: gen_brain.py) ---- */
-  var brain=new THREE.Group();
-  scene.add(brain);
-  var BD=(IS_MOBILE&&window.BRAIN_DATA_M)?window.BRAIN_DATA_M:window.BRAIN_DATA;
-
-  /* nodos por color */
-  var NODE_COL=[0xd4145a,0xff5d8a,0x2a6aee];
-  var NODE_SIZE=[.115,.088,.105];
-  var nodeMats=[];
-  for(var g=0;g<3;g++){
-    var idxs=[];
-    for(var i=0;i<BD.n;i++){if(BD.col[i]===g)idxs.push(i);}
-    var arr=new Float32Array(idxs.length*3);
-    for(var k=0;k<idxs.length;k++){
-      arr[k*3]=BD.pos[idxs[k]*3];arr[k*3+1]=BD.pos[idxs[k]*3+1];arr[k*3+2]=BD.pos[idxs[k]*3+2];
-    }
-    var nGeo=new THREE.BufferGeometry();
-    nGeo.setAttribute('position',new THREE.BufferAttribute(arr,3));
-    var nMat=new THREE.PointsMaterial({color:NODE_COL[g],size:NODE_SIZE[g],transparent:true,opacity:.85,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false});
-    nodeMats.push(nMat);
-    brain.add(new THREE.Points(nGeo,nMat));
-  }
-
-  /* aristas: corteza fucsia + cuerpo calloso azul */
-  function makeEdges(list,color,op){
-    var arr=new Float32Array(list.length*3);
-    for(var k=0;k<list.length;k++){arr[k*3]=BD.pos[list[k]*3];arr[k*3+1]=BD.pos[list[k]*3+1];arr[k*3+2]=BD.pos[list[k]*3+2];}
-    var eGeo=new THREE.BufferGeometry();
-    eGeo.setAttribute('position',new THREE.BufferAttribute(arr,3));
-    var eMat=new THREE.LineBasicMaterial({color:color,transparent:true,opacity:op,blending:THREE.AdditiveBlending,depthWrite:false});
-    brain.add(new THREE.LineSegments(eGeo,eMat));
-    return eMat;
-  }
-  var edgeMatP=makeEdges(BD.edges,0xd4145a,.14);
-  var edgeMatC=makeEdges(BD.cal,0x2a6aee,.20);
-
-  /* señales de pensamiento recorriendo rutas del grafo */
-  var signals=[];
-  for(var i=0;i<BD.paths.length;i++){
-    var raw=BD.paths[i],pts=[],lens=[0];
-    for(var k=0;k<raw.length;k+=3)pts.push(new THREE.Vector3(raw[k],raw[k+1],raw[k+2]));
-    for(var k=1;k<pts.length;k++)lens.push(lens[k-1]+pts[k].distanceTo(pts[k-1]));
-    var sCol=i%4===0?0x2a6aee:0xff2277;
-    var sMat=new THREE.MeshBasicMaterial({color:sCol,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
-    var sMesh=new THREE.Mesh(new THREE.SphereGeometry(.075,8,8),sMat);
-    brain.add(sMesh);
-    signals.push({mesh:sMesh,mat:sMat,pts:pts,lens:lens,total:lens[lens.length-1],prog:Math.random(),speed:.0022+Math.random()*.003});
-  }
-  function placeSignal(s){
-    var d=s.prog*s.total,k=1;
-    while(k<s.lens.length&&s.lens[k]<d)k++;
-    var a=s.pts[k-1],b=s.pts[Math.min(k,s.pts.length-1)];
-    var seg=(s.lens[Math.min(k,s.lens.length-1)]-s.lens[k-1])||1;
-    var tt=(d-s.lens[k-1])/seg;
-    s.mesh.position.lerpVectors(a,b,Math.min(1,Math.max(0,tt)));
-  }
-
-  /* resplandor central (tálamo) */
-  var coreGlowMat=new THREE.MeshBasicMaterial({color:0xff2277,transparent:true,opacity:.10,blending:THREE.AdditiveBlending,depthWrite:false});
-  brain.add(new THREE.Mesh(new THREE.SphereGeometry(.9,24,24),coreGlowMat));
-
-  /* aura envolvente */
-  var auraMat=new THREE.MeshBasicMaterial({color:0xff2277,transparent:true,opacity:.045,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.BackSide});
-  brain.add(new THREE.Mesh(new THREE.SphereGeometry(2.75,32,32),auraMat));
-
-  /* ondas de pensamiento en expansión */
-  var pulseRings=[];
-  for(var i=0;i<4;i++){
-    var prGeo=new THREE.TorusGeometry(2.6,.018,8,100);
-    var prMat=new THREE.MeshBasicMaterial({color:i===1?0x2a6aee:0xd4145a,transparent:true,opacity:0});
-    var pr=new THREE.Mesh(prGeo,prMat);
-    pr.rotation.x=Math.random()*Math.PI;pr.rotation.y=Math.random()*Math.PI;
-    brain.add(pr);
-    pulseRings.push({mesh:pr,mat:prMat,offset:i/4,rx:pr.rotation.x,ry:pr.rotation.y});
-  }
-
-  /* ---- PARTÍCULAS AMBIENTE ---- */
-  var P_COUNT=850;
-  var pArr=new Float32Array(P_COUNT*3);
-  for(var i=0;i<P_COUNT;i++){
-    var rr=14+Math.random()*46;
-    var th=Math.acos(2*Math.random()-1),ph=Math.random()*Math.PI*2;
-    pArr[i*3]=rr*Math.sin(th)*Math.cos(ph);
-    pArr[i*3+1]=rr*Math.cos(th);
-    pArr[i*3+2]=rr*Math.sin(th)*Math.sin(ph);
-  }
-  var pGeo=new THREE.BufferGeometry();
-  pGeo.setAttribute('position',new THREE.BufferAttribute(pArr,3));
-  var pMat=new THREE.PointsMaterial({color:0x6a7aae,size:.05,transparent:true,opacity:.55,sizeAttenuation:true,depthWrite:false});
-  var particles=new THREE.Points(pGeo,pMat);
-  scene.add(particles);
-
-  /* ---- MOUSE PARALLAX ---- */
-  var mx=0,my=0,tmx=0,tmy=0;
-  window.addEventListener('mousemove',function(e){
-    tmx=(e.clientX/window.innerWidth-.5)*2;
-    tmy=(e.clientY/window.innerHeight-.5)*2;
-  });
-
-  /* ---- CAMERA JOURNEY — 7 sections ---- */
   gsap.registerPlugin(ScrollTrigger);
-
-  var camKeyframes=[
-    {x:0,  y:0,  z:13},
-    {x:3,  y:-1, z:12},
-    {x:6,  y:0,  z:11},
-    {x:-5, y:0,  z:9 },
-    {x:4,  y:1,  z:10},
-    {x:0,  y:-1, z:10},
-    {x:0,  y:5,  z:13},
-    {x:0,  y:0,  z:8 },
-  ];
-
-  var camTarget={x:0,y:0,z:13},camCur={x:0,y:0,z:13};
-  var brainTargetScale=1,brainCurScale=1,brainTargetGlow=.28;
-
-  var sectionIds=['#inicio','#problema','#servicios','#soberania','#paraquien','#casos','#nosotros','#contacto'];
-  sectionIds.forEach(function(id,i){
-    if(i===0)return;
-    var prev=camKeyframes[i-1],curr=camKeyframes[i];
-    ScrollTrigger.create({
-      trigger:id,start:'top center',end:'bottom center',scrub:2,
-      onUpdate:function(self){
-        camTarget.x=THREE.MathUtils.lerp(prev.x,curr.x,self.progress);
-        camTarget.y=THREE.MathUtils.lerp(prev.y,curr.y,self.progress);
-        camTarget.z=THREE.MathUtils.lerp(prev.z,curr.z,self.progress);
-        if(REDUCE)return;
-        brainTargetScale=1+(i/sectionIds.length)*.35;
-        brainTargetGlow=.28+(i/sectionIds.length)*.28;
-      },
-    });
-  });
-
-  /* ---- Oscurecer el fondo al dejar el hero ---- */
-  gsap.to('#canvas-dim',{opacity:.42,ease:'none',scrollTrigger:{trigger:'#problema',start:'top 92%',end:'top 38%',scrub:true}});
 
   /* ---- CONTENT SCROLL ANIMATIONS ---- */
   document.querySelectorAll('.sc').forEach(function(el,i){
@@ -3283,149 +2914,11 @@ window.addEventListener('DOMContentLoaded',function(){
   gsap.from('.proc-step',{opacity:0,y:20,stagger:.1,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'#proceso',start:'top 68%'}});
   gsap.from('.value-item',{opacity:0,y:22,stagger:.08,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'#nosotros',start:'top 64%'}});
 
-  /* ---- RENDER LOOP ---- */
-  var t=0,pulseT=0;
 
-  function animate(){
-    if(!REDUCE)requestAnimationFrame(animate);
-    t+=.01;pulseT+=.0065;
+  window.addEventListener('resize',function(){ScrollTrigger.refresh();});
 
-    mx+=(tmx-mx)*.055;my+=(tmy-my)*.055;
-    camCur.x+=(camTarget.x-camCur.x)*.035;
-    camCur.y+=(camTarget.y-camCur.y)*.035;
-    camCur.z+=(camTarget.z-camCur.z)*.035;
-    camera.position.x=camCur.x+mx*.35;
-    camera.position.y=camCur.y-my*.35;
-    camera.position.z=camCur.z;
-    camera.lookAt(0,0,0);
-
-    orbitLight.position.set(Math.sin(t*.38)*9,Math.cos(t*.25)*5,Math.sin(t*.21)*7);
-
-    /* rotación y escala del cerebro */
-    brain.rotation.y=t*.075;
-    brain.rotation.x=Math.sin(t*.05)*.10;
-    brainCurScale+=(brainTargetScale-brainCurScale)*.02;
-    brain.scale.setScalar(brainCurScale*(IS_MOBILE?1.45:1.8));
-
-    /* respiración de los nodos */
-    for(var i=0;i<nodeMats.length;i++){
-      nodeMats[i].opacity=.68+Math.sin(t*1.7+i*2.1)*.18;
-    }
-
-    /* destellos sinápticos */
-    if(Math.random()<.06)edgeMatP.opacity=.42;
-    edgeMatP.opacity+=(.14-edgeMatP.opacity)*.08;
-    edgeMatC.opacity=.22+Math.abs(Math.sin(t*.9))*.14;
-
-    /* resplandor central ligado al scroll */
-    coreGlowMat.opacity=.05+brainTargetGlow*.22+Math.sin(t*1.9)*.02;
-    auraMat.opacity=.03+brainTargetGlow*.07;
-
-    /* señales recorriendo el grafo */
-    for(var i=0;i<signals.length;i++){
-      var s=signals[i];
-      s.prog+=s.speed;
-      if(s.prog>=1)s.prog=0;
-      placeSignal(s);
-      s.mat.opacity=Math.min(.9,Math.min(s.prog,1-s.prog)*10);
-    }
-
-    /* ondas de pensamiento */
-    for(var i=0;i<pulseRings.length;i++){
-      var pr=pulseRings[i];
-      var ct=(pulseT+pr.offset)%1;
-      pr.mesh.scale.setScalar(.6+ct*4.2);
-      pr.mat.opacity=Math.max(0,.30*(1-ct*1.05));
-      pr.mesh.rotation.x=pr.rx+t*.012*(i+1);
-      pr.mesh.rotation.y=pr.ry+t*.009*(i+1);
-    }
-
-    particles.rotation.y=t*.016;
-    particles.rotation.x=t*.007;
-
-    renderer.render(scene,camera);
-  }
-
-  animate();
-
-  /* ---- RESIZE ---- */
-  window.addEventListener('resize',function(){
-    var w=window.innerWidth,h=window.innerHeight;
-    camera.aspect=w/h;camera.updateProjectionMatrix();
-    renderer.setSize(w,h);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    ScrollTrigger.refresh();
-  });
-
-  /* ---- LOADING SEQUENCE ---- */
-  var fill=document.getElementById('load-fill');
-  var subTxt=document.getElementById('load-sub-txt');
-  var labels=loadLabels;
-
-  /* La pantalla de carga es la bienvenida a la web: se ve al entrar por primera
-     vez y al refrescar (F5), pero NO cada vez que se vuelve al inicio desde otra
-     página. Se recuerda por sesión (sessionStorage) y se comprueba el tipo de
-     navegación: una recarga siempre la vuelve a mostrar. */
-  var esRecarga = (function(){
-    try{
-      var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-      if(nav && nav.type) return nav.type === 'reload';
-      return performance.navigation && performance.navigation.type === 1;  /* legado */
-    }catch(e){ return false; }
-  })();
-  var yaVista = false;
-  try{ yaVista = sessionStorage.getItem('fluentia_intro') === '1'; }catch(e){}
-
-  if(yaVista && !esRecarga){
-    /* volvemos al inicio desde otra página: entramos directos, sin intro */
-    var ld = document.getElementById('loading');
-    if(ld) ld.style.display = 'none';
-    gsap.set('#hero-sc',{opacity:1,y:0});
-    animarTitular();
-  } else {
-    try{ sessionStorage.setItem('fluentia_intro','1'); }catch(e){}
-    /* 1 — Logo entra primero */
-    gsap.to('#load-logo-wrap',{
-      opacity:1,y:0,duration:1.1,ease:'power3.out',delay:.15,
-      onComplete:function(){
-        /* 2 — Barra aparece tras el logo */
-        gsap.to('#load-bar-wrap',{opacity:1,duration:.55,ease:'power2.out'});
-        startBar();
-      },
-    });
-  }
-
-  function startBar(){
-    var lp=0,step=0;
-    var lInt=setInterval(function(){
-      lp+=Math.random()*14+5;
-      if(lp>100)lp=100;
-      fill.style.width=lp+'%';
-      if(lp>33&&step===0){step=1;subTxt.textContent=labels[1];}
-      if(lp>66&&step===1){step=2;subTxt.textContent=labels[2];}
-      if(lp>=100){
-        clearInterval(lInt);
-        subTxt.textContent=loadDoneText;
-        setTimeout(function(){
-          /* 3 — Logo pulsa antes de salir */
-          gsap.to('#load-logo-wrap',{
-            scale:1.06,duration:.28,ease:'power1.inOut',yoyo:true,repeat:1,
-            onComplete:function(){
-              /* 4 — Overlay fade out → hero entra */
-              gsap.to('#loading',{
-                opacity:0,duration:.9,ease:'power2.out',
-                onComplete:function(){
-                  document.getElementById('loading').style.display='none';
-                  gsap.to('#hero-sc',{opacity:1,y:0,duration:1.3,ease:'power3.out',delay:.1});
-                  animarTitular();
-                },
-              });
-            },
-          });
-        },320);
-      }
-    },75);
-  }
-
+  gsap.set('#hero-sc',{opacity:1,y:0});
+  animarTitular();
 });
 </script>
 

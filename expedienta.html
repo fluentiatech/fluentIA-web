@@ -123,7 +123,10 @@ section{position:relative;padding:clamp(72px,9vw,124px) 0}
 .brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .brand img{height:28px;width:auto}
 .brand-sep{width:1px;height:22px;background:var(--line-2)}
-.brand-prod{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand-prod{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;color:inherit}
+.brand-home{display:inline-flex;align-items:center;transition:opacity .2s}
+.brand-home:hover{opacity:.7}
+.mob .mob-back{margin-top:18px;font-size:14px;font-weight:500;color:var(--ink-2);border-bottom:0}
 .nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,28px);list-style:none}
 .nav-links a{font-size:15px;font-weight:500;color:var(--ink-2);transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
@@ -513,11 +516,14 @@ footer{background:var(--night);color:#98a2bd;padding:0 0 36px}
 <!-- ===== NAVEGACIÓN ===== -->
 <nav class="nav" id="nav" aria-label="Navegación principal">
   <div class="wrap">
-    <a href="#inicio" class="brand" aria-label="Expedienta by fluentIA, inicio">
-      <img src="public/logo-color.png" alt="fluentIA" width="98" height="28">
+    <!-- El logo vuelve a la web de fluentIA; el nombre del producto, al inicio de esta página -->
+    <div class="brand">
+      <a href="/" class="brand-home" aria-label="Volver a fluentIA" title="Volver a fluentIA">
+        <img src="public/logo-color.png" alt="fluentIA" width="98" height="28">
+      </a>
       <span class="brand-sep" aria-hidden="true"></span>
-      <span class="brand-prod">Expedienta</span>
-    </a>
+      <a href="#inicio" class="brand-prod" aria-label="Expedienta, inicio">Expedienta</a>
+    </div>
     <ul class="nav-links">
       <li><a href="#ventajas">Ventajas</a></li>
       <li><a href="#como-funciona">Cómo funciona</a></li>
@@ -541,6 +547,7 @@ footer{background:var(--night);color:#98a2bd;padding:0 0 36px}
   <a href="/guias/">Guías</a>
   <a href="#faq">Preguntas</a>
   <a href="#contacto" class="btn btn-primary" data-motivo="Demostración">Pedir demostración</a>
+  <a href="/" class="mob-back">&larr; Volver a fluentIA</a>
 </div>
 
 <main id="contenido">
