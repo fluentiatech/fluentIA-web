@@ -1,0 +1,172 @@
+/* ===================================================
+   PIEL EDITORIAL · hoja compartida por todas las páginas
+   Se carga después del CSS de cada página y gana la cascada:
+   fondo casi negro, Inter en los titulares, botones rectos,
+   sin brillos ni esquinas redondeadas, y el mega menú.
+=================================================== */
+:root{
+  --bg:#050608;
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.5);
+  --border:rgba(255,255,255,.12);
+  --pink-glow:rgba(212,20,90,0);
+  --font-head:'Inter',sans-serif;
+  --font-serif:Georgia,'Iowan Old Style','Palatino Linotype','Times New Roman',serif;
+}
+body{background:var(--bg);}
+#bg-canvas{opacity:.5;}
+#canvas-dim{background:#050608;}
+#canvas-overlay{
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(5,6,8,.3) 12%,rgba(5,6,8,.6) 100%),
+    radial-gradient(ellipse 105% 80% at 50% 72%,transparent 18%,rgba(5,6,8,.7) 100%);
+}
+#progress-bar{background:var(--pink);box-shadow:none;}
+#loading{background:var(--bg);}
+
+/* ---- Tipografía: todo lo que iba en Syne pasa a Inter ---- */
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:600;letter-spacing:-.04em;}
+h2{font-size:clamp(2.1rem,4.6vw,3.9rem);line-height:1.02;}
+#mobile-menu a,
+.art-body h2,
+.art-cta .box h3,
+.art-head h1,
+.benefit-num,
+.blog-hero h1,
+.bot-head .t,
+.bot-q,
+.bot-result h3,
+.build h4,
+.c-cta h2,
+.c-hero h1,
+.c-sec h2,
+.cap h3,
+.channel h3,
+.chatmock .who,
+.ct-direct .tx b,
+.ct-hero h1,
+.ct-why h3,
+.dropdown .dd-t,
+.feat h4,
+.fit h2,
+.fit-item .q::before,
+.founder-body h3,
+.founder-card h3,
+.fs-card .body h2,
+.hstep h4,
+.i-cta h2,
+.i-hero h1,
+.i-sec h2,
+.icp-q,
+.ifaq summary,
+.incl-item h4,
+.load-brand,
+.nova-mini-head h3,
+.nova-pillar-title,
+.nova-tool-name,
+.page-hero h1,
+.pcard h3,
+.pri h4,
+.privacy-card h2,
+.privacy-card h3,
+.prob-punch,
+.proc-num,
+.reason h3,
+.rgpd-item h4,
+.route-lbl,
+.rsc-item h4,
+.s-cta h2,
+.s-hero h1,
+.service-pill h4,
+.sov-num,
+.sov-step h3,
+.stat-num,
+.sv-cta h2,
+.sv-hero h1,
+.sv-sec h2,
+.svc-eng h4,
+.sw-cta h2,
+.sw-hero h1,
+.sw-sec h2,
+.threat h3,
+.type h3,
+.us-cta h2,
+.us-section h2,
+.us-stat .n,
+.val h4,
+.value-item h4,
+.vs-col h3,
+.w-cta h2,
+.w-hero h1,
+.w-sec h2,
+.way h3,
+.wproc .st h4,
+h1,h2,h3{font-family:var(--font-head);font-weight:600;}
+
+/* ---- Botones rectos ---- */
+.btn-primary{
+  padding:14px 24px;background:var(--pink);color:#fff;
+  font-size:14px;font-weight:600;letter-spacing:0;
+  border:1px solid var(--pink);border-radius:0;min-height:48px;
+  transition:background .2s,border-color .2s;
+}
+.btn-primary:hover{background:#b8104d;border-color:#b8104d;opacity:1;transform:none;}
+.btn-secondary{
+  padding:14px 24px;background:transparent;color:#fff;
+  font-size:14px;font-weight:500;letter-spacing:0;
+  border:1px solid rgba(255,255,255,.35);border-radius:0;min-height:48px;
+  transition:border-color .2s,background .2s;
+}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,.06);color:#fff;transform:none;}
+.nav-cta{padding:9px 18px;border-radius:0;}
+.arrow-sq{display:inline-grid;place-items:center;flex-shrink:0;width:22px;height:22px;background:var(--pink);color:#fff;}
+.arrow-sq svg{width:12px;height:12px;display:block;}
+.link-sq{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#fff;transition:gap .2s;}
+.link-sq:hover{gap:14px;}
+
+/* ---- Esquinas rectas y sin brillos ---- */
+body :where([class*="card"],[class*="btn"],[class*="badge"],[class*="tag"],[class*="step"],[class*="item"],[class*="form"],[class*="faq"],[class*="visual"],[class*="pill"],[class*="box"],input,textarea,select,button),
+.dropdown,.dropdown a,.nav-links a,.lang-btn,.mob-cta,.hf-form,#scroll-hint{border-radius:0!important;}
+body :where([class*="card"],[class*="item"],[class*="step"]):hover{box-shadow:none!important;border-color:rgba(255,255,255,.4)!important;}
+.svc-card::before{display:none;}
+.nav-exp-dot{border-radius:50%!important;}
+
+/* ---- Mega menú: panel a todo el ancho con servicios, sectores y Expedienta ---- */
+.nav-links li.has-drop{position:static;}
+.dropdown.mega{
+  position:absolute;top:100%;left:0;right:0;
+  transform:translateY(8px);
+  min-width:0;width:100%;
+  padding:34px clamp(14px,4vw,56px) 38px;
+  display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:clamp(24px,4vw,56px);
+  background:#0a0b0f;
+  border:0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.8);
+}
+.nav-links li.has-drop:hover .dropdown.mega,
+.nav-links li.has-drop:focus-within .dropdown.mega{transform:translateY(0);}
+.mega-col{display:flex;flex-direction:column;gap:2px;}
+.mega-h{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--pink);
+  margin-bottom:10px;padding:0 13px;
+}
+.mega .dd-t{font-family:var(--font-head);font-size:15px;font-weight:600;letter-spacing:-.01em;}
+.mega .dd-d{font-size:12.5px;}
+.mega .dd-all{margin-top:8px;}
+.dropdown a.mega-feat{
+  display:flex;flex-direction:column;gap:10px;align-self:stretch;
+  padding:24px;background:#6e0a33;color:#fff;
+  transition:background .2s;
+}
+.dropdown a.mega-feat:hover{background:#55072a;}
+.mega-feat .mf-k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+.mega-feat strong{font-family:var(--font-head);font-size:clamp(1.4rem,2vw,1.9rem);font-weight:600;letter-spacing:-.03em;line-height:1;}
+.mega-feat .mf-p{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);}
+.mega-feat .link-sq{margin-top:auto;font-size:14px;}
+@media(max-width:1100px){
+  .dropdown.mega{grid-template-columns:1fr 1fr;}
+  .dropdown a.mega-feat{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 18px;}
+  .mega-feat .mf-p{flex:1 1 260px;}
+  .mega-feat .link-sq{margin-top:0;}
+}
