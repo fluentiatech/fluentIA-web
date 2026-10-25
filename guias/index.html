@@ -36,6 +36,14 @@ try{if(localStorage.getItem('expedienta_cookies')==='si'){window.dataLayer=windo
 var j=document.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id=GTM-WBNJPDB2';document.head.appendChild(j);}}catch(e){}
 </script>
 <link rel="stylesheet" href="../public/fse/fse.css">
+<style>
+/* Transición entre páginas, la misma que en el resto del sitio */
+@view-transition{navigation:auto;}
+@keyframes vt-entra{from{transform:translateX(100vw);}to{transform:none;}}
+::view-transition-old(root){animation:none;}
+::view-transition-new(root){animation:vt-entra 1.25s cubic-bezier(.77,0,.18,1) both;}
+@media(prefers-reduced-motion:reduce){::view-transition-new(root){animation:none;}}
+</style>
 </head>
 <body>
 <nav class="nav" aria-label="Navegación principal"><div class="wrap">

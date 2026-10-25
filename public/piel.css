@@ -241,3 +241,42 @@ body.nav-hidden .nav-logo,.nav-logo{opacity:1;transform:none;pointer-events:auto
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
   body.nav-up nav#navbar{transform:none;}
 }
+
+/* ===================================================
+   PIE A PANTALLA COMPLETA · como el de Accenture
+   Ocupa al menos una pantalla desde 600 px: logo grande arriba, listas
+   de enlaces en medio y la línea legal abajo. La franja FSE+ va después.
+=================================================== */
+body footer{
+  display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-xl);
+  min-height:100svh;max-width:var(--max);margin:0 auto;
+  padding:calc(var(--space-xl) + var(--nav-h)) var(--gutter) var(--space-md);
+  border-top:0;background:#000;
+}
+@media(max-width:599px){body footer{min-height:0;padding-top:var(--space-xl);gap:var(--space-lg);}}
+body .footer-top{display:grid;grid-template-columns:1fr;gap:var(--space-lg) var(--space-md);margin:0;}
+@media(min-width:600px){body .footer-top{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){body .footer-top{grid-template-columns:1.6fr repeat(4,1fr);}}
+body .footer-brand{grid-column:1/-1;}
+@media(min-width:1024px){body .footer-brand{grid-column:auto;}}
+body .footer-brand-logo{height:clamp(64px,9vw,150px);width:auto;margin-bottom:var(--space-md);filter:brightness(0) invert(1);}
+body .footer-brand p{font-size:var(--fs-body);font-weight:400;color:rgba(255,255,255,.7);max-width:28ch;line-height:1.5;}
+body .footer-col h5{font-family:'Inter',sans-serif;font-size:var(--fs-label);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#a2a2a0;margin-bottom:var(--space-sm);}
+body .footer-col ul{gap:.6rem;}
+body .footer-col a{font-size:var(--fs-body);font-weight:400;color:#fff;transition:color var(--dur) var(--ease);}
+body .footer-col a:hover{color:#a2a2a0;}
+body .footer-bottom{border-top:1px solid rgba(255,255,255,.2);padding-top:var(--space-sm);gap:var(--space-sm) var(--space-md);}
+body .footer-bottom p,body .footer-legal a{font-size:.875rem;font-weight:400;color:rgba(255,255,255,.7);}
+body .footer-legal{gap:var(--space-md);}
+body .footer-legal a:hover{color:#fff;}
+
+/* ===================================================
+   TRANSICIÓN ENTRE PÁGINAS · la nueva entra desde la derecha
+   View Transitions del navegador (sin librería), 1,25 s con la curva
+   (.77,0,.18,1) de la transición "absorb" de Accenture.
+=================================================== */
+@view-transition{navigation:auto;}
+@keyframes vt-entra{from{transform:translateX(100vw);}to{transform:none;}}
+::view-transition-old(root){animation:none;}
+::view-transition-new(root){animation:vt-entra 1.25s cubic-bezier(.77,0,.18,1) both;}
+@media(prefers-reduced-motion:reduce){::view-transition-new(root){animation:none;}}
