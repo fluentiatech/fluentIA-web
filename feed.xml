@@ -5,8 +5,17 @@
   <link>https://www.fluentiatech.es/blog</link>
   <description>Ideas claras sobre IA, software y datos, sin humo y sin tecnicismos.</description>
   <language>es-ES</language>
-  <lastBuildDate>Thu, 13 Aug 2026 09:00:00 +0200</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 09:00:00 +0100</lastBuildDate>
   <atom:link href="https://www.fluentiatech.es/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>IA soberana para pymes: qué es, qué no es y cómo empezar sin regalar tus datos</title>
+    <link>https://www.fluentiatech.es/blog/ia-soberana-pymes</link>
+    <guid isPermaLink="true">https://www.fluentiatech.es/blog/ia-soberana-pymes</guid>
+    <description>La IA soberana no es tener un servidor en Europa: es decidir dónde se procesan tus datos, quién puede pedirlos y qué pasa si dejas el servicio. Una guía práctica para empresas que no son Telefónica.</description>
+    <category>IA soberana</category>
+    <pubDate>Mon, 26 Oct 2026 09:00:00 +0100</pubDate>
+      <enclosure url="https://www.fluentiatech.es/public/blog/ia-soberana-pymes.jpg" type="image/jpeg" length="77592"/>
+</item>
   <item>
     <title>Cómo trabajamos: sprints cortos y revisión con el cliente</title>
     <link>https://www.fluentiatech.es/blog/sprints-revision-con-el-cliente</link>

@@ -174,4 +174,15 @@
       <image:caption>Trabajamos por sprints y al final de cada uno el cliente ve funcionando lo que se ha hecho. Así se corrige el rumbo cuando corregirlo todavía es barato.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.fluentiatech.es/blog/ia-soberana-pymes</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.fluentiatech.es/public/blog/ia-soberana-pymes.jpg</image:loc>
+      <image:title>IA soberana para pymes: qué es, qué no es y cómo empezar sin regalar tus datos</image:title>
+      <image:caption>La IA soberana no es tener un servidor en Europa: es decidir dónde se procesan tus datos, quién puede pedirlos y qué pasa si dejas el servicio. Una guía práctica para empresas que no son Telefónica.</image:caption>
+    </image:image>
+  </url>
 </urlset>
