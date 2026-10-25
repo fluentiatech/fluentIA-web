@@ -1101,10 +1101,11 @@ footer{
 
 /* ---- Expedienta: anuncio en el hero y producto destacado ---- */
 .exp-card{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,56px);align-items:center;
-  padding:clamp(26px,4vw,48px);border:1px solid var(--border);
-  background:rgba(10,11,14,.9);
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,72px);align-items:center;
+  padding:0;border:0;background:transparent;
 }
+.exp-link{margin-top:26px;font-size:1.05rem;}
+.exp-lead{color:rgba(255,255,255,.8);}
 
 /* ---- Destacados: cuatro piezas verticales, como el quiosco de Accenture ---- */
 #destacados{padding-top:var(--space-md);}
@@ -1178,7 +1179,7 @@ footer{
 .exp-card h2 em{font-style:normal;color:var(--pink);}
 .exp-lead{margin:16px 0 20px;font-size:clamp(.92rem,1.2vw,1.02rem);font-weight:300;line-height:1.7;color:rgba(255,255,255,.72);max-width:560px;}
 .exp-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
-.exp-note{margin-top:14px;font-size:12.5px;color:var(--muted);letter-spacing:.02em;}
+.exp-note{margin-top:18px;font-size:.875rem;color:#a2a2a0;}
 .exp-demo{
   display:flex;flex-direction:column;gap:14px;padding:22px;
   background:#f6f3ee;color:#1a2b5f;
@@ -1202,6 +1203,55 @@ footer{
   .exp-ctas{flex-direction:column;}
   .exp-ctas a{justify-content:center;}
 }
+
+/* ---- Qué hacemos · mega acordeón ---- */
+.acc{margin-top:var(--space-lg);border-top:1px solid rgba(255,255,255,.2);}
+.acc-item{border-bottom:1px solid rgba(255,255,255,.2);}
+.acc-sum{
+  display:grid;grid-template-columns:auto 1fr auto;column-gap:clamp(16px,3vw,48px);align-items:start;
+  width:100%;padding:clamp(24px,3vw,48px) 0;background:none;border:0;color:#fff;text-align:left;cursor:pointer;
+  font-family:'Inter',sans-serif;
+}
+.acc-num{font-size:var(--fs-h3);font-weight:500;color:#a2a2a0;line-height:1.1;min-width:2.2ch;}
+.acc-head{display:flex;flex-direction:column;gap:10px;}
+.acc-title{font-size:clamp(1.5rem,3vw,3.33rem);font-weight:600;letter-spacing:-.03em;line-height:1.1;}
+.acc-sub{font-size:var(--fs-body);color:#a2a2a0;}
+.acc-icon{position:relative;width:28px;height:28px;margin-top:.2em;}
+.acc-icon::before,.acc-icon::after{content:'';position:absolute;left:50%;top:50%;background:#fff;transform:translate(-50%,-50%);transition:transform var(--dur) var(--ease);}
+.acc-icon::before{width:100%;height:2px;}
+.acc-icon::after{width:2px;height:100%;}
+.acc-item.is-open .acc-icon::after{transform:translate(-50%,-50%) rotate(90deg);}
+.acc-item.is-open .acc-icon::before{transform:translate(-50%,-50%) rotate(180deg);}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur) var(--ease);}
+.acc-body[hidden]{display:grid;}
+.acc-item.is-open .acc-body{grid-template-rows:1fr;}
+.acc-inner{overflow:hidden;min-height:0;}
+.acc-inner > *{margin-left:calc(2.2ch + clamp(16px,3vw,48px));}
+.acc-inner p{font-size:var(--fs-body);color:rgba(255,255,255,.8);line-height:1.6;max-width:70ch;}
+.acc-inner .feature-list{margin-top:18px;max-width:70ch;}
+.acc-inner .link-sq{margin-top:22px;margin-bottom:clamp(24px,3vw,48px);}
+.sec-more{margin-top:var(--space-lg);}
+@media(max-width:599px){.acc-sum{column-gap:14px;}.acc-inner > *{margin-left:0;}}
+
+/* ---- Nosotros · cifras gigantes y líderes ---- */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin:var(--space-lg) 0;}
+.stats-row > div{border-top:1px solid rgba(255,255,255,.25);padding-top:18px;}
+.stat-num{font-size:clamp(3rem,7vw,7.5rem);font-weight:600;letter-spacing:-.04em;line-height:1;color:#fff;}
+.stat-label{margin-top:10px;font-size:var(--fs-body);color:#a2a2a0;letter-spacing:0;text-transform:none;}
+.leaders-label{margin-top:var(--space-xl);}
+.founder{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:clamp(24px,4vw,56px);align-items:start;border:0;background:transparent;padding:0;}
+.founder-photo{width:100%;max-width:260px;height:auto;aspect-ratio:1;object-fit:cover;filter:grayscale(1) contrast(1.05);border-radius:0;}
+.founder-body h3{font-size:clamp(1.5rem,2.4vw,2.2rem);letter-spacing:-.03em;margin-bottom:4px;}
+.founder-role{color:#a2a2a0;margin-bottom:18px;}
+.founder-body p{max-width:70ch;}
+.founder-link{margin:18px 28px 0 0;font-size:15px;}
+.founder-link svg:not(.arrow-sq svg){width:18px;height:18px;}
+.founder-body .sec-more{display:flex;margin-top:var(--space-md);}
+@media(max-width:599px){.stats-row{grid-template-columns:1fr;gap:var(--space-sm);}.founder{grid-template-columns:1fr;}}
+
+/* ---- Mismo aire entre secciones ---- */
+#scroll-container > section:not(#inicio):not(#destacados):not(#confianza):not(#cierre){padding-top:var(--space-xl);padding-bottom:var(--space-xl);}
+@media(max-width:599px){#scroll-container > section:not(#inicio):not(#destacados):not(#confianza):not(#cierre){padding-top:var(--space-lg);padding-bottom:var(--space-lg);}}
 
 /* ---- Servicios · escalera ---- */
 .svc-card.svc-featured{grid-column:1/-1;border-color:rgba(212,20,90,.35);
@@ -1433,19 +1483,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
   <button id="mobile-close" aria-label="Cerrar menú">✕</button>
   <img class="mob-logo" src="public/logo2.png" alt="fluentIA" width="160" height="48" loading="lazy">
-  <a href="#inicio" onclick="closeMenu()" data-i18n="nav.inicio">Inicio</a>
-  <a href="servicios.html" data-i18n="nav.servicios">Servicios</a>
-  <!-- accesos directos a cada servicio: en móvil hay sitio y evita un salto extra -->
-  <a class="mob-sub" href="servicios/ia-soberana.html">IA soberana</a>
-  <a class="mob-sub" href="servicios/chatbots.html">Chatbots</a>
-  <a class="mob-sub" href="servicios/webs.html">Webs premium</a>
-  <a class="mob-sub" href="servicios/software.html">Software a medida</a>
-  <a href="soberania.html" data-i18n="nav.sob">Soberanía</a>
-  <a href="blog.html" data-i18n="nav.blog">Blog</a>
-  <a href="nosotros.html" data-i18n="nav.nosotros">Nosotros</a>
-  <a href="contacto.html" onclick="closeMenu()" data-i18n="nav.contacto">Contacto</a>
+  <a href="servicios.html" data-i18n="nav.que">Qué hacemos</a>
+  <a class="mob-sub" href="servicios/ia-soberana.html">IA soberana y datos</a>
+  <a class="mob-sub" href="servicios/chatbots.html">Automatización y atención</a>
+  <a class="mob-sub" href="servicios/webs.html">Webs y experiencia digital</a>
+  <a class="mob-sub" href="servicios/software.html">Software e integraciones</a>
+  <a href="blog.html" data-i18n="nav.ideas">Nuestras ideas</a>
+  <a href="nosotros.html" data-i18n="nav.quienes">Quiénes somos</a>
+  <a class="mob-sub" href="soberania.html">Soberanía del dato</a>
+  <a class="mob-sub" href="contacto.html">Contacto</a>
   <a href="/expedienta" class="mob-exp"><span class="nav-exp-dot" aria-hidden="true"></span>Expedienta</a>
-  <a href="contacto.html" onclick="closeMenu()" class="mob-cta" data-i18n="nav.cta">Hablemos</a>
+  <a href="contacto.html" class="mob-cta" data-i18n="nav.cta">Hablemos</a>
 </div>
 
 <!-- ===== NAV ===== -->
@@ -1454,19 +1502,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <img src="public/logo-icon.png" alt="fluentIA" width="32" height="32" fetchpriority="high">
   </a>
   <ul class="nav-links" role="list">
-    <li><a href="#inicio" data-i18n="nav.inicio">Inicio</a></li>
     <li class="has-drop">
-      <a href="servicios.html" data-i18n="nav.servicios" aria-haspopup="true" aria-expanded="false">Servicios
-        <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
+      <a href="servicios.html" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.que">Qué hacemos</span><svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
       <div class="dropdown mega" role="menu">
         <div class="mega-col">
-          <span class="mega-h">Servicios</span>
-          <a href="servicios/ia-soberana.html" role="menuitem"><span class="dd-t">IA soberana</span><span class="dd-d">Tu IA sobre tus datos</span></a>
-          <a href="servicios/chatbots.html" role="menuitem"><span class="dd-t">Chatbots</span><span class="dd-d">Soporte 24/7 y WhatsApp</span></a>
-          <a href="servicios/webs.html" role="menuitem"><span class="dd-t">Webs premium</span><span class="dd-d">A la altura de tu marca</span></a>
-          <a href="servicios/software.html" role="menuitem"><span class="dd-t">Software a medida</span><span class="dd-d">Integraciones, CRM y apps</span></a>
-          <a href="servicios.html" role="menuitem" class="dd-all">Ver todos los servicios &rarr;</a>
+          <span class="mega-h">Capacidades</span>
+          <a href="servicios/ia-soberana.html" role="menuitem"><span class="dd-t">IA soberana y datos</span><span class="dd-d">Tu IA sobre tu SQL, tu SharePoint y tus documentos</span></a>
+          <a href="servicios/chatbots.html" role="menuitem"><span class="dd-t">Automatización y atención</span><span class="dd-d">Chatbots de WhatsApp y web, citas y pedidos</span></a>
+          <a href="servicios/webs.html" role="menuitem"><span class="dd-t">Webs y experiencia digital</span><span class="dd-d">Webs premium, portales y tiendas a medida</span></a>
+          <a href="servicios/software.html" role="menuitem"><span class="dd-t">Software e integraciones</span><span class="dd-d">Aplicaciones internas, CRM y automatización</span></a>
+          <a href="servicios.html" role="menuitem" class="dd-all">Ver todo lo que hacemos &rarr;</a>
         </div>
         <div class="mega-col">
           <span class="mega-h">Sectores</span>
@@ -1484,16 +1529,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
     </li>
-    <li><a href="soberania.html" data-i18n="nav.sob">Soberanía</a></li>
-    <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
-    <li><a href="nosotros.html" data-i18n="nav.nosotros">Nosotros</a></li>
-    <li><a href="/expedienta" class="nav-exp"><span class="nav-exp-dot" aria-hidden="true"></span>Expedienta</a></li>
-    <li><a href="contacto.html" class="nav-cta" data-i18n="nav.cta">Hablemos</a></li>
+    <li><a href="blog.html" data-i18n="nav.ideas">Nuestras ideas</a></li>
+    <li class="has-drop has-mini">
+      <a href="nosotros.html" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.quienes">Quiénes somos</span><svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+      <div class="dropdown mini" role="menu">
+        <a href="nosotros.html" role="menuitem"><span class="dd-t">Nosotros</span><span class="dd-d">Quién hay detrás de fluentIA</span></a>
+        <a href="soberania.html" role="menuitem"><span class="dd-t">Soberanía del dato</span><span class="dd-d">Por qué tus datos se quedan en casa</span></a>
+        <a href="servicios.html#proceso" role="menuitem"><span class="dd-t">Cómo trabajamos</span><span class="dd-d">De la idea a producción en cuatro pasos</span></a>
+        <a href="contacto.html" role="menuitem"><span class="dd-t">Contacto</span><span class="dd-d">Escríbenos o llámanos</span></a>
+      </div>
+    </li>
+    <li><a href="/expedienta">Expedienta</a></li>
   </ul>
-  <div class="lang-switcher" role="group" aria-label="Idioma">
-    <button class="lang-btn active" onclick="setLang('es')" data-lang="es">ES</button>
-    <button class="lang-btn" onclick="setLang('en')" data-lang="en">EN</button>
-    <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">FR</button>
+  <div class="nav-right">
+    <div class="lang-menu" id="lang-menu">
+      <button type="button" class="lang-main" aria-haspopup="true" aria-expanded="false" aria-label="Idioma"><svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-cur">ES</span><svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-list" role="menu">
+        <button type="button" role="menuitem" class="lang-btn active" onclick="setLang('es')" data-lang="es">Español</button>
+        <button type="button" role="menuitem" class="lang-btn" onclick="setLang('en')" data-lang="en">English</button>
+        <button type="button" role="menuitem" class="lang-btn" onclick="setLang('fr')" data-lang="fr">Français</button>
+      </div>
+    </div>
+    <a href="contacto.html" class="link-sq nav-talk"><span data-i18n="nav.cta">Hablemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
   </div>
   <button class="nav-hamburger" onclick="openMenu()" aria-label="Abrir menú" aria-expanded="false">
     <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true">
@@ -1607,16 +1664,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="section-label" data-i18n="exp.label">Nuestro producto</span>
         <h2 id="expedienta-title"><span data-i18n="exp.h2.0">Expedienta.</span><br><em data-i18n="exp.h2.1">La IA para asesorías y gestorías.</em></h2>
         <p class="exp-lead" data-i18n="exp.p">Todo el conocimiento del despacho, preguntando: sus expedientes, la norma vigente, los convenios y las subvenciones. Cada dato llega con su fuente, para comprobarlo antes de firmar.</p>
-        <ul class="feature-list" data-i18n="exp.l">
-          <li>Responde con el archivo del despacho y cita el documento</li>
-          <li>Legislación del BOE al día, con cada versión por fecha</li>
-          <li>Convenios colectivos y subvenciones vigentes por cliente</li>
-          <li>IA soberana: datos y consultas en la Unión Europea</li>
-        </ul>
-        <div class="exp-ctas">
-          <a href="/expedienta" class="btn-primary"><span data-i18n="exp.cta1">Conocer Expedienta</span> <span aria-hidden="true">&rarr;</span></a>
-          <a href="/expedienta#contacto" class="btn-secondary" data-i18n="exp.cta2">Pedir demostración</a>
-        </div>
+        <a href="/expedienta" class="link-sq exp-link"><span data-i18n="exp.cta1">Conocer Expedienta</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
         <p class="exp-note" data-i18n="exp.note">Desde 29 € por usuario y mes · sin permanencia</p>
       </div>
       <a href="/expedienta" class="exp-demo" aria-label="Ver Expedienta: ejemplo de respuesta con la fuente de cada dato">
@@ -1655,57 +1703,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 id="servicios-title" data-i18n="svc.h2">Empezamos por lo pequeño.<br>Crecemos contigo.</h2>
     <p class="section-sub" data-i18n="svc.sub">La mayoría de nuestros clientes entra por el chatbot o por la web y, cuando ve cómo trabajamos, nos pide lo grande. Tú eliges el primer peldaño.</p>
 
-    <div class="svc-grid" role="list">
-
-      <article class="svc-card svc-featured" id="svc-soberana" role="listitem">
-        <span class="svc-badge" data-i18n="svc.b.b">Lo grande · IA soberana</span>
-        <h3 data-i18n="svc.b.t">Tu IA conectada a tus datos, dentro de tu empresa</h3>
-        <p data-i18n="svc.b.p">Le preguntas en castellano y ella busca en tu SQL, en tu SharePoint y en tus documentos. Corre en tus servidores o en los nuestros, con nuestra propia IA en casa y una conexión privada solo para ti. Nada viaja a Estados Unidos.</p>
-        <ul class="feature-list" data-i18n="svc.b.l">
-          <li>Pregunta a tus bases de datos con tus palabras</li>
-          <li>Busca en SharePoint y en tu documentación interna</li>
-          <li>En tus servidores o en los nuestros, nunca en nubes americanas</li>
-          <li>Tus datos aislados y en solo lectura</li>
-          <li>Y si lo necesitas, una IA entrenada aposta para ser experta en lo tuyo</li>
-        </ul>
-        <a href="servicios/ia-soberana.html" class="svc-link" data-i18n="svc.b.cta">Cuéntanos tu caso <span aria-hidden="true">&rarr;</span></a>
-      </article>
-
-      <article class="svc-card" id="svc-chatbot" role="listitem">
-        <span class="svc-badge" data-i18n="svc.a.b">La entrada · Chatbot de soporte</span>
-        <h3 data-i18n="svc.a.t">Un chatbot que atiende por ti</h3>
-        <p data-i18n="svc.a.p">Responde a tus clientes a cualquier hora con tu información real: pedidos, dudas, citas. Se monta en semanas y lo notas el primer mes.</p>
-        <ul class="feature-list" data-i18n="svc.a.l">
-          <li>Atención 24/7 en web o WhatsApp</li>
-          <li>Responde solo con tu información</li>
-          <li>Deriva a una persona cuando toca</li>
-        </ul>
-        <a href="servicios/chatbots.html" class="svc-link" data-i18n="svc.a.cta">Cuéntanos tu caso <span aria-hidden="true">&rarr;</span></a>
-      </article>
-
-      <article class="svc-card" id="svc-webs" role="listitem">
-        <span class="svc-badge" data-i18n="svc.w.b">Webs premium</span>
-        <h3 data-i18n="svc.w.t">Webs que están a tu altura</h3>
-        <p data-i18n="svc.w.p">Webs corporativas, portales e intranets hechos a mano, sin plantillas. Rápidas, cuidadas y pensadas para convertir.</p>
-        <ul class="feature-list" data-i18n="svc.w.l">
-          <li>Webs de empresa y e-commerce</li>
-          <li>Portales e intranets</li>
-          <li>También la web personal de un deportista o un actor</li>
-        </ul>
-        <a href="servicios/webs.html" class="svc-link" data-i18n="svc.w.cta">Cuéntanos tu caso <span aria-hidden="true">&rarr;</span></a>
-      </article>
-
+    <!-- Mega acordeón, como el "rad-mega-accordion" de Accenture: número, titular y subtítulo; uno abierto cada vez -->
+    <div class="acc" id="acc">
+      <div class="acc-item is-open">
+        <button type="button" class="acc-sum" aria-expanded="true" aria-controls="acc-1">
+          <span class="acc-num">01</span>
+          <span class="acc-head"><span class="acc-title" data-i18n="svc.b.t"></span><span class="acc-sub" data-i18n="svc.b.b"></span></span>
+          <span class="acc-icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body" id="acc-1">
+          <div class="acc-inner">
+            <p data-i18n="svc.b.p"></p>
+            <ul class="feature-list" data-i18n="svc.b.l"></ul>
+            <a href="servicios/ia-soberana.html" class="link-sq"><span data-i18n="svc.b.cta"></span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button type="button" class="acc-sum" aria-expanded="false" aria-controls="acc-2">
+          <span class="acc-num">02</span>
+          <span class="acc-head"><span class="acc-title" data-i18n="svc.a.t"></span><span class="acc-sub" data-i18n="svc.a.b"></span></span>
+          <span class="acc-icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body" id="acc-2" hidden>
+          <div class="acc-inner">
+            <p data-i18n="svc.a.p"></p>
+            <ul class="feature-list" data-i18n="svc.a.l"></ul>
+            <a href="servicios/chatbots.html" class="link-sq"><span data-i18n="svc.a.cta"></span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button type="button" class="acc-sum" aria-expanded="false" aria-controls="acc-3">
+          <span class="acc-num">03</span>
+          <span class="acc-head"><span class="acc-title" data-i18n="svc.w.t"></span><span class="acc-sub" data-i18n="svc.w.b"></span></span>
+          <span class="acc-icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body" id="acc-3" hidden>
+          <div class="acc-inner">
+            <p data-i18n="svc.w.p"></p>
+            <ul class="feature-list" data-i18n="svc.w.l"></ul>
+            <a href="servicios/webs.html" class="link-sq"><span data-i18n="svc.w.cta"></span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button type="button" class="acc-sum" aria-expanded="false" aria-controls="acc-4">
+          <span class="acc-num">04</span>
+          <span class="acc-head"><span class="acc-title" data-i18n="svc.d.t"></span><span class="acc-sub" data-i18n="svc.d.b"></span></span>
+          <span class="acc-icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc-body" id="acc-4" hidden>
+          <div class="acc-inner">
+            <p data-i18n="svc.d.p"></p>
+            
+            <a href="servicios/software.html" class="link-sq"><span data-i18n="svc.d.cta"></span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="svc-eng">
-      <span class="svc-badge" data-i18n="svc.d.b">El siguiente peldaño · Ingeniería a medida</span>
-      <h4 data-i18n="svc.d.t">¿Y si mañana necesitas más?</h4>
-      <p data-i18n="svc.d.p">Cuando ya trabajamos juntos, también nos encargamos de lo que venga después: integraciones, aplicaciones internas, automatización de procesos y desarrollo a medida. Ingeniería de software de verdad, con la misma manera de trabajar.</p>
-      <a href="servicios/software.html" class="svc-link" data-i18n="svc.d.cta">Cuéntanos qué tienes en mente <span aria-hidden="true">&rarr;</span></a>
-    </div>
+    <a href="servicios.html" class="link-sq sec-more"><span data-i18n="svc.more">Ver todo lo que hacemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
   </div>
-
-  <div style="text-align:center;margin-top:34px;"><a href="servicios.html" class="btn-secondary" style="display:inline-flex;">Ver todos los servicios &rarr;</a></div>
 </section>
 
 
@@ -1805,27 +1863,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <span class="section-label leaders-label" data-i18n="why.lead">Nuestros líderes</span>
     <div class="founder">
-      <img class="founder-photo" src="fotodiego.jpg" alt="Diego Morales Parra, fundador de fluentIA" width="104" height="104">
+      <img class="founder-photo" src="fotodiego.jpg" alt="Diego Morales Parra, fundador de fluentIA" width="400" height="400">
       <div class="founder-body">
         <h3>Diego Morales Parra</h3>
         <div class="founder-role" data-i18n="founder.role">Fundador de fluentIA</div>
         <p data-i18n="founder.p1">Físico de formación y máster en Dirección de Procesos Estratégicos. Mi carrera ha girado siempre en torno a la misma idea: hacer que los procesos funcionen mejor.</p>
         <p data-i18n="founder.p2">En <strong>Capgemini</strong> y otras grandes consultoras he trabajado en <strong>hiperautomatización</strong> y BPM sobre proyectos de banca, automatizando flujos críticos de principio a fin. Certificación <strong>senior de Appian</strong>, <strong>BPMN 2.0</strong> y <strong>Six Sigma</strong>: primero el proceso, luego la tecnología.</p>
         <p data-i18n="founder.p3">Ahí vi el problema: esa potencia solo estaba al alcance de las grandes corporaciones. fluentIA nace para cambiarlo, para que cualquier empresa, <strong>del tamaño que sea</strong>, pueda acceder a la IA y a la automatización para impulsar su negocio.</p>
-        <a class="btn-linkedin" href="https://www.linkedin.com/in/diego-morales-parra-27a666276/" target="_blank" rel="noopener">
+        <a class="link-sq founder-link" href="https://www.linkedin.com/in/diego-morales-parra-27a666276/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           <span data-i18n="founder.linkedin">Conóceme en LinkedIn</span>
         </a>
-        <a class="btn-linkedin" href="https://www.diegomoralesbpm.com" target="_blank" rel="noopener" style="margin-left:10px;">
+        <a class="link-sq founder-link" href="https://www.diegomoralesbpm.com" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
           <span data-i18n="founder.blog">Mis artículos de BPM e IA</span>
         </a>
+        <a href="nosotros.html" class="link-sq sec-more"><span data-i18n="why.more">Conócenos mejor</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
       </div>
     </div>
   </div>
 
-  <div style="text-align:center;margin-top:34px;"><a href="nosotros.html" class="btn-secondary" style="display:inline-flex;">Conócenos mejor &rarr;</a></div>
 </section>
 
 <!-- ===============================
@@ -1963,6 +2022,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ================================================ */
 var TRANSLATIONS = {
   es: {
+    'svc.more':'Ver todo lo que hacemos','why.lead':'Nuestros líderes','why.more':'Conócenos mejor',
+    'nav.que':'Qué hacemos','nav.ideas':'Nuestras ideas','nav.quienes':'Quiénes somos',
     'tr.1d':'Tus datos y tus consultas se procesan en la Unión Europea, con proveedor europeo. Firmamos el contrato de encargado de tratamiento y documentamos cada acceso.','tr.2d':'Somos ingenieros, no una plataforma. Hablas siempre con quien construye tu sistema, en remoto o en tu oficina, y seguimos ahí después de la entrega.','tr.3d':'La IA viene a tus datos, no al revés: en tus servidores o en los nuestros, con una conexión privada y sin servicios de IA de Estados Unidos por medio.','tr.4d':'FLUENTIA DIGITAL, S.L. está acogida a la ayuda de tarifa plana del Fondo Social Europeo Plus, gestionada por la Junta de Comunidades de Castilla-La Mancha.',
     'ft.5.k':'Servicio','ft.5.t':'Chatbots por WhatsApp que dan citas y responden pedidos','ft.5.p':'Atienden a tus clientes a cualquier hora con tu información real y pasan a una persona cuando toca.','ft.6.k':'Caso','ft.6.t':'La web oficial de un futbolista profesional','ft.6.p':'Trayectoria, estadísticas y sala de prensa para clubs y marcas, a la altura de quien decide.','ft.7.k':'Servicio','ft.7.t':'Webs premium hechas a mano, sin plantillas','ft.7.p':'Corporativas, portales, intranets y tiendas online rápidas y pensadas para convertir.','ft.8.k':'Blog','ft.8.t':'Sprints y revisión con el cliente: así trabajamos','ft.8.p':'Entregas cortas, demostración cada dos semanas y precio cerrado por escrito antes de empezar.',
     'man.h2.0':'Tus datos.','man.h2.1':'Tu IA.','man.p':'Cada día ayudamos a empresas de Albacete y de toda España a trabajar con inteligencia artificial sin ceder el control de su información.','tr.h2':'Por qué confiar.','tr.1':'Datos en Europa y contrato RGPD de encargado de tratamiento.','tr.2':'Ingeniería hecha en Albacete, con alguien que coge el teléfono.','tr.3':'IA soberana: tu información nunca pasa por nubes americanas.','tr.4':'Empresa cofinanciada por la Unión Europea y la Junta de Castilla-La Mancha.','ci.label':'Hablemos','ci.h2':'Hablas siempre con quien construye tu sistema.','ci.p':'Sin comerciales por medio. Nos cuentas qué te roba tiempo y te decimos, por escrito y con precio cerrado, cómo lo resolvemos.','ci.cta':'Cuéntanos tu caso','ci.wa':'Hablar por WhatsApp','ci.cap':'Fundador de fluentIA',
@@ -1976,21 +2037,21 @@ var TRANSLATIONS = {
     'svc.b.t':'Tu IA conectada a tus datos, dentro de tu empresa',
     'svc.b.p':'Le preguntas en castellano y ella busca en tu SQL, en tu SharePoint y en tus documentos. Corre en tus servidores o en los nuestros, con nuestra propia IA en casa y una conexión privada solo para ti. Nada viaja a Estados Unidos.',
     'svc.b.l':'<li>Pregunta a tus bases de datos con tus palabras</li><li>Busca en SharePoint y en tu documentación interna</li><li>En tus servidores o en los nuestros, nunca en nubes americanas</li><li>Tus datos aislados y en solo lectura</li><li>Y si lo necesitas, una IA entrenada aposta para ser experta en lo tuyo</li>',
-    'svc.b.cta':'Ver el servicio <span aria-hidden="true">&rarr;</span>',
+    'svc.b.cta':'Ver el servicio',
     'svc.a.b':'La entrada · Chatbot de soporte',
     'svc.a.t':'Un chatbot que atiende por ti',
     'svc.a.p':'Responde a tus clientes a cualquier hora con tu información real: pedidos, dudas, citas. Se monta en semanas y lo notas el primer mes.',
     'svc.a.l':'<li>Atención 24/7 en web o WhatsApp</li><li>Responde solo con tu información</li><li>Deriva a una persona cuando toca</li>',
-    'svc.a.cta':'Ver el servicio <span aria-hidden="true">&rarr;</span>',
+    'svc.a.cta':'Ver el servicio',
     'svc.w.b':'Webs premium',
     'svc.w.t':'Webs que están a tu altura',
     'svc.w.p':'Webs corporativas, portales e intranets hechos a mano, sin plantillas. Rápidas, cuidadas y pensadas para convertir.',
     'svc.w.l':'<li>Webs de empresa y e-commerce</li><li>Portales e intranets</li><li>También la web personal de un deportista o un actor</li>',
-    'svc.w.cta':'Ver el servicio <span aria-hidden="true">&rarr;</span>',
+    'svc.w.cta':'Ver el servicio',
     'svc.d.b':'El siguiente peldaño · Ingeniería a medida',
     'svc.d.t':'¿Y si mañana necesitas más?',
     'svc.d.p':'Cuando ya trabajamos juntos, también nos encargamos de lo que venga después: integraciones, aplicaciones internas, automatización de procesos y desarrollo a medida. Ingeniería de software de verdad, con la misma manera de trabajar.',
-    'svc.d.cta':'Ver el servicio <span aria-hidden="true">&rarr;</span>',
+    'svc.d.cta':'Ver el servicio',
     'nav.sob':'Soberanía',
     'sov.label':'Te lo explicamos en una pizarra',
     'sov.h2':'Así se queda todo en casa.',
@@ -2013,19 +2074,19 @@ var TRANSLATIONS = {
     'icp.d.cta':'Cuéntanos tu caso <span aria-hidden="true">&rarr;</span>',
     'case.label':'Casos reales',
     'case.h2':'Así se empieza con nosotros.',
-    'case.sub':'Proyectos de entrada ya funcionando: webs y chatbots. La confianza para lo grande se construye así. Sin nombres por confidencialidad: en una llamada te los enseñamos.',
+    'case.sub':'Tres proyectos ya en producción: la barbería Casablanca, la web de Alex Rubio y la tienda de MiMetaEnMarco. La confianza para lo grande se construye así.',
     'case.c1.tag':'Web premium · Entregado',
-    'case.c1.t':'Web oficial de un futbolista profesional',
+    'case.c1.t':'La web oficial de Alex Rubio, delantero del Albacete',
     'case.c1.p':'Trayectoria, estadísticas, galería y contacto para clubs y marcas. Una presencia a la altura de quien decide.',
     'case.c1.m':'Diseño a medida · Multiidioma · Sala de prensa',
     'case.c1.cta':'Quiero algo así',
     'case.c2.tag':'Automatización · En producción',
-    'case.c2.t':'Citas por WhatsApp para una peluquería',
+    'case.c2.t':'Citas por WhatsApp para Barbería Casablanca',
     'case.c2.p':'Un chatbot que da, cambia y cancela citas 24/7 y gestiona la lista de espera. Cero llamadas perdidas y nadie pendiente del teléfono.',
     'case.c2.m':'WhatsApp · Reservas 24/7 · Lista de espera',
     'case.c2.cta':'Probarlo en mi negocio',
     'case.c3.tag':'Web premium · Entregado',
-    'case.c3.t':'E-commerce de producto artesanal',
+    'case.c3.t':'La tienda online de MiMetaEnMarco',
     'case.c3.p':'Tienda online a medida para un fabricante artesanal: catálogo, pagos y una imagen que hace justicia al producto.',
     'case.c3.m':'Tienda online · Pagos · Diseño a medida',
     'case.c3.cta':'Quiero algo así',
@@ -2161,6 +2222,7 @@ var TRANSLATIONS = {
     'ft.legal0':'Aviso legal','ft.legal1':'Política de privacidad','ft.legal2':'Términos de uso','ft.legal3':'Cookies'
   },
   en: {
+    'svc.more':'See everything we do','why.lead':'Our leaders','why.more':'Get to know us',
     'tr.1d':'Your data and your queries are processed in the European Union with a European provider. We sign the data-processing agreement and log every access.','tr.2d':'We are engineers, not a platform. You always talk to the person who builds your system, remotely or at your office, and we stay after delivery.','tr.3d':'The AI comes to your data, not the other way round: on your servers or on ours, over a private connection and with no US AI services in between.','tr.4d':'FLUENTIA DIGITAL, S.L. receives the flat-rate aid of the European Social Fund Plus, managed by the Government of Castilla-La Mancha.',
     'ft.5.k':'Service','ft.5.t':'WhatsApp chatbots that book appointments and answer orders','ft.5.p':'They serve your customers at any hour with your real information and hand over to a person when needed.','ft.6.k':'Case study','ft.6.t':'The official website of a professional footballer','ft.6.p':'Career, stats and press room for clubs and brands, at the level of those who decide.','ft.7.k':'Service','ft.7.t':'Premium websites built by hand, no templates','ft.7.p':'Corporate sites, portals, intranets and online shops that load fast and are built to convert.','ft.8.k':'Blog','ft.8.t':'Sprints and client reviews: how we work','ft.8.p':'Short deliveries, a demo every two weeks and a fixed price in writing before we start.',
     'man.h2.0':'Your data.','man.h2.1':'Your AI.','man.p':'Every day we help companies in Albacete and across Spain work with artificial intelligence without giving up control of their information.','tr.h2':'Why trust us.','tr.1':'Data in Europe and a GDPR data-processing agreement.','tr.2':'Engineering made in Albacete, with someone who picks up the phone.','tr.3':'Sovereign AI: your information never passes through American clouds.','tr.4':'Company co-funded by the European Union and the Government of Castilla-La Mancha.','ci.label':'Let\u2019s talk','ci.h2':'You always talk to the person who builds your system.','ci.p':'No sales reps in between. Tell us what eats your time and we tell you, in writing and with a fixed price, how we solve it.','ci.cta':'Tell us your case','ci.wa':'Chat on WhatsApp','ci.cap':'Founder of fluentIA',
@@ -2174,21 +2236,21 @@ var TRANSLATIONS = {
     'svc.b.t':'Your AI connected to your data, inside your company',
     'svc.b.p':'You ask it in plain language and it searches your SQL, your SharePoint and your documents. It runs on your servers or on ours, with our own AI at home and a private connection just for you. Nothing travels to the United States.',
     'svc.b.l':'<li>Ask your databases in your own words</li><li>Searches SharePoint and your internal documentation</li><li>On your servers or on ours, never in American clouds</li><li>Your data isolated and read only</li><li>And if you need it, an AI trained on purpose to be an expert in your field</li>',
-    'svc.b.cta':'See the service <span aria-hidden="true">&rarr;</span>',
+    'svc.b.cta':'See the service',
     'svc.a.b':'The way in · Support chatbot',
     'svc.a.t':'A chatbot that answers for you',
     'svc.a.p':'It replies to your customers at any hour with your real information: orders, questions, bookings. Set up in weeks, and you feel it the first month.',
     'svc.a.l':'<li>24/7 support on web or WhatsApp</li><li>Answers only with your information</li><li>Hands over to a person when needed</li>',
-    'svc.a.cta':'See the service <span aria-hidden="true">&rarr;</span>',
+    'svc.a.cta':'See the service',
     'svc.w.b':'Premium websites',
     'svc.w.t':'Websites that live up to you',
     'svc.w.p':'Corporate websites, portals and intranets built by hand, no templates. Fast, polished and made to convert.',
     'svc.w.l':'<li>Business websites and e-commerce</li><li>Portals and intranets</li><li>Also the personal site of an athlete or an actor</li>',
-    'svc.w.cta':'See the service <span aria-hidden="true">&rarr;</span>',
+    'svc.w.cta':'See the service',
     'svc.d.b':'The next step · Custom engineering',
     'svc.d.t':'What if you need more one day?',
     'svc.d.p':'Once we already work together, we also take care of whatever comes next: integrations, internal apps, process automation and custom development. Real software engineering, with the same way of working.',
-    'svc.d.cta':'See the service <span aria-hidden="true">&rarr;</span>',
+    'svc.d.cta':'See the service',
     'nav.sob':'Sovereignty',
     'sov.label':'We explain it on a whiteboard',
     'sov.h2':'This is how everything stays home.',
@@ -2211,19 +2273,19 @@ var TRANSLATIONS = {
     'icp.d.cta':'Tell us your case <span aria-hidden="true">&rarr;</span>',
     'case.label':'Real projects',
     'case.h2':'This is how it starts with us.',
-    'case.sub':'Entry projects already running: websites and chatbots. That is how trust for the big one is built. No names for confidentiality: we will show them to you on a call.',
+    'case.sub':'Three projects already live: the Casablanca barbershop, Alex Rubio\u2019s website and the MiMetaEnMarco shop. That is how trust for the big things is built.',
     'case.c1.tag':'Premium web · Delivered',
-    'case.c1.t':'Official website of a professional footballer',
+    'case.c1.t':'The official website of Alex Rubio, Albacete forward',
     'case.c1.p':'Career, stats, gallery and contact for clubs and brands. A presence that matches the level of those who decide.',
     'case.c1.m':'Bespoke design · Multilingual · Press room',
     'case.c1.cta':'I want something like this',
     'case.c2.tag':'Automation · In production',
-    'case.c2.t':'WhatsApp bookings for a hair salon',
+    'case.c2.t':'WhatsApp bookings for Barbería Casablanca',
     'case.c2.p':'A chatbot that books, changes and cancels appointments 24/7 and manages the waiting list. Zero missed calls, nobody tied to the phone.',
     'case.c2.m':'WhatsApp · 24/7 bookings · Waiting list',
     'case.c2.cta':'Try it in my business',
     'case.c3.tag':'Premium web · Delivered',
-    'case.c3.t':'E-commerce for an artisan product',
+    'case.c3.t':'The MiMetaEnMarco online shop',
     'case.c3.p':'A bespoke online store for an artisan maker: catalogue, payments and an image that does the product justice.',
     'case.c3.m':'Online store · Payments · Bespoke design',
     'case.c3.cta':'I want something like this',
@@ -2359,6 +2421,7 @@ var TRANSLATIONS = {
     'ft.legal0':'Legal notice','ft.legal1':'Privacy policy','ft.legal2':'Terms of use','ft.legal3':'Cookies'
   },
   fr: {
+    'svc.more':'Voir tout ce que nous faisons','why.lead':'Nos dirigeants','why.more':'Mieux nous connaître',
     'tr.1d':'Vos données et vos requêtes sont traitées dans l\u2019Union européenne, avec un prestataire européen. Nous signons le contrat de sous-traitance et consignons chaque accès.','tr.2d':'Nous sommes des ingénieurs, pas une plateforme. Vous parlez toujours avec la personne qui construit votre système, à distance ou dans vos bureaux, et nous restons après la livraison.','tr.3d':'L\u2019IA vient à vos données, et non l\u2019inverse : sur vos serveurs ou sur les nôtres, par une connexion privée et sans services d\u2019IA américains entre les deux.','tr.4d':'FLUENTIA DIGITAL, S.L. bénéficie de l\u2019aide forfaitaire du Fonds social européen Plus, gérée par la Junta de Comunidades de Castilla-La Mancha.',
     'ft.5.k':'Service','ft.5.t':'Des chatbots WhatsApp qui prennent les rendez-vous et répondent aux commandes','ft.5.p':'Ils servent vos clients à toute heure avec vos vraies informations et passent la main à une personne quand il le faut.','ft.6.k':'Cas client','ft.6.t':'Le site officiel d\u2019un footballeur professionnel','ft.6.p':'Parcours, statistiques et espace presse pour clubs et marques, à la hauteur de ceux qui décident.','ft.7.k':'Service','ft.7.t':'Des sites premium faits main, sans modèles','ft.7.p':'Sites corporate, portails, intranets et boutiques en ligne rapides et conçus pour convertir.','ft.8.k':'Blog','ft.8.t':'Sprints et revues avec le client : notre façon de travailler','ft.8.p':'Livraisons courtes, démonstration toutes les deux semaines et prix fixe par écrit avant de commencer.',
     'man.h2.0':'Vos données.','man.h2.1':'Votre IA.','man.p':'Chaque jour, nous aidons des entreprises d\u2019Albacete et de toute l\u2019Espagne à travailler avec l\u2019intelligence artificielle sans céder le contrôle de leurs informations.','tr.h2':'Pourquoi nous faire confiance.','tr.1':'Données en Europe et contrat RGPD de sous-traitant.','tr.2':'Ingénierie faite à Albacete, avec quelqu\u2019un qui décroche le téléphone.','tr.3':'IA souveraine : vos informations ne passent jamais par des clouds américains.','tr.4':'Entreprise cofinancée par l\u2019Union européenne et la Junta de Castilla-La Mancha.','ci.label':'Parlons-en','ci.h2':'Vous parlez toujours avec la personne qui construit votre système.','ci.p':'Pas de commerciaux entre nous. Vous nous dites ce qui vous fait perdre du temps et nous vous répondons, par écrit et à prix fixe, comment nous le résolvons.','ci.cta':'Parlez-nous de votre cas','ci.wa':'Discuter sur WhatsApp','ci.cap':'Fondateur de fluentIA',
@@ -2372,21 +2435,21 @@ var TRANSLATIONS = {
     'svc.b.t':'Votre IA connectée à vos données, dans votre entreprise',
     'svc.b.p':'Vous lui posez la question et elle cherche dans votre SQL, votre SharePoint et vos documents. Elle tourne sur vos serveurs ou sur les nôtres, avec notre propre IA à la maison et une connexion privée rien que pour vous. Rien ne part aux États-Unis.',
     'svc.b.l':'<li>Interrogez vos bases de données avec vos mots</li><li>Cherche dans SharePoint et votre documentation interne</li><li>Sur vos serveurs ou sur les nôtres, jamais dans des clouds américains</li><li>Vos données isolées et en lecture seule</li><li>Et si besoin, une IA entraînée exprès pour être experte dans votre domaine</li>',
-    'svc.b.cta':'Voir le service <span aria-hidden="true">&rarr;</span>',
+    'svc.b.cta':'Voir le service',
     'svc.a.b':'La porte d\'entrée · Chatbot de support',
     'svc.a.t':'Un chatbot qui répond pour vous',
     'svc.a.p':'Il répond à vos clients à toute heure avec vos informations réelles : commandes, questions, rendez-vous. En place en quelques semaines, et vous le sentez dès le premier mois.',
     'svc.a.l':'<li>Support 24/7 sur web ou WhatsApp</li><li>Répond uniquement avec vos informations</li><li>Passe la main à une personne quand il faut</li>',
-    'svc.a.cta':'Voir le service <span aria-hidden="true">&rarr;</span>',
+    'svc.a.cta':'Voir le service',
     'svc.w.b':'Sites web premium',
     'svc.w.t':'Des sites web à votre hauteur',
     'svc.w.p':'Sites corporate, portails et intranets faits main, sans modèles. Rapides, soignés et pensés pour convertir.',
     'svc.w.l':'<li>Sites d\'entreprise et e-commerce</li><li>Portails et intranets</li><li>Aussi le site personnel d\'un sportif ou d\'un acteur</li>',
-    'svc.w.cta':'Voir le service <span aria-hidden="true">&rarr;</span>',
+    'svc.w.cta':'Voir le service',
     'svc.d.b':'La marche suivante · Ingénierie sur mesure',
     'svc.d.t':'Et si un jour il vous faut plus ?',
     'svc.d.p':'Quand nous travaillons déjà ensemble, nous prenons aussi en charge la suite : intégrations, applications internes, automatisation des processus et développement sur mesure. De la vraie ingénierie logicielle, avec la même façon de travailler.',
-    'svc.d.cta':'Voir le service <span aria-hidden="true">&rarr;</span>',
+    'svc.d.cta':'Voir le service',
     'nav.sob':'Souveraineté',
     'sov.label':'On vous l\'explique sur un tableau',
     'sov.h2':'Voilà comment tout reste à la maison.',
@@ -2409,19 +2472,19 @@ var TRANSLATIONS = {
     'icp.d.cta':'Parlez-nous de votre cas <span aria-hidden="true">&rarr;</span>',
     'case.label':'Projets réels',
     'case.h2':'Voilà comment ça commence avec nous.',
-    'case.sub':'Des projets d\'entrée déjà en service : sites web et chatbots. C\'est ainsi que se construit la confiance pour le grand projet. Pas de noms par confidentialité : nous vous les montrons lors d\'un appel.',
+    'case.sub':'Trois projets déjà en production : le salon Casablanca, le site d\u2019Alex Rubio et la boutique MiMetaEnMarco. C\u2019est ainsi que se construit la confiance pour les grands projets.',
     'case.c1.tag':'Web premium · Livré',
-    'case.c1.t':'Site officiel d\'un footballeur professionnel',
+    'case.c1.t':'Le site officiel d\u2019Alex Rubio, attaquant d\u2019Albacete',
     'case.c1.p':'Parcours, statistiques, galerie et contact pour clubs et marques. Une présence à la hauteur de ceux qui décident.',
     'case.c1.m':'Design sur mesure · Multilingue · Espace presse',
     'case.c1.cta':'Je veux la même chose',
     'case.c2.tag':'Automatisation · En production',
-    'case.c2.t':'Rendez-vous WhatsApp pour un salon de coiffure',
+    'case.c2.t':'Rendez-vous WhatsApp pour Barbería Casablanca',
     'case.c2.p':'Un chatbot qui donne, modifie et annule les rendez-vous 24/7 et gère la liste d\'attente. Zéro appel manqué, personne au téléphone.',
     'case.c2.m':'WhatsApp · Réservations 24/7 · Liste d\'attente',
     'case.c2.cta':'L\'essayer dans mon entreprise <span aria-hidden="true">&rarr;</span>',
     'case.c3.tag':'Web premium · Livré',
-    'case.c3.t':'E-commerce de produit artisanal',
+    'case.c3.t':'La boutique en ligne de MiMetaEnMarco',
     'case.c3.p':'Une boutique en ligne sur mesure pour un fabricant artisanal : catalogue, paiements et une image à la hauteur du produit.',
     'case.c3.m':'Boutique en ligne · Paiements · Design sur mesure',
     'case.c3.cta':'Je veux la même chose',
@@ -2704,6 +2767,21 @@ document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePriva
   },{passive:true});
 })();
 
+/* ---- QUÉ HACEMOS: acordeón con uno abierto cada vez ---- */
+(function(){
+  var acc=document.getElementById('acc');if(!acc)return;
+  var items=[].slice.call(acc.querySelectorAll('.acc-item'));
+  items.forEach(function(it){
+    var btn=it.querySelector('.acc-sum'),body=it.querySelector('.acc-body');
+    body.removeAttribute('hidden');
+    btn.addEventListener('click',function(){
+      var abrir=!it.classList.contains('is-open');
+      items.forEach(function(o){o.classList.remove('is-open');o.querySelector('.acc-sum').setAttribute('aria-expanded','false');});
+      if(abrir){it.classList.add('is-open');btn.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+
 /* ---- CONFIANZA: las tarjetas se abren con el ratón (con retardo), un toque o Intro ---- */
 (function(){
   var cards=document.querySelectorAll('.trust-card');if(!cards.length)return;
@@ -2797,7 +2875,6 @@ window.addEventListener('DOMContentLoaded',function(){
     gsap.to(el,{opacity:1,y:0,duration:1,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 80%',end:'top 32%',scrub:true}});
   });
   gsap.from('.feat',{opacity:0,y:28,stagger:.08,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'#destacados',start:'top 85%'}});
-  gsap.from('.svc-card',{scale:.95,opacity:0,stagger:.1,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'#servicios',start:'top 62%'}});
   gsap.from('#manifiesto .giant',{scale:.86,opacity:0,ease:'none',scrollTrigger:{trigger:'#manifiesto',start:'top 85%',end:'top 35%',scrub:true}});
   /* el aro se traza entre que el titular asoma por abajo y llega al centro (su "360°") */
   gsap.to('#manifiesto .ring ellipse',{strokeDashoffset:0,ease:'power2.inOut',scrollTrigger:{trigger:'#manifiesto .giant',start:'bottom 95%',end:'center center',scrub:true,invalidateOnRefresh:true}});

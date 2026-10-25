@@ -15,3 +15,16 @@
   nav.addEventListener('mouseenter',function(){body.classList.remove('nav-up');});
   sync();
 })();
+
+/* Idioma: el desplegable se abre con un clic o un toque y muestra el idioma activo */
+(function(){
+  var menu=document.getElementById('lang-menu');if(!menu)return;
+  var main=menu.querySelector('.lang-main'),cur=menu.querySelector('.lang-cur');
+  function pinta(){cur.textContent=(document.documentElement.lang||'es').toUpperCase();}
+  function cierra(){menu.classList.remove('open');main.setAttribute('aria-expanded','false');}
+  main.addEventListener('click',function(e){e.stopPropagation();var abierto=menu.classList.toggle('open');main.setAttribute('aria-expanded',abierto);});
+  menu.querySelectorAll('[data-lang]').forEach(function(b){b.addEventListener('click',function(){setTimeout(pinta,0);cierra();});});
+  document.addEventListener('click',function(e){if(!menu.contains(e.target))cierra();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cierra();});
+  pinta();
+})();

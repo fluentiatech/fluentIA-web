@@ -224,7 +224,10 @@ nav#navbar{
 body.nav-up nav#navbar{transform:translateY(-100%);}
 body.nav-hidden nav#navbar{background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;}
 body.nav-hidden .nav-logo,.nav-logo{opacity:1;transform:none;pointer-events:auto;}
-.nav-logo img{height:30px;}
+/* el archivo logo-icon.png es la marca completa (1093×332), no un icono: alto fijo y ancho libre */
+.nav-logo{display:flex;align-items:center;width:auto;height:auto;}
+.nav-logo img{height:26px;width:auto;max-width:none;}
+@media(min-width:1024px){.nav-logo img{height:30px;}}
 .dropdown.mega{
   left:50%;right:auto;width:100%;max-width:var(--max);
   transform:translate(-50%,8px);
@@ -280,3 +283,37 @@ body .footer-legal a:hover{color:#fff;}
 ::view-transition-old(root){animation:none;}
 ::view-transition-new(root){animation:vt-entra 1.25s cubic-bezier(.77,0,.18,1) both;}
 @media(prefers-reduced-motion:reduce){::view-transition-new(root){animation:none;}}
+
+/* ===================================================
+   BARRA NUEVA · cuatro entradas, idioma con globo y "Hablemos" como enlace
+=================================================== */
+nav#navbar{justify-content:flex-start;gap:clamp(16px,3vw,48px);}
+.nav-links{gap:4px;margin-left:clamp(8px,2vw,32px);}
+.nav-links > li > a{font-size:15px;font-weight:500;letter-spacing:0;color:#fff;padding:8px 12px;}
+.nav-links > li > a:hover{color:#a2a2a0;}
+.nav-links .caret{opacity:1;}
+.nav-right{display:flex;align-items:center;gap:clamp(12px,2vw,28px);margin-left:auto;}
+.nav-talk{font-size:15px;}
+.lang-menu{position:relative;}
+.lang-main{display:inline-flex;align-items:center;gap:7px;background:none;border:0;color:#fff;cursor:pointer;font:500 14px/1 'Inter',sans-serif;padding:8px 6px;}
+.lang-main .globe{width:18px;height:18px;}
+.lang-main .caret{width:10px;height:10px;transition:transform var(--dur) var(--ease);}
+.lang-menu.open .lang-main .caret{transform:rotate(180deg);}
+.lang-list{
+  position:absolute;top:calc(100% + 8px);right:0;min-width:160px;padding:6px;
+  background:#0a0b0f;border:1px solid rgba(255,255,255,.12);
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease),visibility var(--dur);
+}
+.lang-menu.open .lang-list,.lang-menu:focus-within .lang-list{opacity:1;visibility:visible;transform:none;}
+.lang-list .lang-btn{text-align:left;font:500 14px/1 'Inter',sans-serif;letter-spacing:0;color:rgba(255,255,255,.75);padding:10px 12px;background:none;border:0;cursor:pointer;}
+.lang-list .lang-btn:hover{color:#fff;background:rgba(255,255,255,.06);}
+.lang-list .lang-btn.active{color:#fff;background:rgba(212,20,90,.18);}
+.dropdown{background:#0a0b0f;border-color:rgba(255,255,255,.12);box-shadow:0 30px 60px -30px rgba(0,0,0,.8);}
+.nav-links li.has-drop.has-mini{position:relative;}
+.dropdown.mini{min-width:280px;padding:8px;}
+@media(max-width:768px){
+  .nav-right{margin-left:auto;margin-right:8px;}
+  .nav-talk{display:none;}
+}
