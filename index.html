@@ -261,12 +261,15 @@ section{
   justify-content:center;
   padding:clamp(56px,6.5vw,84px) clamp(14px,5vw,64px) clamp(32px,4vw,52px);
 }
+/* Hero con las proporciones de la portada de Accenture (360/250, 770/360,
+   1170/260): un bloque compacto con el titular a todo el ancho y un enlace. */
 #inicio{
-  min-height:100dvh;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  padding:calc(68px + clamp(32px,4vw,52px)) clamp(14px,5vw,64px) clamp(32px,4vw,52px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--nav-h) + 24px) var(--gutter) 24px;
+  min-height:calc(100vw * 250 / 360 + var(--nav-h));
 }
+@media(min-width:600px){#inicio{min-height:calc(100vw * 360 / 770 + var(--nav-h));padding-bottom:32px;}}
+@media(min-width:1024px){#inicio{min-height:calc(min(100vw,1920px) * 260 / 1170 + var(--nav-h) + 48px);}}
 .section-inner{max-width:1100px;width:100%;margin:0 auto;}
 .section-label{
   font-family:'Inter',sans-serif;font-size:11px;
@@ -340,6 +343,8 @@ h2{
   transition:gap .2s;
 }
 .link-sq:hover{gap:14px;}
+#inicio .hero-link{display:flex;justify-content:center;margin-top:clamp(22px,3.2vw,44px);font-size:clamp(1.1rem,1.7vw,1.75rem);font-weight:500;}
+.hero-link .arrow-sq{width:1.15em;height:1.15em;}
 
 /* ===================================================
    HERO
@@ -348,34 +353,21 @@ h2{
    el centrado vertical de #inicio (100dvh), dejando ~170px más de aire arriba que
    abajo y el bloque casi pegado al borde inferior en pantallas de 768px de alto.
    Con paddings simétricos el centrado reparte bien y el bloque sube ~55px. */
-#inicio{padding-top:clamp(56px,6vw,84px);padding-bottom:clamp(56px,6vw,84px);}
-#inicio .hero-ctas{margin-bottom:0;}
-.hero-content{width:min(900px,100%);text-align:center;}
+.hero-content{width:100%;max-width:calc(var(--max) - var(--gutter)*2);margin:0 auto;text-align:left;}
 /* Titular tipográfico: mayúsculas enormes, peso medio y tracking cerrado.
    Cada palabra entra desde abajo (ver prepararTitular en el script). */
 #inicio h1{
-  width:min(1180px,100%);margin-inline:auto;
-  font-size:clamp(2.4rem,5.2vw,5.2rem);
-  font-weight:600;letter-spacing:-.045em;line-height:.98;
-  text-transform:uppercase;
-  margin-bottom:0;
-  text-align:center;
+  font-size:clamp(2.4rem,4vh + 4vw,9rem);
+  font-weight:600;letter-spacing:-.035em;word-spacing:.14em;line-height:1;
+  text-transform:uppercase;margin:0;
 }
+@media(min-width:1024px){#inicio h1{font-size:min(calc(3vh + 4.2vw),9rem);}}
+@media(min-width:1441px){#inicio h1{font-size:min(calc(5.2vh + 4vw),9rem);}}
 .h1-line{display:block;}
+.h1-line + .h1-line{padding-left:4%;}
 .h1-line .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .02em;margin:0 -.02em;}
-.h1-line .w>span{display:inline-block;transform:translateY(112%);will-change:transform;}
+.h1-line .w>span{display:inline-block;transform:translateY(112%);will-change:transform;font-variation-settings:'wght' 600;transition:font-variation-settings var(--dur) var(--ease);}
 .h1-line .w.on>span{transform:none;}
-.h1-pink{color:var(--pink);}
-.hero-sub{
-  font-size:clamp(1rem,1.4vw,1.2rem);
-  font-weight:400;color:rgba(255,255,255,.72);
-  line-height:1.6;max-width:600px;
-  margin:28px auto 34px;
-}
-.hero-ctas{
-  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;
-  align-items:center;justify-content:center;
-}
 .hero-badge{
   display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;
   justify-content:center;
@@ -992,7 +984,6 @@ footer{
   section{
     padding:clamp(48px,9vw,72px) clamp(14px,4vw,22px) clamp(28px,5vw,40px);
   }
-  #inicio{min-height:100dvh;}
   .benefits-grid{grid-template-columns:1fr 1fr;}
   .benefit-item{
     border-left:none;
@@ -1006,7 +997,6 @@ footer{
 }
 @media(max-width:540px){
   .benefits-grid{grid-template-columns:1fr;}
-  .hero-ctas{flex-direction:column;align-items:center;}
   .footer-top{grid-template-columns:1fr;}
   .cards-grid{grid-template-columns:1fr;}
   .values-grid{grid-template-columns:1fr;}
@@ -1113,14 +1103,20 @@ footer{
 }
 
 /* ---- Destacados: cuatro piezas verticales, como el quiosco de Accenture ---- */
-#destacados{padding-top:0;}
-.feat-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;}
+#destacados{padding-top:var(--space-md);}
+/* 2 columnas desde 600, 3 desde 924, 4 desde 1248; separación 3→4 rem */
+.feat-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg);max-width:calc(var(--max) - var(--gutter)*2);margin:0 auto;}
+@media(min-width:924px){.feat-track{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(min-width:1248px){.feat-track{grid-template-columns:repeat(4,minmax(0,1fr));}}
+@media(min-width:1441px){.feat-track{gap:calc(3rem + 3.34029vw - 48.13361px);}}
+@media(min-width:1920px){.feat-track{gap:4rem;}}
 .feat{
   position:relative;display:flex;flex-direction:column;
-  aspect-ratio:3/4;padding:26px 22px;
+  aspect-ratio:300/424;padding:1.75rem 1.5rem;
   background:#121216;color:#fff;overflow:hidden;isolation:isolate;
-  border:1px solid rgba(255,255,255,.08);
+  transition:scale var(--dur) var(--ease);
 }
+.feat:hover,.feat:focus-visible{scale:1.04;z-index:2;}
 .feat img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;
   transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .5s ease;
@@ -1157,16 +1153,23 @@ footer{
   .feat-more{opacity:1;transform:none;}
   .feat img{opacity:.4;}
 }
-@media(max-width:900px){
+.feat-range{display:none;}
+@media(max-width:599px){
   .feat-track{
     display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;
-    margin:0 calc(-1 * clamp(14px,5vw,64px));padding:0 clamp(14px,5vw,64px);
+    margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter);
     scrollbar-width:none;
   }
   .feat-track::-webkit-scrollbar{display:none;}
-  .feat{flex:0 0 min(78vw,320px);scroll-snap-align:start;}
-  .feat-progress{display:block;height:3px;background:rgba(255,255,255,.15);margin-top:18px;}
-  .feat-progress span{display:block;height:100%;width:25%;background:#fff;transition:width .2s,margin-left .2s;}
+  .feat{flex:0 0 min(78vw,300px);scroll-snap-align:start;}
+  .feat:hover{scale:1;}
+  .feat-range{
+    display:block;width:100%;margin-top:20px;height:3px;
+    appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.2);outline:none;
+  }
+  .feat-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:72px;height:3px;background:#fff;border:0;border-radius:0;cursor:grab;}
+  .feat-range::-moz-range-thumb{width:72px;height:3px;background:#fff;border:0;border-radius:0;cursor:grab;}
+  .feat-range:focus-visible{outline:2px solid var(--pink);outline-offset:8px;}
 }
 .exp-card h2 em{font-style:normal;color:var(--pink);}
 .exp-lead{margin:16px 0 20px;font-size:clamp(.92rem,1.2vw,1.02rem);font-weight:300;line-height:1.7;color:rgba(255,255,255,.72);max-width:560px;}
@@ -1306,14 +1309,8 @@ footer{
 
 /* hero móvil compacto: que el titular y los CTAs quepan sin scroll */
 @media(max-width:640px){
-  #inicio{padding-top:74px;}
-    #inicio h1{font-size:clamp(2rem,9.4vw,2.6rem);line-height:1;}
-  .hero-sub{font-size:.95rem;line-height:1.55;margin-top:14px;}
-  .hero-ctas{margin-bottom:22px;gap:10px;}
-}
+  }
 @media(max-width:400px){
-  #inicio h1{font-size:1.9rem;}
-  .hero-sub{font-size:.9rem;}
 }
 
 /* invitación de contacto del home: el formulario está en contacto.html */
@@ -1493,16 +1490,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-content sc" id="hero-sc">
     <h1>
       <span class="h1-line" data-i18n="hero.h1.0">Software, webs e IA.</span>
-      <span class="h1-line h1-pink" data-i18n="hero.h1.1">A la medida de tu empresa.</span>
-      <span class="h1-line" data-i18n="hero.h1.2">Hechos en Albacete.</span>
+      <span class="h1-line" data-i18n="hero.h1.1">A la medida de tu empresa.</span>
     </h1>
-    <p class="hero-sub" data-i18n="hero.sub">
-      Somos ingenieros. Construimos webs, software a medida, integraciones y tu propia inteligencia artificial sobre tus datos. Cercano, artesano y con alguien al otro lado que coge el teléfono.
-    </p>
-    <div class="hero-ctas">
-      <a href="servicios.html" class="link-sq"><span data-i18n="hero.cta1">Ver qué hacemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
-      <a href="contacto.html" class="btn-primary" data-i18n="hero.cta2">Cuéntanos tu caso</a>
-    </div>
+    <a href="nosotros.html" class="link-sq hero-link"><span data-i18n="hero.h1.2">Hechos en Albacete.</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
   </div>
 </section>
 
@@ -1547,8 +1537,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="feat-more"><span data-i18n="ft.more">Ampliar</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
       </a>
 
+      <a href="servicios/chatbots.html" class="feat" role="listitem">
+        <img src="public/blog/chatbot-whatsapp-cuando-tiene-sentido.jpg" alt="" width="1600" height="900" loading="lazy">
+        <span class="feat-kicker" data-i18n="ft.5.k">Servicio</span>
+        <h3 data-i18n="ft.5.t">Chatbots por WhatsApp que dan citas y responden pedidos</h3>
+        <p data-i18n="ft.5.p">Atienden a tus clientes a cualquier hora con tu información real y pasan a una persona cuando toca.</p>
+        <span class="feat-more"><span data-i18n="ft.more">Ampliar</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="servicios/webs.html" class="feat" role="listitem">
+        <img src="public/casos/alex-rubio.jpg" alt="" width="1600" height="900" loading="lazy">
+        <span class="feat-kicker" data-i18n="ft.6.k">Caso</span>
+        <h3 data-i18n="ft.6.t">La web oficial de un futbolista profesional</h3>
+        <p data-i18n="ft.6.p">Trayectoria, estadísticas y sala de prensa para clubs y marcas, a la altura de quien decide.</p>
+        <span class="feat-more"><span data-i18n="ft.more">Ampliar</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="servicios/webs.html" class="feat" role="listitem">
+        <img src="public/blog/web-a-medida-vs-plantilla.jpg" alt="" width="1600" height="900" loading="lazy">
+        <span class="feat-kicker" data-i18n="ft.7.k">Servicio</span>
+        <h3 data-i18n="ft.7.t">Webs premium hechas a mano, sin plantillas</h3>
+        <p data-i18n="ft.7.p">Corporativas, portales, intranets y tiendas online rápidas y pensadas para convertir.</p>
+        <span class="feat-more"><span data-i18n="ft.more">Ampliar</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
+      </a>
+
+      <a href="blog/sprints-revision-con-el-cliente.html" class="feat" role="listitem">
+        <img src="public/blog/sprints-revision-con-el-cliente.jpg" alt="" width="1600" height="900" loading="lazy">
+        <span class="feat-kicker" data-i18n="ft.8.k">Blog</span>
+        <h3 data-i18n="ft.8.t">Sprints y revisión con el cliente: así trabajamos</h3>
+        <p data-i18n="ft.8.p">Entregas cortas, demostración cada dos semanas y precio cerrado por escrito antes de empezar.</p>
+        <span class="feat-more"><span data-i18n="ft.more">Ampliar</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
+      </a>
+
     </div>
-    <div class="feat-progress" aria-hidden="true"><span id="feat-progress-bar"></span></div>
+    <input type="range" class="feat-range" id="feat-range" min="0" max="100" value="0" step="1" aria-label="Desplazar las tarjetas">
   </div>
 </section>
 
@@ -2132,6 +2154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ================================================ */
 var TRANSLATIONS = {
   es: {
+    'ft.5.k':'Servicio','ft.5.t':'Chatbots por WhatsApp que dan citas y responden pedidos','ft.5.p':'Atienden a tus clientes a cualquier hora con tu información real y pasan a una persona cuando toca.','ft.6.k':'Caso','ft.6.t':'La web oficial de un futbolista profesional','ft.6.p':'Trayectoria, estadísticas y sala de prensa para clubs y marcas, a la altura de quien decide.','ft.7.k':'Servicio','ft.7.t':'Webs premium hechas a mano, sin plantillas','ft.7.p':'Corporativas, portales, intranets y tiendas online rápidas y pensadas para convertir.','ft.8.k':'Blog','ft.8.t':'Sprints y revisión con el cliente: así trabajamos','ft.8.p':'Entregas cortas, demostración cada dos semanas y precio cerrado por escrito antes de empezar.',
     'man.h2.0':'Tus datos.','man.h2.1':'Tu IA.','man.p':'Cada día ayudamos a empresas de Albacete y de toda España a trabajar con inteligencia artificial sin ceder el control de su información.','tr.h2':'Por qué confiar.','tr.1':'Datos en Europa y contrato RGPD de encargado de tratamiento.','tr.2':'Ingeniería hecha en Albacete, con alguien que coge el teléfono.','tr.3':'IA soberana: tu información nunca pasa por nubes americanas.','tr.4':'Empresa cofinanciada por la Unión Europea y la Junta de Castilla-La Mancha.','ci.label':'Hablemos','ci.h2':'Hablas siempre con quien construye tu sistema.','ci.p':'Sin comerciales por medio. Nos cuentas qué te roba tiempo y te decimos, por escrito y con precio cerrado, cómo lo resolvemos.','ci.cta':'Cuéntanos tu caso','ci.wa':'Hablar por WhatsApp','ci.cap':'Fundador de fluentIA',
     'ft.more':'Ampliar','ft.1.k':'Producto','ft.1.t':'Expedienta: la IA para asesorías que cita la fuente de cada dato','ft.1.p':'Responde con los expedientes del despacho, la norma vigente y los convenios. Desde 29 € por usuario y mes.','ft.2.k':'Servicio','ft.2.t':'IA soberana: tu propia IA sobre tus datos, sin que salgan de casa','ft.2.p':'Conectada a tu SQL, tu SharePoint y tus documentos. En tus servidores o en los nuestros, nunca en nubes americanas.','ft.3.k':'Caso','ft.3.t':'La web oficial del CD Teruel, hecha a medida','ft.3.p':'Portal del aficionado, plantilla, calendario y noticias con la estructura de un club profesional.','ft.4.k':'Guía','ft.4.t':'IA y RGPD: cómo usarla en tu empresa cumpliendo la ley','ft.4.p':'Qué se puede hacer, qué no y qué hay que firmar antes de pegar un contrato en un chat de IA.',
     'exp.tag':'Nuevo','exp.pill':'Expedienta, la IA para asesorías que cita la fuente','exp.label':'Nuestro producto','exp.h2.0':'Expedienta.','exp.h2.1':'La IA para asesorías y gestorías.','exp.p':'Todo el conocimiento del despacho, preguntando: sus expedientes, la norma vigente, los convenios y las subvenciones. Cada dato llega con su fuente, para comprobarlo antes de firmar.','exp.l':'<li>Responde con el archivo del despacho y cita el documento</li><li>Legislación del BOE al día, con cada versión por fecha</li><li>Convenios colectivos y subvenciones vigentes por cliente</li><li>IA soberana: datos y consultas en la Unión Europea</li>','exp.cta1':'Conocer Expedienta','exp.cta2':'Pedir demostración','exp.note':'Desde 29 € por usuario y mes · sin permanencia','exp.d.q':'¿Qué indemnización le correspondería al oficial de Talleres Ruiz que entró en 2019?','exp.d.a':'Entró el <mark>4 de noviembre de 2019</mark> como oficial de 1ª. Si el despido fuera improcedente, son <mark>33 días de salario por año</mark>, con un tope de 24 mensualidades.','exp.d.r1':'Su archivo · Contrato 2019/0412','exp.d.r2':'BOE · Estatuto de los Trabajadores, art. 56.1','exp.d.n':'Ejemplo con datos ficticios',
@@ -2328,6 +2351,7 @@ var TRANSLATIONS = {
     'ft.legal0':'Aviso legal','ft.legal1':'Política de privacidad','ft.legal2':'Términos de uso','ft.legal3':'Cookies'
   },
   en: {
+    'ft.5.k':'Service','ft.5.t':'WhatsApp chatbots that book appointments and answer orders','ft.5.p':'They serve your customers at any hour with your real information and hand over to a person when needed.','ft.6.k':'Case study','ft.6.t':'The official website of a professional footballer','ft.6.p':'Career, stats and press room for clubs and brands, at the level of those who decide.','ft.7.k':'Service','ft.7.t':'Premium websites built by hand, no templates','ft.7.p':'Corporate sites, portals, intranets and online shops that load fast and are built to convert.','ft.8.k':'Blog','ft.8.t':'Sprints and client reviews: how we work','ft.8.p':'Short deliveries, a demo every two weeks and a fixed price in writing before we start.',
     'man.h2.0':'Your data.','man.h2.1':'Your AI.','man.p':'Every day we help companies in Albacete and across Spain work with artificial intelligence without giving up control of their information.','tr.h2':'Why trust us.','tr.1':'Data in Europe and a GDPR data-processing agreement.','tr.2':'Engineering made in Albacete, with someone who picks up the phone.','tr.3':'Sovereign AI: your information never passes through American clouds.','tr.4':'Company co-funded by the European Union and the Government of Castilla-La Mancha.','ci.label':'Let\u2019s talk','ci.h2':'You always talk to the person who builds your system.','ci.p':'No sales reps in between. Tell us what eats your time and we tell you, in writing and with a fixed price, how we solve it.','ci.cta':'Tell us your case','ci.wa':'Chat on WhatsApp','ci.cap':'Founder of fluentIA',
     'ft.more':'Read more','ft.1.k':'Product','ft.1.t':'Expedienta: the AI for accounting firms that cites the source of every fact','ft.1.p':'Answers from the firm’s case files, current law and collective agreements. From €29 per user per month.','ft.2.k':'Service','ft.2.t':'Sovereign AI: your own AI on your data, without it ever leaving home','ft.2.p':'Connected to your SQL, your SharePoint and your documents. On your servers or on ours, never in American clouds.','ft.3.k':'Case study','ft.3.t':'The official CD Teruel website, built to measure','ft.3.p':'Fan portal, squad, fixtures and news with the structure of a professional club.','ft.4.k':'Guide','ft.4.t':'AI and GDPR: how to use it in your company within the law','ft.4.p':'What you can do, what you can’t and what to sign before pasting a contract into an AI chat.',
     'exp.tag':'New','exp.pill':'Expedienta, the AI for accounting firms that cites its sources','exp.label':'Our product','exp.h2.0':'Expedienta.','exp.h2.1':'The AI for accounting and advisory firms.','exp.p':'All of the firm’s knowledge, one question away: its case files, current law, collective agreements and grants. Every fact comes with its source, so you can check it before you sign.','exp.l':'<li>Answers from the firm’s own files and cites the document</li><li>Spanish legislation (BOE) kept up to date, with every version by date</li><li>Collective agreements and open grants for each client</li><li>Sovereign AI: data and queries stay in the European Union</li>','exp.cta1':'Discover Expedienta','exp.cta2':'Request a demo','exp.note':'From €29 per user per month · no lock-in','exp.d.q':'What severance would the Talleres Ruiz technician who joined in 2019 be entitled to?','exp.d.a':'He joined on <mark>4 November 2019</mark> as a first-class technician. If the dismissal were unfair, it is <mark>33 days’ salary per year worked</mark>, capped at 24 months’ pay.','exp.d.r1':'Your files · Contract 2019/0412','exp.d.r2':'BOE · Workers’ Statute, art. 56.1','exp.d.n':'Example with fictitious data',
@@ -2524,6 +2548,7 @@ var TRANSLATIONS = {
     'ft.legal0':'Legal notice','ft.legal1':'Privacy policy','ft.legal2':'Terms of use','ft.legal3':'Cookies'
   },
   fr: {
+    'ft.5.k':'Service','ft.5.t':'Des chatbots WhatsApp qui prennent les rendez-vous et répondent aux commandes','ft.5.p':'Ils servent vos clients à toute heure avec vos vraies informations et passent la main à une personne quand il le faut.','ft.6.k':'Cas client','ft.6.t':'Le site officiel d\u2019un footballeur professionnel','ft.6.p':'Parcours, statistiques et espace presse pour clubs et marques, à la hauteur de ceux qui décident.','ft.7.k':'Service','ft.7.t':'Des sites premium faits main, sans modèles','ft.7.p':'Sites corporate, portails, intranets et boutiques en ligne rapides et conçus pour convertir.','ft.8.k':'Blog','ft.8.t':'Sprints et revues avec le client : notre façon de travailler','ft.8.p':'Livraisons courtes, démonstration toutes les deux semaines et prix fixe par écrit avant de commencer.',
     'man.h2.0':'Vos données.','man.h2.1':'Votre IA.','man.p':'Chaque jour, nous aidons des entreprises d\u2019Albacete et de toute l\u2019Espagne à travailler avec l\u2019intelligence artificielle sans céder le contrôle de leurs informations.','tr.h2':'Pourquoi nous faire confiance.','tr.1':'Données en Europe et contrat RGPD de sous-traitant.','tr.2':'Ingénierie faite à Albacete, avec quelqu\u2019un qui décroche le téléphone.','tr.3':'IA souveraine : vos informations ne passent jamais par des clouds américains.','tr.4':'Entreprise cofinancée par l\u2019Union européenne et la Junta de Castilla-La Mancha.','ci.label':'Parlons-en','ci.h2':'Vous parlez toujours avec la personne qui construit votre système.','ci.p':'Pas de commerciaux entre nous. Vous nous dites ce qui vous fait perdre du temps et nous vous répondons, par écrit et à prix fixe, comment nous le résolvons.','ci.cta':'Parlez-nous de votre cas','ci.wa':'Discuter sur WhatsApp','ci.cap':'Fondateur de fluentIA',
     'ft.more':'Lire la suite','ft.1.k':'Produit','ft.1.t':'Expedienta : l’IA pour cabinets comptables qui cite la source de chaque donnée','ft.1.p':'Répond à partir des dossiers du cabinet, de la loi en vigueur et des conventions collectives. À partir de 29 € par utilisateur et par mois.','ft.2.k':'Service','ft.2.t':'IA souveraine : votre propre IA sur vos données, sans qu’elles sortent de chez vous','ft.2.p':'Connectée à votre SQL, votre SharePoint et vos documents. Sur vos serveurs ou sur les nôtres, jamais dans des clouds américains.','ft.3.k':'Cas client','ft.3.t':'Le site officiel du CD Teruel, fait sur mesure','ft.3.p':'Portail des supporters, effectif, calendrier et actualités avec la structure d’un club professionnel.','ft.4.k':'Guide','ft.4.t':'IA et RGPD : comment l’utiliser dans votre entreprise en respectant la loi','ft.4.p':'Ce que l’on peut faire, ce que l’on ne peut pas et ce qu’il faut signer avant de coller un contrat dans un chat d’IA.',
     'exp.tag':'Nouveau','exp.pill':'Expedienta, l’IA pour cabinets comptables qui cite ses sources','exp.label':'Notre produit','exp.h2.0':'Expedienta.','exp.h2.1':'L’IA pour cabinets de conseil et de gestion.','exp.p':'Tout le savoir du cabinet, en posant une question : ses dossiers, la loi en vigueur, les conventions collectives et les subventions. Chaque donnée arrive avec sa source, pour la vérifier avant de signer.','exp.l':'<li>Répond à partir des archives du cabinet et cite le document</li><li>Législation espagnole (BOE) à jour, avec chaque version par date</li><li>Conventions collectives et subventions ouvertes par client</li><li>IA souveraine : données et requêtes dans l’Union européenne</li>','exp.cta1':'Découvrir Expedienta','exp.cta2':'Demander une démo','exp.note':'À partir de 29 € par utilisateur et par mois · sans engagement','exp.d.q':'Quelle indemnité reviendrait au technicien de Talleres Ruiz entré en 2019 ?','exp.d.a':'Il est entré le <mark>4 novembre 2019</mark> comme technicien de 1re classe. Si le licenciement était abusif, c’est <mark>33 jours de salaire par année travaillée</mark>, plafonné à 24 mois.','exp.d.r1':'Vos archives · Contrat 2019/0412','exp.d.r2':'BOE · Statut des travailleurs, art. 56.1','exp.d.n':'Exemple avec des données fictives',
@@ -2850,19 +2875,41 @@ function closePrivacy(e){
 }
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePrivacy();});
 
-/* ---- DESTACADOS EN MÓVIL: barra de progreso del carrusel horizontal ---- */
+/* ---- DESTACADOS EN MÓVIL: la barra "range" y el carril se mueven a la vez ---- */
 (function(){
-  var t=document.getElementById('feat-track'),b=document.getElementById('feat-progress-bar');
-  if(!t||!b)return;
-  function upd(){
+  var t=document.getElementById('feat-track'),r=document.getElementById('feat-range');
+  if(!t||!r)return;
+  var desdeBarra=false;
+  r.addEventListener('input',function(){
+    desdeBarra=true;
+    t.scrollLeft=(t.scrollWidth-t.clientWidth)*r.value/100;
+    setTimeout(function(){desdeBarra=false;},60);
+  });
+  t.addEventListener('scroll',function(){
+    if(desdeBarra)return;
     var max=t.scrollWidth-t.clientWidth;
-    var vis=t.clientWidth/t.scrollWidth*100;
-    b.style.width=vis+'%';
-    b.style.marginLeft=(max>0?(t.scrollLeft/max)*(100-vis):0)+'%';
+    r.value=max>0?Math.round(t.scrollLeft/max*100):0;
+  },{passive:true});
+})();
+
+/* ---- HERO: el peso de cada palabra sigue al ratón (su Lottie "frotado", en tipografía) ---- */
+(function(){
+  var h=document.querySelector('#inicio h1');if(!h)return;
+  if(window.matchMedia('(hover:none)').matches||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var RADIO=280,raf=null,px=0,py=0;
+  function pintar(){
+    raf=null;
+    h.querySelectorAll('.w > span').forEach(function(sp){
+      var r=sp.getBoundingClientRect();
+      var d=Math.hypot(px-(r.left+r.width/2),py-(r.top+r.height/2));
+      var k=Math.max(0,1-d/RADIO);
+      sp.style.fontVariationSettings="'wght' "+Math.round(600+260*k);
+    });
   }
-  t.addEventListener('scroll',upd,{passive:true});
-  window.addEventListener('resize',upd);
-  upd();
+  h.addEventListener('pointermove',function(e){px=e.clientX;py=e.clientY;if(!raf)raf=requestAnimationFrame(pintar);});
+  h.addEventListener('pointerleave',function(){
+    h.querySelectorAll('.w > span').forEach(function(sp){sp.style.fontVariationSettings="'wght' 600";});
+  });
 })();
 
 /* ---- CASOS: carrusel manual (botones, teclado y deslizar en móvil) ---- */
