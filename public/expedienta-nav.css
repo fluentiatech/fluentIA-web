@@ -1,0 +1,28 @@
+/* Acceso a Expedienta en la barra y en el menú móvil de las páginas de fluentIA */
+.nav-links a.nav-exp{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:0 6px;padding:7px 14px;
+  border:1px solid rgba(212,20,90,.55);border-radius:4px;
+  background:rgba(212,20,90,.1);
+  color:#fff;font-weight:600;letter-spacing:.04em;
+  transition:background .2s,border-color .2s;
+}
+.nav-links a.nav-exp:hover{background:rgba(212,20,90,.22);border-color:#d4145a;color:#fff;}
+.nav-exp-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:#d4145a;box-shadow:0 0 0 0 rgba(212,20,90,.6);
+  animation:nav-exp-pulse 2.2s infinite;
+}
+@keyframes nav-exp-pulse{
+  70%{box-shadow:0 0 0 7px rgba(212,20,90,0);}
+  100%{box-shadow:0 0 0 0 rgba(212,20,90,0);}
+}
+#mobile-menu a.mob-exp{
+  display:inline-flex;align-items:center;gap:12px;
+  margin:6px 0;padding:10px 26px;
+  border:1px solid rgba(212,20,90,.55);border-radius:999px;
+  background:rgba(212,20,90,.12);
+  font-size:clamp(1.3rem,5vw,1.6rem);
+}
+#mobile-menu a.mob-exp .nav-exp-dot{width:9px;height:9px;}
+@media(prefers-reduced-motion:reduce){.nav-exp-dot{animation:none;}}

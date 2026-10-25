@@ -3,5 +3,8 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "installCommand": null,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/fluentia", "destination": "/", "permanent": true }
+  ]
 }

@@ -2,13 +2,13 @@
 
 > Expedienta es un software de inteligencia artificial para asesorías y gestorías en España. Responde en lenguaje normal con los expedientes del despacho, la legislación del BOE (con cada versión por fecha), los convenios colectivos y las convocatorias de subvenciones, y cita siempre el documento de origen de cada dato. Es IA soberana: los datos y las consultas se procesan en la Unión Europea (Scaleway, París), con modelos de peso abierto y sin enviar datos a servicios de IA de Estados Unidos.
 
-Lo desarrolla FLUENTIA DIGITAL, S.L. (Albacete, España). Contacto: diego.morales@fluentiatech.es · +34 697 947 595.
+Lo desarrolla FLUENTIA DIGITAL, S.L. (Albacete, España), que también hace software, webs e IA a medida: https://www.fluentiatech.es/. Contacto: diego.morales@fluentiatech.es · +34 697 947 595.
 
 ## Producto
 
-- [Portada de Expedienta](https://www.fluentiatech.es/): qué es, cómo funciona, precio, IA soberana e implantación.
-- [Precio](https://www.fluentiatech.es/#precio): planes Esencial (29 €), Profesional (49 €) e Ilimitado (79 €) por usuario y mes, sin IVA. Cuota de despacho de 59 €/mes, solo para despachos de 5 o más usuarios. Sin pago de entrada, sin permanencia y sin mínimo de usuarios.
-- [Preguntas frecuentes](https://www.fluentiatech.es/#faq)
+- [Portada de Expedienta](https://www.fluentiatech.es/expedienta): qué es, cómo funciona, precio, IA soberana e implantación.
+- [Precio](https://www.fluentiatech.es/expedienta#precio): planes Esencial (29 €), Profesional (49 €) e Ilimitado (79 €) por usuario y mes, sin IVA. Cuota de despacho de 59 €/mes, solo para despachos de 5 o más usuarios. Sin pago de entrada, sin permanencia y sin mínimo de usuarios.
+- [Preguntas frecuentes](https://www.fluentiatech.es/expedienta#faq)
 
 ## Guías
 
