@@ -1,0 +1,21 @@
+/* Catálogo de soluciones: cada solución con su ejemplo de uso fijado al lado */
+.sol-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--space-md);}
+.sol-nav a{font:500 .9rem/1 'Inter',sans-serif;color:#fff;border:1px solid rgba(255,255,255,.35);padding:10px 14px;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.sol-nav a:hover{background:#fff;color:#000;border-color:#fff;}
+.sol-grupo{scroll-margin-top:calc(var(--nav-h) + 16px);}
+.sol-grupo-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--space-sm) var(--space-md);margin-bottom:var(--space-lg);}
+.sol-grupo-head h2{margin:0;}
+.sol{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);padding:var(--space-lg) 0;border-top:1px solid rgba(255,255,255,.25);scroll-margin-top:calc(var(--nav-h) + 16px);}
+.sol:last-child{border-bottom:1px solid rgba(255,255,255,.25);}
+.sol-eslogan{margin:0 0 10px;font:600 var(--fs-label)/1.3 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);}
+.sol h3{font-size:clamp(1.6rem,2.6vw,2.4rem);letter-spacing:-.03em;line-height:1.08;margin:0 0 14px;}
+.sol-que{font-size:var(--fs-body);line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 16px;max-width:62ch;}
+.sol-incluye{margin:0 0 20px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;max-width:62ch;}
+.sol-incluye li{position:relative;padding-left:16px;font-size:.95rem;line-height:1.45;color:rgba(255,255,255,.78);}
+.sol-incluye li::before{content:'';position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--pink);}
+.sol-caso{background:#121216;border-left:4px solid var(--pink);padding:clamp(18px,2.2vw,28px);align-self:start;}
+.sol-caso-k{display:block;font:600 .78rem/1.2 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a2a2a0;margin-bottom:14px;}
+.sol-caso dl{margin:0;display:grid;gap:12px;}
+.sol-caso dt{font:600 .85rem/1.2 'Inter',sans-serif;color:#fff;margin-bottom:4px;}
+.sol-caso dd{margin:0;font-size:.95rem;line-height:1.5;color:rgba(255,255,255,.82);}
+@media(max-width:900px){.sol{grid-template-columns:1fr;}.sol-incluye{grid-template-columns:1fr;}}
