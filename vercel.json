@@ -5,6 +5,30 @@
   "installCommand": null,
   "cleanUrls": true,
   "redirects": [
-    { "source": "/fluentia", "destination": "/", "permanent": true }
+    {
+      "source": "/fluentia",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/ia-soberana",
+      "destination": "/capacidades/ia-y-datos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/chatbots",
+      "destination": "/capacidades/automatizacion-y-atencion",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/webs",
+      "destination": "/capacidades/webs-y-experiencia-digital",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/software",
+      "destination": "/capacidades/software-e-integraciones",
+      "permanent": true
+    }
   ]
 }
