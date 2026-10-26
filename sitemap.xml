@@ -185,4 +185,40 @@
       <image:caption>La IA soberana no es tener un servidor en Europa: es decidir dónde se procesan tus datos, quién puede pedirlos y qué pasa si dejas el servicio. Una guía práctica para empresas que no son Telefónica.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/ia-y-datos</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/automatizacion-y-atencion</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/webs-y-experiencia-digital</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/software-e-integraciones</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/tecnologias-emergentes</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.fluentiatech.es/capacidades/formacion-en-ia</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
