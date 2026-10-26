@@ -1524,6 +1524,7 @@ footer{
 <link rel="stylesheet" href="public/fse/fse.css">
 <link rel="stylesheet" href="/public/expedienta-nav.css">
 <link rel="stylesheet" href="/public/piel.css">
+<link rel="stylesheet" href="/public/blog.css">
 <script src="/public/piel.js" defer></script>
 </head>
 <body>
@@ -1614,105 +1615,44 @@ footer{
 <div id="progress-bar" role="progressbar" aria-hidden="true"></div>
 <div id="scroll-container">
 
-<header class="blog-hero">
-  <div class="b-wrap">
-    <div class="b-kicker rv" style="display:inline-flex;">Blog · recursos</div>
-    <h1 class="rv d1">Ideas claras sobre <em>IA, software y datos</em></h1>
-    <p class="rv d2">Sin humo y sin tecnicismos. Lo que de verdad conviene saber antes de dar el paso, contado por quien construye estas cosas.</p>
+<main class="ideas">
+  <header class="ideas-hero">
+    <span class="eyebrow">Nuestras ideas</span>
+    <h1>Ideas claras sobre IA, software y datos</h1>
+    <p>Puntos de vista, guías y casos contados por quien construye estas cosas. Sin humo y sin tecnicismos: lo que conviene saber antes de dar el paso.</p>
+    <div class="grad-line" aria-hidden="true"></div>
+  </header>
+
+  <a href="blog/ia-soberana-pymes.html" class="idea-feature" data-tipo="Punto de vista">
+    <img src="public/blog/ia-soberana-pymes.jpg" alt="" width="1600" height="900" fetchpriority="high">
+    <div class="txt">
+      <span class="eyebrow">Punto de vista · lo último</span>
+      <h2>IA soberana para pymes: qué es, qué no es y cómo empezar sin regalar tus datos</h2>
+      <p>La IA soberana no es tener un servidor en Europa: es decidir dónde se procesan tus datos, quién puede pedirlos y qué pasa si dejas el servicio. Una guía práctica para empresas que no son Telefónica.</p>
+      <div class="meta"><span>8 minutos de lectura</span><time datetime="2026-10-26">26 OCTUBRE 2026</time></div>
+      <span class="more">Leer<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span>
+    </div>
+  </a>
+
+  <div class="ideas-filter" role="group" aria-label="Filtrar por tipo">
+    <button type="button" data-f="" aria-pressed="true">Todo</button>
+    <button type="button" data-f="Punto de vista" aria-pressed="false">Puntos de vista</button><button type="button" data-f="Guía" aria-pressed="false">Guías</button><button type="button" data-f="Caso de éxito" aria-pressed="false">Casos de éxito</button><button type="button" data-f="Blog" aria-pressed="false">Blog</button>
   </div>
-</header>
-<div class="b-wrap">
-  <div class="grid-posts">
-    <a class="pcard rv d1" href="blog/ia-soberana-pymes.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(330,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/ia-soberana-pymes.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">IA soberana</span></div>
-      <div class="pc-body">
-        <h3>IA soberana para pymes: qué es, qué no es y cómo empezar sin regalar tus datos</h3>
-        <p>La IA soberana no es tener un servidor en Europa: es decidir dónde se procesan tus datos, quién puede pedirlos y qué pasa si dejas el servicio. Una guía práctica para empresas que no son Telefónica.</p>
-        <div class="meta"><span>26 de octubre de 2026</span><span class="dot"></span><span>8 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d1" href="blog/sprints-revision-con-el-cliente.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(210,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/sprints-revision-con-el-cliente.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Proceso</span></div>
-      <div class="pc-body">
-        <h3>Cómo trabajamos: sprints cortos y revisión con el cliente</h3>
-        <p>Trabajamos por sprints y al final de cada uno el cliente ve funcionando lo que se ha hecho. Así se corrige el rumbo cuando corregirlo todavía es barato.</p>
-        <div class="meta"><span>29 de agosto de 2026</span><span class="dot"></span><span>6 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d1" href="blog/que-es-el-cloud-act.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(210,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/que-es-el-cloud-act.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Soberanía</span></div>
-      <div class="pc-body">
-        <h3>Qué es el CLOUD Act y por qué debería importarte</h3>
-        <p>La ley de Estados Unidos que puede reclamar tus datos estén donde estén sus servidores. Te explicamos qué es, a quién afecta y cómo protegerte.</p>
-        <div class="meta"><span>12 de agosto de 2026</span><span class="dot"></span><span>5 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d2" href="blog/software-a-medida-5-motivos.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(330,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/software-a-medida-5-motivos.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Negocio</span></div>
-      <div class="pc-body">
-        <h3>5 motivos para desarrollar software a medida (y cuándo no)</h3>
-        <p>El software enlatado te obliga a cambiar tu forma de trabajar, y esa forma suele ser lo que te diferencia. Cinco razones para desarrollar a medida, con honestidad.</p>
-        <div class="meta"><span>10 de agosto de 2026</span><span class="dot"></span><span>6 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d3" href="blog/rag-sharepoint-sql.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(280,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/rag-sharepoint-sql.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">IA</span></div>
-      <div class="pc-body">
-        <h3>IA sobre tu SharePoint y tu SQL: cómo funciona el RAG</h3>
-        <p>Cómo una IA puede leer tus documentos y bases de datos para responder con tu información real, sin que nada salga de tu empresa. Te lo explicamos sin tecnicismos.</p>
-        <div class="meta"><span>7 de agosto de 2026</span><span class="dot"></span><span>6 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d1" href="blog/web-a-medida-vs-plantilla.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(195,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/web-a-medida-vs-plantilla.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Webs</span></div>
-      <div class="pc-body">
-        <h3>Web a medida vs. plantilla: qué diferencia hay de verdad</h3>
-        <p>Una plantilla es barata y rápida, pero se nota. Te contamos cuándo compensa una web a medida y en qué se traduce esa diferencia para tu marca.</p>
-        <div class="meta"><span>4 de agosto de 2026</span><span class="dot"></span><span>5 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d2" href="blog/caso-cd-teruel.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(20,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/caso-cd-teruel.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Casos</span></div>
-      <div class="pc-body">
-        <h3>La web del CD Teruel: una casa digital a la altura del escudo</h3>
-        <p>Así diseñamos la web oficial del Club Deportivo Teruel, con la arquitectura de un club profesional: primer equipo, femenino, cantera, transparencia y la afición turolense en el centro.</p>
-        <div class="meta"><span>1 de agosto de 2026</span><span class="dot"></span><span>7 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
-    <a class="pcard rv d3" href="blog/chatbot-whatsapp-cuando-tiene-sentido.html">
-      <div class="cover" style="background:radial-gradient(120% 130% at 82% -10%, hsla(330,80%,55%,.5), transparent 55%),radial-gradient(90% 120% at 10% 120%, rgba(26,43,95,.9), transparent 60%),#060c1a;">
-        <img class="cov-img" src="public/blog/chatbot-whatsapp-cuando-tiene-sentido.jpg" alt="" loading="lazy" onerror="this.remove()">
-        <span class="chip">Negocio</span></div>
-      <div class="pc-body">
-        <h3>Chatbot de WhatsApp: cuándo tiene sentido para tu negocio</h3>
-        <p>WhatsApp es donde ya te escriben tus clientes. Te contamos cuándo un chatbot compensa, qué puede hacer de verdad y la diferencia entre el nativo de Meta y uno a medida.</p>
-        <div class="meta"><span>29 de julio de 2026</span><span class="dot"></span><span>5 min de lectura</span></div>
-        <div class="rd">Leer artículo &rarr;</div>
-      </div>
-    </a>
+
+  <div class="idea-grid" id="idea-grid">
+    <a href="blog/sprints-revision-con-el-cliente.html" class="idea" data-tipo="Blog"><img src="public/blog/sprints-revision-con-el-cliente.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Blog</span><h3>Cómo trabajamos: sprints cortos y revisión con el cliente</h3><p>Trabajamos por sprints y al final de cada uno el cliente ve funcionando lo que se ha hecho. Así se corrige el rumbo cuando corregirlo todavía es barato.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/que-es-el-cloud-act.html" class="idea idea-light" data-tipo="Guía"><img src="public/blog/que-es-el-cloud-act.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Guía</span><h3>Qué es el CLOUD Act y por qué debería importarte</h3><p>La ley de Estados Unidos que puede reclamar tus datos estén donde estén sus servidores. Te explicamos qué es, a quién afecta y cómo protegerte.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/software-a-medida-5-motivos.html" class="idea" data-tipo="Punto de vista"><img src="public/blog/software-a-medida-5-motivos.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Punto de vista</span><h3>5 motivos para desarrollar software a medida (y cuándo no)</h3><p>El software enlatado te obliga a cambiar tu forma de trabajar, y esa forma suele ser lo que te diferencia. Cinco razones para desarrollar a medida, con honestidad.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/rag-sharepoint-sql.html" class="idea idea-light" data-tipo="Guía"><img src="public/blog/rag-sharepoint-sql.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Guía</span><h3>IA sobre tu SharePoint y tu SQL: cómo funciona el RAG</h3><p>Cómo una IA puede leer tus documentos y bases de datos para responder con tu información real, sin que nada salga de tu empresa. Te lo explicamos sin tecnicismos.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/web-a-medida-vs-plantilla.html" class="idea" data-tipo="Punto de vista"><img src="public/blog/web-a-medida-vs-plantilla.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Punto de vista</span><h3>Web a medida vs. plantilla: qué diferencia hay de verdad</h3><p>Una plantilla es barata y rápida, pero se nota. Te contamos cuándo compensa una web a medida y en qué se traduce esa diferencia para tu marca.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/caso-cd-teruel.html" class="idea" data-tipo="Caso de éxito"><img src="public/blog/caso-cd-teruel.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Caso de éxito</span><h3>La web del CD Teruel: una casa digital a la altura del escudo</h3><p>Así diseñamos la web oficial del Club Deportivo Teruel, con la arquitectura de un club profesional: primer equipo, femenino, cantera, transparencia y la afición turolense en el centro.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a><a href="blog/chatbot-whatsapp-cuando-tiene-sentido.html" class="idea idea-light" data-tipo="Punto de vista"><img src="public/blog/chatbot-whatsapp-cuando-tiene-sentido.jpg" alt="" width="1600" height="900" loading="lazy"><span class="eyebrow">Punto de vista</span><h3>Chatbot de WhatsApp: cuándo tiene sentido para tu negocio</h3><p>WhatsApp es donde ya te escriben tus clientes. Te contamos cuándo un chatbot compensa, qué puede hacer de verdad y la diferencia entre el nativo de Meta y uno a medida.</p><span class="more">Ampliar<span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></span></a>
   </div>
-</div>
+</main>
+<script>
+(function(){
+  var bs=document.querySelectorAll('.ideas-filter button'),cs=document.querySelectorAll('#idea-grid .idea');
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    bs.forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false');});
+    cs.forEach(function(c){c.hidden=!!f&&c.getAttribute('data-tipo')!==f;});
+  });});
+})();
+</script>
 
 <footer role="contentinfo">
   <div class="footer-top">
