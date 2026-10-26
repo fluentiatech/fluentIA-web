@@ -107,3 +107,8 @@
 @media(max-width:1023px){.cap-steps{grid-template-columns:1fr 1fr;}.cap-logos ul{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:860px){.cap-vs{grid-template-columns:1fr;}}
 @media(max-width:599px){.cap-two,.cap-tiers,.cap-steps{grid-template-columns:1fr;}.cap-logos ul{grid-template-columns:repeat(2,1fr);}}
+
+/* páginas de sector */
+.cap-two.plain .sec-stats{grid-template-columns:1fr 1fr;gap:var(--space-md);}
+.cap-steps.tres{grid-template-columns:repeat(3,1fr);}
+@media(max-width:599px){.cap-two.plain .sec-stats,.cap-steps.tres{grid-template-columns:1fr;}}

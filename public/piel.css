@@ -145,7 +145,13 @@ body :where([class*="card"],[class*="item"],[class*="step"]):hover{box-shadow:no
 }
 .nav-links li.has-drop:hover .dropdown.mega,
 .nav-links li.has-drop:focus-within .dropdown.mega{transform:translateY(0);}
-.mega-col{display:flex;flex-direction:column;gap:2px;}
+/* Los enlaces de la barra llevan white-space:nowrap; dentro del panel los textos deben partir,
+   o la columna de Expedienta se sale por la derecha y queda cortada */
+.dropdown.mega{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);}
+.dropdown.mega a,.dropdown.mega a *,.dropdown.mini a,.dropdown.mini a *{white-space:normal;}
+.dropdown.mega .link-sq{white-space:nowrap;}
+.mega-col{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.mega-col a{min-width:0;}
 .mega-h{
   font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;color:var(--pink);

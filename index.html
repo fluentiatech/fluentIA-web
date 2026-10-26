@@ -1398,33 +1398,42 @@ footer{
   font-size:clamp(3.4rem,12vw,10rem);text-transform:uppercase;text-align:center;
   letter-spacing:-.045em;line-height:.9;font-weight:600;
 }
-/* Confianza: título pegado al centro, tarjetas por encima */
+/* Confianza (su bloque de premios): un escenario fijo de pantalla completa con el título centrado,
+   que se ve solo antes y después; las tarjetas pasan por encima en dos columnas pegadas, a 80 px */
 #confianza{padding-top:0;padding-bottom:0;}
-.trust{position:relative;max-width:1100px;margin:0 auto;width:100%;padding-top:34vh;}
+.trust{position:relative;max-width:var(--max);margin:0 auto;width:100%;}
+.trust-stage{position:sticky;top:0;height:100svh;display:grid;place-items:center;z-index:0;pointer-events:none;}
 .trust-title{
-  position:sticky;top:50%;transform:translateY(-50%);
-  text-align:center;font-size:clamp(2.6rem,8vw,7rem);letter-spacing:-.045em;line-height:1;
-  margin:0;z-index:0;pointer-events:none;
+  text-align:center;font-size:clamp(2.6rem,7.3vw,8rem);letter-spacing:-.045em;line-height:1;
+  margin:0;max-width:14ch;
 }
-.trust-cards{list-style:none;position:relative;z-index:1;margin-top:-4vh;padding-bottom:16vh;}
+.trust-cards{
+  --tc-w:252px;--tc-h:378px;--tc-gap:48px;
+  list-style:none;position:relative;z-index:1;
+  width:min(calc(var(--tc-w) * 2),100%);margin:0 auto;padding:var(--tc-gap) 0 45svh;
+}
+@media(min-width:600px){.trust-cards{--tc-w:410px;--tc-h:273px;--tc-gap:64px;}}
+@media(min-width:1024px){.trust-cards{--tc-w:515px;--tc-h:343px;--tc-gap:80px;}}
+@media(min-width:1441px){.trust-cards{--tc-w:calc(-1.43354px + 35.83855vw);--tc-h:calc(-0.95477px + 23.86917vw);}}
+@media(min-width:1920px){.trust-cards{--tc-w:686.67px;--tc-h:457.33px;}}
 .trust-card{
-  --tc-w:252px;--tc-h:378px;
   position:relative;overflow:hidden;cursor:pointer;
   width:min(var(--tc-w),100%);height:var(--tc-h);
-  margin:0 0 clamp(60px,16vh,180px);
+  margin:0 0 var(--tc-gap);
   font-family:var(--font-serif);font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.3;color:#fff;
 }
-@media(min-width:600px){.trust-card{--tc-w:410px;--tc-h:273px;}}
-@media(min-width:1024px){.trust-card{--tc-w:515px;--tc-h:343px;}}
-@media(min-width:1441px){.trust-card{--tc-w:calc(-1.43354px + 35.83855vw);--tc-h:calc(-0.95477px + 23.86917vw);}}
-@media(min-width:1920px){.trust-card{--tc-w:686.67px;--tc-h:457.33px;}}
+.trust-card:last-child{margin-bottom:0;}
+/* entrada por IntersectionObserver (no por GSAP): si algo falla, la tarjeta se ve igualmente */
+.trust-card{opacity:0;transform:translateY(40px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.trust-card.is-in,.no-js .trust-card{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.trust-card{opacity:1;transform:none;transition:none;}}
 .trust-card:focus-visible{outline:2px solid #fff;outline-offset:4px;}
-/* las líneas se trazan al abrir, como su Lottie, con un pequeño escalonado */
-.tc-lines{position:absolute;inset:-3%;width:106%;height:106%;fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.2;pointer-events:none;}
-.tc-lines *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s var(--ease);}
+/* las líneas se ven siempre al 30 % (su Lottie en reposo) y se redibujan y aclaran al abrir */
+.tc-lines{position:absolute;inset:-3%;width:106%;height:106%;fill:none;stroke:#fff;stroke-width:1.2;pointer-events:none;opacity:.3;transition:opacity .6s var(--ease),transform .9s var(--ease);}
+.tc-lines *{stroke-dasharray:1;stroke-dashoffset:0;transition:stroke-dashoffset .9s var(--ease);}
 .tc-lines :nth-child(2){transition-delay:.06s}.tc-lines :nth-child(3){transition-delay:.12s}
 .tc-lines :nth-child(4){transition-delay:.18s}.tc-lines :nth-child(5){transition-delay:.24s}.tc-lines :nth-child(6){transition-delay:.3s}
-.trust-card.is-open .tc-lines *{stroke-dashoffset:0;}
+.trust-card.is-open .tc-lines{opacity:.7;transform:scale(1.04);}
 /* título abajo; al abrir sube 1,34 alturas y entra la descripción */
 .tc-title{position:absolute;left:0;right:0;bottom:0;margin:0;padding:24px;max-width:22ch;transition:transform .6s var(--ease);}
 .tc-detail{position:absolute;inset:0;padding:24px 24px 16px;display:flex;align-items:flex-end;visibility:hidden;transform:translateY(calc(var(--tc-h) * 1.34));transition:transform .6s var(--ease) .1s,visibility 0s .7s;}
@@ -1521,11 +1530,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="mega-col">
           <span class="mega-h">Sectores</span>
-          <a href="/expedienta" role="menuitem"><span class="dd-t">Asesorías y gestorías</span><span class="dd-d">Expedienta, la IA que cita la fuente</span></a>
-          <a href="blog/caso-cd-teruel.html" role="menuitem"><span class="dd-t">Clubes y deportistas</span><span class="dd-d">Webs oficiales y portal del aficionado</span></a>
-          <a href="blog/chatbot-whatsapp-cuando-tiene-sentido.html" role="menuitem"><span class="dd-t">Peluquerías, clínicas y hostelería</span><span class="dd-d">Citas y atención por WhatsApp</span></a>
-          <a href="servicios/webs.html" role="menuitem"><span class="dd-t">Comercio y artesanos</span><span class="dd-d">Tiendas online y webs a medida</span></a>
-          <a href="servicios/ia-soberana.html" role="menuitem"><span class="dd-t">Industria y despachos</span><span class="dd-d">IA sobre SharePoint, SQL y documentos</span></a>
+          <a href="sectores/asesorias-y-gestorias.html" role="menuitem"><span class="dd-t">Asesorías y gestorías</span><span class="dd-d">Expedienta y copilotos para el despacho</span></a>
+          <a href="sectores/clubes-y-deportistas.html" role="menuitem"><span class="dd-t">Clubes y deportistas</span><span class="dd-d">Webs oficiales y portal del aficionado</span></a>
+          <a href="sectores/negocios-con-cita.html" role="menuitem"><span class="dd-t">Peluquerías, clínicas y hostelería</span><span class="dd-d">Citas y atención por WhatsApp y voz</span></a>
+          <a href="sectores/comercio-y-artesanos.html" role="menuitem"><span class="dd-t">Comercio y artesanos</span><span class="dd-d">Tiendas, configuradores y vídeo de producto</span></a>
+          <a href="sectores/industria.html" role="menuitem"><span class="dd-t">Industria</span><span class="dd-d">Datos de planta, visión artificial y gemelos</span></a>
         </div>
         <a href="/expedienta" role="menuitem" class="mega-feat">
           <span class="mf-k">Producto</span>
@@ -1900,7 +1909,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 ================================ -->
 <section id="confianza" aria-labelledby="confianza-title">
   <div class="trust">
-    <h2 id="confianza-title" class="trust-title" data-i18n="tr.h2">Por qué confiar.</h2>
+    <div class="trust-stage"><h2 id="confianza-title" class="trust-title" data-i18n="tr.h2">Por qué confiar.</h2></div>
     <ul class="trust-cards" role="list">
       <li class="trust-card tc-pink tc-l" tabindex="0" role="button" aria-expanded="false">
         <svg class="tc-lines" viewBox="0 0 400 260" aria-hidden="true"><circle cx="255" cy="105" r="70" pathLength="1"/><circle cx="255" cy="105" r="115" pathLength="1"/><path d="M0 58H400" pathLength="1"/><path d="M0 160H400" pathLength="1"/><path d="M120 0V260" pathLength="1"/><path d="M330 0V260" pathLength="1"/></svg>
@@ -2792,9 +2801,24 @@ document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closePriva
 /* ---- CONFIANZA: las tarjetas se abren con el ratón (con retardo), un toque o Intro ---- */
 (function(){
   var cards=document.querySelectorAll('.trust-card');if(!cards.length)return;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -12% 0px'});
+    cards.forEach(function(c){io.observe(c);});
+  }else{cards.forEach(function(c){c.classList.add('is-in');});}
+  /* red de seguridad: al hacer scroll, lo que ya está en pantalla se marca aunque el observador no haya avisado */
+  function red(){var falta=false;cards.forEach(function(c){if(c.classList.contains('is-in'))return;if(c.getBoundingClientRect().top<innerHeight*.9)c.classList.add('is-in');else falta=true;});if(!falta)removeEventListener('scroll',red);}
+  addEventListener('scroll',red,{passive:true});setTimeout(red,2500);
   cards.forEach(function(c){
     var t=null;
-    function abrir(v){c.classList.toggle('is-open',v);c.setAttribute('aria-expanded',v);}
+    var lineas=c.querySelectorAll('.tc-lines *');
+    function abrir(v){
+      if(v&&!c.classList.contains('is-open')){
+        lineas.forEach(function(l){l.style.transition='none';l.style.strokeDashoffset='1';});
+        void c.offsetWidth;
+        lineas.forEach(function(l){l.style.transition='';l.style.strokeDashoffset='';});
+      }
+      c.classList.toggle('is-open',v);c.setAttribute('aria-expanded',v);
+    }
     c.addEventListener('pointerenter',function(e){if(e.pointerType!=='mouse')return;t=setTimeout(function(){abrir(true);},150);});
     c.addEventListener('pointerleave',function(e){if(e.pointerType!=='mouse')return;clearTimeout(t);abrir(false);});
     c.addEventListener('click',function(){abrir(!c.classList.contains('is-open'));});
@@ -2885,7 +2909,6 @@ window.addEventListener('DOMContentLoaded',function(){
   gsap.from('#manifiesto .giant',{scale:.86,opacity:0,ease:'none',scrollTrigger:{trigger:'#manifiesto',start:'top 85%',end:'top 35%',scrub:true}});
   /* el aro se traza entre que el titular asoma por abajo y llega al centro (su "360°") */
   gsap.to('#manifiesto .ring ellipse',{strokeDashoffset:0,ease:'power2.inOut',scrollTrigger:{trigger:'#manifiesto .giant',start:'bottom 95%',end:'center center',scrub:true,invalidateOnRefresh:true}});
-  gsap.from('.trust-card',{opacity:0,y:40,stagger:.12,duration:.7,ease:'power2.out',scrollTrigger:{trigger:'.trust-cards',start:'top 80%'}});
   gsap.from('.value-item',{opacity:0,y:22,stagger:.08,duration:.6,ease:'power2.out',scrollTrigger:{trigger:'#nosotros',start:'top 64%'}});
 
 
