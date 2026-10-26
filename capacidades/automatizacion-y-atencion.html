@@ -1380,6 +1380,9 @@ footer{
 <link rel="stylesheet" href="/public/piel.css">
 <link rel="stylesheet" href="/public/capacidad.css">
 <script src="/public/piel.js" defer></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://www.fluentiatech.es/capacidades/automatizacion-y-atencion#faq", "mainEntity": [{"@type": "Question", "name": "¿Y si el cliente quiere hablar con una persona?", "acceptedAnswer": {"@type": "Answer", "text": "Se le pasa, con todo el contexto de la conversación, y el asistente avisa por el canal que elijas. El objetivo no es sustituir a nadie: es que nadie se quede sin respuesta."}}, {"@type": "Question", "name": "¿Necesito un número nuevo de WhatsApp?", "acceptedAnswer": {"@type": "Answer", "text": "No necesariamente: se puede migrar el que ya usa el negocio a la API de Meta. Lo hacemos nosotros durante el alta."}}, {"@type": "Question", "name": "¿Qué pasa con los datos de las conversaciones?", "acceptedAnswer": {"@type": "Answer", "text": "Se guardan en una base de datos tuya, en la UE, con el contrato de encargado de tratamiento firmado. El modelo de IA que redacta las respuestas también corre en Europa."}}, {"@type": "Question", "name": "¿Cuánto cuesta cada mes?", "acceptedAnswer": {"@type": "Answer", "text": "Entre 60 y 250 € según el volumen de mensajes y si lleva voz. Te damos el cálculo en la propuesta, antes de empezar."}}, {"@type": "Question", "name": "¿Sirve para pedidos, no solo para citas?", "acceptedAnswer": {"@type": "Answer", "text": "Sí: pedidos, estado de envíos, dudas de producto, horarios, reservas. Lo que más se repita en tu negocio es por donde empezamos."}}]}
+</script>
 </head>
 <body>
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
@@ -1476,7 +1479,9 @@ footer{
     <h1>Atención y procesos que funcionan a cualquier hora</h1>
     <p class="cap-intro">Un chatbot que da citas, responde pedidos y resuelve dudas con la información real de tu negocio, y pasa a una persona cuando toca. Y, detrás, la automatización de los procesos que hoy se hacen a mano: avisos, registros, facturas, recordatorios.</p>
     <a href="../contacto.html" class="link-sq"><span>Hablemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+  <ul class="cap-trust"><li>Diagnóstico gratuito</li><li>Precio cerrado por escrito</li><li>Chatbot en marcha en 2-5 semanas</li><li>Una persona siempre al otro lado</li></ul>
   </header>
+  <section class="cap-logos" aria-label="Clientes"><p>Empresas y profesionales que ya trabajan con nosotros</p><ul><li><img class="" src="../public/clientes/juanma-cifuentes.svg" alt="Juanma Cifuentes" loading="lazy"></li><li><img class="inv" src="../public/clientes/alex-rubio.png" alt="Alex Rubio" loading="lazy"></li><li><img class="" src="../public/clientes/cd-teruel.png" alt="CD Teruel" loading="lazy"></li><li><img class="" src="../public/clientes/casablanca.png" alt="Barbería Casablanca" loading="lazy"></li><li><img class="" src="../public/clientes/mimetaenmarco.png" alt="MiMetaEnMarco" loading="lazy"></li></ul></section>
 
   <section class="cap-sec" aria-labelledby="ahora">
     <h2 id="ahora">Automatización y atención, ahora</h2>
@@ -1497,6 +1502,33 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="para">
+    <h2 id="para">Para quién es, y para quién no</h2>
+    <div class="cap-two">
+      <div><h3>Encaja si…</h3><ul><li>Negocios a los que ya les escriben por WhatsApp: peluquerías, clínicas, talleres, tiendas, hostelería, inmobiliarias.</li><li>Equipos que pierden llamadas o contestan tarde porque están atendiendo a quien tienen delante.</li><li>Procesos que hoy consisten en copiar datos de un sitio a otro cada día.</li></ul></div>
+      <div class="no"><h3>No lo recomendamos para…</h3><ul><li>Quien quiere un bot que lo responda todo sin una persona detrás: si el cliente pide hablar con alguien, se le pasa.</li><li>Automatizar un proceso que nadie ha definido: primero lo dibujamos, después lo automatizamos.</li><li>Spam o mensajes masivos no solicitados: no lo hacemos.</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="como">
+    <h2 id="como">Cómo lo hacemos</h2>
+    <ol class="cap-steps"><li><span class="n">01</span><div><h3>Diagnóstico</h3><p>Qué te preguntan más, por dónde y a qué horas. Medimos lo que se pierde hoy.</p><small>Día 1</small></div></li><li><span class="n">02</span><div><h3>Alta y guion</h3><p>Alta de WhatsApp Business API con Meta y guion de las conversaciones que más se repiten.</p><small>Semana 1</small></div></li><li><span class="n">03</span><div><h3>Conexión a tus datos</h3><p>Agenda, pedidos, stock o historial: el asistente responde con lo real, no con un menú.</p><small>Semanas 2-3</small></div></li><li><span class="n">04</span><div><h3>Puesta en marcha y ajuste</h3><p>Arranca con un grupo de clientes, leemos las conversaciones y afinamos. Después, informes mensuales.</p><small>Semanas 4-5</small></div></li></ol>
+  </section>
+  <section class="cap-sec" aria-labelledby="llevas">
+    <h2 id="llevas">Qué te llevas</h2>
+    <div class="cap-two plain">
+      <div><h3>Entregables</h3><ul class="check"><li>WhatsApp Business API verificada y chat web con tu marca</li><li>Asistente conectado a tu agenda, tienda o ERP</li><li>Derivación a una persona con el contexto de la conversación</li><li>Flujos de automatización documentados, con avisos de error</li><li>Panel de conversaciones e informe mensual de lo que preguntan</li><li>Formación a quien atiende y a quien administra</li></ul></div>
+      <div><h3>Tecnología que usamos</h3><ul class="cap-chips"><li>WhatsApp Business API (Meta)</li><li>Modelos de peso abierto en la UE para las respuestas</li><li>n8n y conectores con ERP, CRM y hojas de cálculo</li><li>Voz: reconocimiento y síntesis en castellano</li><li>Google Calendar, Calendly o tu agenda</li><li>Registro de conversaciones en base de datos tuya</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="precio">
+    <h2 id="precio">Precio y plazo orientativos</h2>
+    <div class="cap-tiers"><article class="cap-tier"><h3>Nativo de Meta</h3><b>desde 900 €</b><p>Alta y verificación de WhatsApp Business, respuestas automáticas, menús y plantillas. Para empezar a automatizar lo básico.</p></article><article class="cap-tier"><h3>Asistente a medida con IA</h3><b>desde 3.500 €</b><p>Conectado a tus datos y sistemas: consulta, reserva y actúa. Derivación inteligente a una persona.</p></article><article class="cap-tier"><h3>Asistente de voz</h3><b>desde 4.500 €</b><p>Atiende el teléfono, da citas y deja recado. Se suma al de WhatsApp o va solo.</p></article></div>
+    <p class="cap-nota">El uso mensual (número, mensajes de WhatsApp, modelo y servidor) queda entre 60 y 250 € según volumen. Flujos de automatización por proceso, desde 1.200 €. El precio definitivo se cierra por escrito tras el diagnóstico gratuito y no cambia durante el proyecto.</p>
+  </section>
+  <section class="cap-sec" aria-labelledby="vs">
+    <h2 id="vs">Chatbot nativo de Meta frente a asistente a medida de fluentIA</h2>
+    <div class="cap-vs"><div class="col a"><h3>Chatbot nativo de Meta</h3><ul><li>Respuestas fijas, menús y plantillas.</li><li>Perfecto para empezar y para lo básico.</li><li>No sabe qué hay en tu agenda ni en tu ERP.</li><li>Se configura en días.</li></ul></div><div class="col b"><h3>Asistente a medida de fluentIA</h3><ul><li>Responde con tus datos reales: stock, citas, pedidos, historial.</li><li>Para cuando el bot tiene que consultar, reservar y actuar.</li><li>Conectado a tu agenda, ERP y CRM, con derivación a una persona.</li><li>Se construye en semanas, y crece contigo.</li></ul></div></div>
+  </section>
   <section class="cap-sec" aria-labelledby="rec">
     <h2 id="rec">Ideas y recursos</h2>
     <div class="cap-res">
@@ -1527,8 +1559,12 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="faq">
+    <h2 id="faq">Lo que más nos preguntan</h2>
+    <div class="cap-faq"><details><summary>¿Y si el cliente quiere hablar con una persona?</summary><p>Se le pasa, con todo el contexto de la conversación, y el asistente avisa por el canal que elijas. El objetivo no es sustituir a nadie: es que nadie se quede sin respuesta.</p></details><details><summary>¿Necesito un número nuevo de WhatsApp?</summary><p>No necesariamente: se puede migrar el que ya usa el negocio a la API de Meta. Lo hacemos nosotros durante el alta.</p></details><details><summary>¿Qué pasa con los datos de las conversaciones?</summary><p>Se guardan en una base de datos tuya, en la UE, con el contrato de encargado de tratamiento firmado. El modelo de IA que redacta las respuestas también corre en Europa.</p></details><details><summary>¿Cuánto cuesta cada mes?</summary><p>Entre 60 y 250 € según el volumen de mensajes y si lleva voz. Te damos el cálculo en la propuesta, antes de empezar.</p></details><details><summary>¿Sirve para pedidos, no solo para citas?</summary><p>Sí: pedidos, estado de envíos, dudas de producto, horarios, reservas. Lo que más se repita en tu negocio es por donde empezamos.</p></details></div>
+  </section>
   <section class="cap-cta">
-    <h2>¿Cuántas llamadas y mensajes podrías dejar de atender a mano?</h2>
+    <h2>Cuéntanos qué te preguntan más y te decimos cómo atenderlo solo</h2>
     <div class="acts">
       <a href="../contacto.html" class="btn-primary">Cuéntanos tu caso</a>
       <a href="https://wa.me/34697947595" class="link-sq"><span>Hablar por WhatsApp</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>

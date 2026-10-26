@@ -1380,6 +1380,9 @@ footer{
 <link rel="stylesheet" href="/public/piel.css">
 <link rel="stylesheet" href="/public/capacidad.css">
 <script src="/public/piel.js" defer></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://www.fluentiatech.es/capacidades/ia-y-datos#faq", "mainEntity": [{"@type": "Question", "name": "¿Funciona con mi SharePoint y mi SQL?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, es nuestro caso favorito. Conectamos la IA a tus bases SQL, a tu SharePoint y a tus carpetas de documentos, y le preguntas en castellano. Si usas otro gestor documental, lo miramos: casi siempre hay manera."}}, {"@type": "Question", "name": "¿Puedo tener la IA en mis propios servidores?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. La instalamos en tu casa, con el modelo corriendo en tu hardware, o en nuestros servidores en París con una conexión privada solo para ti. En ningún caso pasa por nubes americanas."}}, {"@type": "Question", "name": "¿Y si el sistema se equivoca?", "acceptedAnswer": {"@type": "Answer", "text": "Cada respuesta lleva su fuente y el enlace al documento, para comprobarla al momento. Y cuando no encuentra la respuesta, lo dice; no se la inventa."}}, {"@type": "Question", "name": "¿Qué pasa con mis datos si dejamos el servicio?", "acceptedAnswer": {"@type": "Answer", "text": "El acceso termina y, si lo quieres, te llevas el índice y los documentos. Tu archivo original nunca ha salido de tu empresa."}}, {"@type": "Question", "name": "¿Cuánto tarda en verse algo?", "acceptedAnswer": {"@type": "Answer", "text": "La demostración con tus documentos, una semana. El piloto en solo lectura, entre tres y cuatro."}}]}
+</script>
 </head>
 <body>
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
@@ -1476,6 +1479,7 @@ footer{
     <h1>Inteligencia artificial sobre tus propios datos</h1>
     <p class="cap-intro">Una IA que responde con lo que hay en tu SQL, tu SharePoint y tus carpetas, cita la fuente de cada dato y no envía nada fuera de la Unión Europea. Es la capacidad sobre la que se apoya todo lo demás que hacemos, y la que más preguntas genera en una primera reunión.</p>
     <a href="../contacto.html" class="link-sq"><span>Hablemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+  <ul class="cap-trust"><li>Diagnóstico gratuito</li><li>Precio cerrado por escrito</li><li>Piloto funcionando en 3-4 semanas</li><li>Datos y procesamiento en la UE</li></ul>
   </header>
 
   <section class="cap-sec" aria-labelledby="ahora">
@@ -1497,6 +1501,33 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="para">
+    <h2 id="para">Para quién es, y para quién no</h2>
+    <div class="cap-two">
+      <div><h3>Encaja si…</h3><ul><li>Empresas que guardan cosas valiosas en documentos: asesorías, despachos, clínicas, fábricas con manuales y procedimientos.</li><li>Equipos que pierden tiempo buscando lo que ya saben que está "en algún sitio".</li><li>Quien no puede, por ley o por contrato, pegar datos de clientes en un chat de uso general.</li></ul></div>
+      <div class="no"><h3>No lo recomendamos para…</h3><ul><li>Quien busca un chat genérico para redactar correos: para eso ya hay herramientas y no hace falta un proyecto.</li><li>Entrenar un modelo propio desde cero: no tiene sentido económico para una pyme y lo decimos.</li><li>Empresas sin documentos digitalizados: primero el archivo, después la IA (podemos ayudar con lo primero).</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="como">
+    <h2 id="como">Cómo lo hacemos</h2>
+    <ol class="cap-steps"><li><span class="n">01</span><div><h3>Diagnóstico</h3><p>Elegimos juntos un archivo acotado y las preguntas que el equipo hace de verdad.</p><small>Día 1</small></div></li><li><span class="n">02</span><div><h3>Demo con tus documentos</h3><p>Una hora con tu propio archivo, no con ejemplos: se ve si encuentra, si cita y si sabe decir "no lo sé".</p><small>Semana 1</small></div></li><li><span class="n">03</span><div><h3>Piloto en solo lectura</h3><p>Indexamos el archivo, damos acceso a un grupo pequeño y medimos qué preguntan y qué encuentran.</p><small>Semanas 2-4</small></div></li><li><span class="n">04</span><div><h3>Ampliación</h3><p>Más archivos, más usuarios, permisos finos y, si tiene sentido, agentes que ejecutan tareas.</p><small>A partir del mes 2</small></div></li></ol>
+  </section>
+  <section class="cap-sec" aria-labelledby="llevas">
+    <h2 id="llevas">Qué te llevas</h2>
+    <div class="cap-two plain">
+      <div><h3>Entregables</h3><ul class="check"><li>Índice de tus documentos (RAG) en una base de datos tuya</li><li>Interfaz de consulta con cita y enlace al documento</li><li>Permisos por persona o departamento y registro de consultas</li><li>Despliegue en tus servidores o en Scaleway (París) con conexión privada</li><li>Contrato de encargado de tratamiento y documento de arquitectura</li><li>Formación de una sesión a quien lo usa y a quien lo mantiene</li></ul></div>
+      <div><h3>Tecnología que usamos</h3><ul class="cap-chips"><li>Llama, Mistral y Qwen (modelos de peso abierto)</li><li>RAG con PostgreSQL + pgvector o Qdrant</li><li>Scaleway, París</li><li>Conectores SharePoint, SQL Server, carpetas y correo</li><li>n8n para los flujos</li><li>Docker en tus servidores</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="precio">
+    <h2 id="precio">Precio y plazo orientativos</h2>
+    <div class="cap-tiers"><article class="cap-tier"><h3>Piloto</h3><b>desde 4.900 €</b><p>Un archivo, hasta 20 usuarios, 3-4 semanas. Todo lo necesario para decidir con datos si se amplía.</p></article><article class="cap-tier"><h3>Despliegue completo</h3><b>desde 12.000 €</b><p>Varios archivos y sistemas, permisos finos, integración con tu directorio de usuarios, agentes si procede.</p></article><article class="cap-tier"><h3>Infraestructura y soporte</h3><b>150-600 €/mes</b><p>Servidor europeo o el tuyo, modelos actualizados, copias, monitorización y una sesión mensual de mejora.</p></article></div>
+    <p class="cap-nota">Expedienta, nuestro producto para asesorías, se contrata por usuario y mes: 29, 49 o 79 € sin IVA, sin permanencia. El precio definitivo se cierra por escrito tras el diagnóstico gratuito y no cambia durante el proyecto.</p>
+  </section>
+  <section class="cap-sec" aria-labelledby="vs">
+    <h2 id="vs">IA de nube pública frente a IA soberana con fluentIA</h2>
+    <div class="cap-vs"><div class="col a"><h3>IA de nube pública</h3><ul><li>Tus datos viajan a servidores de terceros, a menudo en EE. UU.</li><li>Sujeta al CLOUD Act: sus autoridades pueden reclamar tu información.</li><li>Tus documentos pueden acabar entrenando modelos ajenos.</li><li>Dependes de su nube, sus precios y sus condiciones.</li></ul></div><div class="col b"><h3>IA soberana con fluentIA</h3><ul><li>El dato se queda en tu perímetro: tus servidores o los nuestros en la UE.</li><li>Fuera del alcance del CLOUD Act. RGPD sin asteriscos.</li><li>Tu información no se comparte ni entrena modelos de nadie.</li><li>Es tuya: la controlas, la auditas y cambias de modelo sin empezar de cero.</li></ul></div></div>
+  </section>
   <section class="cap-sec" aria-labelledby="rec">
     <h2 id="rec">Ideas y recursos</h2>
     <div class="cap-res">
@@ -1527,8 +1558,12 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="faq">
+    <h2 id="faq">Lo que más nos preguntan</h2>
+    <div class="cap-faq"><details><summary>¿Funciona con mi SharePoint y mi SQL?</summary><p>Sí, es nuestro caso favorito. Conectamos la IA a tus bases SQL, a tu SharePoint y a tus carpetas de documentos, y le preguntas en castellano. Si usas otro gestor documental, lo miramos: casi siempre hay manera.</p></details><details><summary>¿Puedo tener la IA en mis propios servidores?</summary><p>Sí. La instalamos en tu casa, con el modelo corriendo en tu hardware, o en nuestros servidores en París con una conexión privada solo para ti. En ningún caso pasa por nubes americanas.</p></details><details><summary>¿Y si el sistema se equivoca?</summary><p>Cada respuesta lleva su fuente y el enlace al documento, para comprobarla al momento. Y cuando no encuentra la respuesta, lo dice; no se la inventa.</p></details><details><summary>¿Qué pasa con mis datos si dejamos el servicio?</summary><p>El acceso termina y, si lo quieres, te llevas el índice y los documentos. Tu archivo original nunca ha salido de tu empresa.</p></details><details><summary>¿Cuánto tarda en verse algo?</summary><p>La demostración con tus documentos, una semana. El piloto en solo lectura, entre tres y cuatro.</p></details></div>
+  </section>
   <section class="cap-cta">
-    <h2>¿Quieres ver una IA respondiendo con tus propios documentos?</h2>
+    <h2>Pide una demostración con tus propios documentos</h2>
     <div class="acts">
       <a href="../contacto.html" class="btn-primary">Cuéntanos tu caso</a>
       <a href="https://wa.me/34697947595" class="link-sq"><span>Hablar por WhatsApp</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>

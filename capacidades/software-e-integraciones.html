@@ -1380,6 +1380,9 @@ footer{
 <link rel="stylesheet" href="/public/piel.css">
 <link rel="stylesheet" href="/public/capacidad.css">
 <script src="/public/piel.js" defer></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://www.fluentiatech.es/capacidades/software-e-integraciones#faq", "mainEntity": [{"@type": "Question", "name": "¿Cómo sé si mi caso necesita software a medida?", "acceptedAnswer": {"@type": "Answer", "text": "Si tu proceso es lo que te diferencia y ningún producto estándar lo recoge, probablemente sí. Si es contabilidad o nóminas, probablemente no. Te lo decimos en el diagnóstico, gratis."}}, {"@type": "Question", "name": "¿De quién es el código?", "acceptedAnswer": {"@type": "Answer", "text": "Tuyo. Se entrega en tu repositorio con su documentación. No hay dependencia de nosotros para seguir."}}, {"@type": "Question", "name": "¿Qué pasa con el RGPD en un proyecto de salud digital?", "acceptedAnswer": {"@type": "Answer", "text": "Datos en servidores de la UE, cifrado, consentimientos, registro de accesos, contrato de encargado de tratamiento y evaluación de impacto. La IA, si la hay, solo para lo administrativo; nunca diagnostica ni decide."}}, {"@type": "Question", "name": "¿Cuánto dura un proyecto?", "acceptedAnswer": {"@type": "Answer", "text": "Una integración, tres o cuatro semanas. Una aplicación interna, de ocho a doce, con una demo cada dos. Siempre con fecha y precio cerrados por escrito."}}, {"@type": "Question", "name": "¿Y después de la entrega?", "acceptedAnswer": {"@type": "Answer", "text": "Garantía sobre lo entregado, soporte cercano y mejoras por sprints cuando las necesites. Hablas con quien lo construyó."}}]}
+</script>
 </head>
 <body>
 <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
@@ -1476,7 +1479,9 @@ footer{
     <h1>Software hecho a tu proceso, no al revés</h1>
     <p class="cap-intro">Aplicaciones internas, integraciones entre los sistemas que ya tienes y automatización de procesos, con ingeniería de verdad: modelado del proceso primero, código después. Para empresas con las que ya trabajamos y que necesitan lo siguiente.</p>
     <a href="../contacto.html" class="link-sq"><span>Hablemos</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
+  <ul class="cap-trust"><li>Diagnóstico gratuito</li><li>Precio cerrado por escrito</li><li>Sprints de dos semanas con demo</li><li>Documentación para no depender de nadie</li></ul>
   </header>
+  <section class="cap-logos" aria-label="Clientes"><p>Empresas y profesionales que ya trabajan con nosotros</p><ul><li><img class="" src="../public/clientes/juanma-cifuentes.svg" alt="Juanma Cifuentes" loading="lazy"></li><li><img class="inv" src="../public/clientes/alex-rubio.png" alt="Alex Rubio" loading="lazy"></li><li><img class="" src="../public/clientes/cd-teruel.png" alt="CD Teruel" loading="lazy"></li><li><img class="" src="../public/clientes/casablanca.png" alt="Barbería Casablanca" loading="lazy"></li><li><img class="" src="../public/clientes/mimetaenmarco.png" alt="MiMetaEnMarco" loading="lazy"></li></ul></section>
 
   <section class="cap-sec" aria-labelledby="ahora">
     <h2 id="ahora">Software e integraciones, ahora</h2>
@@ -1497,6 +1502,33 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="para">
+    <h2 id="para">Para quién es, y para quién no</h2>
+    <div class="cap-two">
+      <div><h3>Encaja si…</h3><ul><li>Empresas con varios programas que no se hablan y alguien haciendo de puente con Excel.</li><li>Equipos con un proceso propio que ningún software estándar resuelve.</li><li>Clínicas y centros que quieren atender también a distancia con garantías.</li><li>Quien ya trabaja con nosotros y necesita lo siguiente.</li></ul></div>
+      <div class="no"><h3>No lo recomendamos para…</h3><ul><li>Contabilidad, nóminas o facturación estándar: para eso hay productos maduros y lo decimos.</li><li>Reescribir un sistema que funciona solo porque es antiguo.</li><li>Proyectos sin alguien de la empresa que pueda decidir en las revisiones.</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="como">
+    <h2 id="como">Cómo lo hacemos</h2>
+    <ol class="cap-steps"><li><span class="n">01</span><div><h3>Diagnóstico</h3><p>Mapa de tus sistemas y de las dobles grabaciones. Gratis.</p><small>Día 1</small></div></li><li><span class="n">02</span><div><h3>Proceso antes que código</h3><p>Modelamos el proceso en BPMN con quien lo hace. Propuesta cerrada por escrito.</p><small>Semana 1-2</small></div></li><li><span class="n">03</span><div><h3>Sprints de dos semanas</h3><p>Cada dos semanas, una demo con algo que ya funciona. Corriges mientras es barato.</p><small>Desde la semana 3</small></div></li><li><span class="n">04</span><div><h3>Producción y evolución</h3><p>Despliegue, formación, documentación y soporte. Lo que venga después, se hace.</p><small>Al final de cada sprint</small></div></li></ol>
+  </section>
+  <section class="cap-sec" aria-labelledby="llevas">
+    <h2 id="llevas">Qué te llevas</h2>
+    <div class="cap-two plain">
+      <div><h3>Entregables</h3><ul class="check"><li>Mapa del proceso (BPMN 2.0) antes y después</li><li>Código fuente tuyo, en tu repositorio</li><li>Integraciones con registro, alertas y reintentos</li><li>Aplicación web o móvil con roles, permisos e historial</li><li>Documentación técnica y de uso</li><li>Garantía sobre lo entregado y soporte cercano</li></ul></div>
+      <div><h3>Tecnología que usamos</h3><ul class="cap-chips"><li>Python y Node.js</li><li>PostgreSQL y Supabase (UE)</li><li>Conectores SharePoint, SQL Server, ERP y CRM</li><li>n8n para orquestar</li><li>Videoconsulta con Daily o Whereby (datos en la UE) para salud digital</li><li>Docker, en tu servidor o en nube europea</li></ul></div>
+    </div>
+  </section>
+  <section class="cap-sec" aria-labelledby="precio">
+    <h2 id="precio">Precio y plazo orientativos</h2>
+    <div class="cap-tiers"><article class="cap-tier"><h3>Integración entre dos sistemas</h3><b>desde 4.000 €</b><p>Que el dato se escriba una vez y aparezca donde haga falta. 3-4 semanas.</p></article><article class="cap-tier"><h3>Aplicación interna</h3><b>desde 9.000 €</b><p>Partes, pedidos, inspecciones o cuadro de mando a medida. 8-12 semanas por sprints.</p></article><article class="cap-tier"><h3>Salud digital, primera versión</h3><b>8.000-15.000 €</b><p>Portal del paciente, videoconsulta, WhatsApp administrativo y seguimiento con alertas. 6-10 semanas.</p></article></div>
+    <p class="cap-nota">Mantenimiento, soporte y mejoras: de 300 a 1.500 €/mes según el sistema. Infraestructura en la UE, de 150 a 600 €/mes. El precio definitivo se cierra por escrito tras el diagnóstico gratuito y no cambia durante el proyecto.</p>
+  </section>
+  <section class="cap-sec" aria-labelledby="vs">
+    <h2 id="vs">Software enlatado frente a software a medida de fluentIA</h2>
+    <div class="cap-vs"><div class="col a"><h3>Software enlatado</h3><ul><li>Te obliga a cambiar tu forma de trabajar.</li><li>Pagas 200 funciones y usas 15.</li><li>Tus datos en la nube del fabricante.</li><li>Si necesitas algo nuevo, abres un ticket y esperas.</li></ul></div><div class="col b"><h3>Software a medida de fluentIA</h3><ul><li>Se adapta a tu proceso: primero el proceso, luego la herramienta.</li><li>Pagas lo que usas; lo hecho a medida se amortiza.</li><li>Tus datos donde tú decidas, en la UE o en tu servidor.</li><li>Si mañana necesitas algo nuevo, se hace en el siguiente sprint.</li></ul></div></div>
+  </section>
   <section class="cap-sec" aria-labelledby="rec">
     <h2 id="rec">Ideas y recursos</h2>
     <div class="cap-res">
@@ -1527,8 +1559,12 @@ footer{
     </div>
   </section>
 
+  <section class="cap-sec" aria-labelledby="faq">
+    <h2 id="faq">Lo que más nos preguntan</h2>
+    <div class="cap-faq"><details><summary>¿Cómo sé si mi caso necesita software a medida?</summary><p>Si tu proceso es lo que te diferencia y ningún producto estándar lo recoge, probablemente sí. Si es contabilidad o nóminas, probablemente no. Te lo decimos en el diagnóstico, gratis.</p></details><details><summary>¿De quién es el código?</summary><p>Tuyo. Se entrega en tu repositorio con su documentación. No hay dependencia de nosotros para seguir.</p></details><details><summary>¿Qué pasa con el RGPD en un proyecto de salud digital?</summary><p>Datos en servidores de la UE, cifrado, consentimientos, registro de accesos, contrato de encargado de tratamiento y evaluación de impacto. La IA, si la hay, solo para lo administrativo; nunca diagnostica ni decide.</p></details><details><summary>¿Cuánto dura un proyecto?</summary><p>Una integración, tres o cuatro semanas. Una aplicación interna, de ocho a doce, con una demo cada dos. Siempre con fecha y precio cerrados por escrito.</p></details><details><summary>¿Y después de la entrega?</summary><p>Garantía sobre lo entregado, soporte cercano y mejoras por sprints cuando las necesites. Hablas con quien lo construyó.</p></details></div>
+  </section>
   <section class="cap-cta">
-    <h2>¿Qué proceso de tu empresa sigue dependiendo de copiar datos a mano?</h2>
+    <h2>Cuéntanos qué proceso se os atasca y te decimos si hace falta software</h2>
     <div class="acts">
       <a href="../contacto.html" class="btn-primary">Cuéntanos tu caso</a>
       <a href="https://wa.me/34697947595" class="link-sq"><span>Hablar por WhatsApp</span><span class="arrow-sq" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M9 5l7 7-7 7"/></svg></span></a>
